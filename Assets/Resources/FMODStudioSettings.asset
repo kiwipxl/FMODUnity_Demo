@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  SourceProjectPath: C:/Users/marini/Documents/FMOD Studio/examples/Examples.fspro
-  SourceBankPath: C:/Users/marini/Documents/FMOD Studio/examples\Build
+  SourceProjectPath: C:/Users/Flynn/Documents/FMOD Studio/examples/Examples.fspro
+  SourceBankPath: C:/Users/Flynn/Documents/FMOD Studio/examples\Build
   SpeakerModeSettings:
   - Platform: 2
     Value: 0
@@ -47,4 +47,12 @@ MonoBehaviour:
   Plugins: []
   MasterBank:
     Name: Master Bank
-  Banks: []
+  Banks:
+  - Name: Character
+  - Name: Weapons
+  - Name: Music
+  - Name: Vehicles
+  - Name: VO_Menu_English
+  - Name: Sound
+  - Name: Surround_Ambience
+  - Name: UI_Menu

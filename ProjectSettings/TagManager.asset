@@ -8,6 +8,8 @@ TagManager:
   - Dangerous
   - Smelly
   - Fire
+  - Stone
+  - Floor
   layers:
   - Default
   - TransparentFX
