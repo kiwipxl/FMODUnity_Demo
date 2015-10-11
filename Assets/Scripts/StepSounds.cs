@@ -10,6 +10,7 @@ public class StepSounds : MonoBehaviour {
 
     bool stone_collide = false;
     bool floor_collide = false;
+    bool water_collide = false;
 
     void Start() {
         stepEvent = FMODUnity.RuntimeManager.CreateInstance(stepEventRef);
@@ -44,6 +45,7 @@ public class StepSounds : MonoBehaviour {
             if (state == FMOD.Studio.PLAYBACK_STATE.PLAYING) stepEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
+        if (floor_collide) surfaceParam.setValue(1);
         if (floor_collide) surfaceParam.setValue(2);
         if (stone_collide) surfaceParam.setValue(3);
         floor_collide = false;
