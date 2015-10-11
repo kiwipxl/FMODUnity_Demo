@@ -2,6 +2,7 @@ Library
 obj
 Temp
 Assets/ExternalAssetsTemp
+build
 *.csproj
 *.sln
 *.vs
