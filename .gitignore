@@ -1,0 +1,7 @@
+Library
+obj
+Temp
+Assets/ExternalAssetsTemp
+*.csproj
+*.sln
+*.vs
