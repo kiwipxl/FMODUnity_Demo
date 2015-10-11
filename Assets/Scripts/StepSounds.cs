@@ -8,8 +8,8 @@ public class StepSounds : MonoBehaviour {
     FMOD.Studio.ParameterInstance surfaceParam;
     Animator anim;
 
-    bool stone_collide = false;
     bool floor_collide = false;
+    bool stone_collide = false;
     bool water_collide = false;
 
     void Start() {
@@ -45,16 +45,18 @@ public class StepSounds : MonoBehaviour {
             if (state == FMOD.Studio.PLAYBACK_STATE.PLAYING) stepEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
-        if (floor_collide) surfaceParam.setValue(1);
         if (floor_collide) surfaceParam.setValue(2);
         if (stone_collide) surfaceParam.setValue(3);
+        if (water_collide) surfaceParam.setValue(1);
         floor_collide = false;
         stone_collide = false;
+        water_collide = false;
 	}
 
     void OnTriggerStay(Collider col)
     {
         if (col.tag == "Stone") stone_collide = true;
+        if (col.tag == "Water") water_collide = true;
     }
 
     void OnCollisionStay(Collision col)
