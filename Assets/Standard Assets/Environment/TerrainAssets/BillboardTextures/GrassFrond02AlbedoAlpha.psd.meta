@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dae6b40fd030ead409edbb63cd597091
+guid: d6cdc79ec19714fcd980ca3f6ac01a0a
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -35,7 +35,6 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 0
   spriteExtrude: 1
   spriteMeshType: 1
@@ -50,25 +49,20 @@ TextureImporter:
     maxTextureSize: 128
     textureFormat: -1
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   - buildTarget: Android
     maxTextureSize: 128
     textureFormat: -1
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   - buildTarget: BlackBerry
     maxTextureSize: 128
     textureFormat: -1
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   - buildTarget: WP8
     maxTextureSize: 128
     textureFormat: -1
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   spriteSheet:
     sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
-  assetBundleVariant: 

@@ -2,6 +2,9 @@ Library
 obj
 Temp
 Assets/ExternalAssetsTemp
+FMOD_Tanks
+Standard Assets
+StreamingAssets
 build
 *.csproj
 *.sln

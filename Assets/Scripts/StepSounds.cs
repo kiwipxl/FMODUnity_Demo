@@ -31,7 +31,7 @@ public class StepSounds : MonoBehaviour {
         attribs.position.x = transform.position.x;
         attribs.position.y = transform.position.y;
         attribs.position.z = transform.position.z;
-        stepEvent.set3DAttributes(attribs);
+        //stepEvent.set3DAttributes(attribs);
 
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         FMOD.Studio.PLAYBACK_STATE state;
