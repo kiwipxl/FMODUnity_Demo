@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class StepSounds : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class StepSounds : MonoBehaviour {
     FMOD.Studio.ParameterInstance surfaceParam;
     Animator anim;
 
-    bool floor_collide = false;
+    bool sand_collide = false;
     bool stone_collide = false;
     bool water_collide = false;
 
@@ -23,6 +24,17 @@ public class StepSounds : MonoBehaviour {
         {
             Debug.Log(anim.parameters[n].name);
         }
+
+        //Callbacks.setMarkerCallback(stepEvent, callback);
+    }
+
+    void callback(string markerName)
+    {
+        Debug.Log(markerName);
+        //if (markerName == "sup!")
+        //{
+        //    surfaceParam.setValue(0);
+        //}
     }
 
     void Update() {
@@ -31,7 +43,7 @@ public class StepSounds : MonoBehaviour {
         attribs.position.x = transform.position.x;
         attribs.position.y = transform.position.y;
         attribs.position.z = transform.position.z;
-        //stepEvent.set3DAttributes(attribs);
+        stepEvent.set3DAttributes(attribs);
 
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         FMOD.Studio.PLAYBACK_STATE state;
@@ -45,10 +57,10 @@ public class StepSounds : MonoBehaviour {
             if (state == FMOD.Studio.PLAYBACK_STATE.PLAYING) stepEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
-        if (floor_collide) surfaceParam.setValue(2);
+        if (sand_collide)  surfaceParam.setValue(1);
         if (stone_collide) surfaceParam.setValue(3);
-        if (water_collide) surfaceParam.setValue(1);
-        floor_collide = false;
+        if (water_collide) surfaceParam.setValue(0);
+        sand_collide = false;
         stone_collide = false;
         water_collide = false;
 	}
@@ -61,6 +73,6 @@ public class StepSounds : MonoBehaviour {
 
     void OnCollisionStay(Collision col)
     {
-        if (col.gameObject.tag == "Floor") floor_collide = true;
+        if (col.gameObject.tag == "Floor") sand_collide = true;
     }
 }

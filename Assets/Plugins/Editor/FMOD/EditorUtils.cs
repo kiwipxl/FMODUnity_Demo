@@ -148,6 +148,8 @@ namespace FMODUnity
             UnityEngine.Debug.Log("FMOD Studio: Creating editor system instance");
             RuntimeUtils.EnforceLibraryOrder();
 
+            CheckResult(FMOD.Debug.Initialize(FMOD.DEBUG_FLAGS.LOG, FMOD.DEBUG_MODE.FILE, null, "fmod_editor.log"));
+
             CheckResult(FMOD.Studio.System.create(out system));
 
             FMOD.System lowlevel;
@@ -163,6 +165,27 @@ namespace FMODUnity
             FMOD.DSP masterHead;
             CheckResult(master.getDSP(FMOD.CHANNELCONTROL_DSP_INDEX.HEAD, out masterHead));
             CheckResult(masterHead.setMeteringEnabled(false, true));
+        }
+
+        public static void UpdateParamsOnEmmitter(SerializedObject serializedObject)
+        {
+            var param = serializedObject.FindProperty("Params");
+            var ev = serializedObject.FindProperty("Event");
+            var path = ev.FindPropertyRelative("Path");
+
+            param.ClearArray();
+
+            if (!String.IsNullOrEmpty(path.stringValue) && EventManager.EventFromPath(path.stringValue) != null)
+            {
+                var eventRef = EventManager.EventFromPath(path.stringValue);
+                foreach (var paramRef in eventRef.Parameters)
+                {
+                    param.InsertArrayElementAtIndex(0);
+                    var parami = param.GetArrayElementAtIndex(0);
+                    parami.FindPropertyRelative("Name").stringValue = paramRef.Name;
+                    parami.FindPropertyRelative("Value").floatValue = 0;
+                }
+            }
         }
 
         public static FMOD.Studio.System System
@@ -286,62 +309,6 @@ namespace FMODUnity
             return data;
         }
 
-        public static void CopyToStreamingAssets()
-        {
-            FMODPlatform platform = EditorUtils.GetFMODPlatform(EditorUserBuildSettings.activeBuildTarget);
-            if (platform == FMODPlatform.None)
-            {
-                UnityEngine.Debug.LogWarningFormat("FMOD Studio: copy banks for platform {0} : Unsupported platform", EditorUserBuildSettings.activeBuildTarget.ToString());
-                return;
-            }
-
-            string bankTargetFolder = Application.dataPath + "/StreamingAssets";
-            Directory.CreateDirectory(bankTargetFolder);
-
-            string bankSourceFolder = EditorUtils.GetBankDirectory() + "/" + Settings.Instance.GetBankPlatform(platform);
-
-            if (Path.GetFullPath(bankTargetFolder).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).ToUpperInvariant() == 
-                Path.GetFullPath(bankSourceFolder).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).ToUpperInvariant())
-            {
-                return;
-            }
-
-            UnityEngine.Debug.LogFormat("FMOD Studio: copy banks for platform {0} : copying banks from {1} to {2}", platform.ToString(), bankSourceFolder, bankTargetFolder);
-
-            // Clean out any stale .bank files
-            string[] currentBankFiles = Directory.GetFiles(bankTargetFolder, "*.bank");
-            foreach (var bankFileName in currentBankFiles)
-            {
-                if (!EventManager.Banks.Exists((x) => Path.GetFileNameWithoutExtension(bankFileName) == x.Name))
-                {
-                    File.Delete(bankFileName);
-                }
-            }
-
-            // Copy over any files that don't match timestamp or size or don't exist
-            foreach (var bankRef in EventManager.Banks)
-            {
-                string sourcePath = bankSourceFolder + "/" + bankRef.Name + ".bank";
-                string targetPath = bankTargetFolder + "/" + bankRef.Name + ".bank";
-
-                FileInfo sourceInfo = new FileInfo(sourcePath);
-                FileInfo targetInfo = new FileInfo(targetPath);
-
-                if (!targetInfo.Exists ||
-                    sourceInfo.Length != targetPath.Length ||
-                    sourceInfo.LastWriteTime != targetInfo.LastWriteTime)
-                {
-                    File.Copy(sourcePath, targetPath, true);
-
-                    if (bankRef == EventManager.MasterBank)
-                    {
-                        sourcePath = bankSourceFolder + "/" + bankRef.Name + ".strings.bank";
-                        targetPath = bankTargetFolder + "/" + bankRef.Name + ".strings.bank";
-                        File.Copy(sourcePath, targetPath, true);
-                    }
-                }
-            }
-        }
 
         const int StudioScriptPort = 3663;
         static NetworkStream networkStream = null;

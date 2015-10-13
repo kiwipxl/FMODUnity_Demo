@@ -448,7 +448,7 @@ namespace FMODUnity
 
             if (hasBankSourceChanged)
             {
-                EditorUtils.CopyToStreamingAssets();
+                EventManager.UpdateCache();
             }
         }
 

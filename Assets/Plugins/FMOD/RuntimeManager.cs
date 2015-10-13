@@ -135,7 +135,7 @@ namespace FMODUnity
             CheckInitResult(result, "Set advanced settings");
 
             FMOD.INITFLAGS lowlevelInitFlags = FMOD.INITFLAGS.NORMAL;
-            FMOD.Studio.INITFLAGS studioInitFlags = FMOD.Studio.INITFLAGS.NORMAL;
+            FMOD.Studio.INITFLAGS studioInitFlags = FMOD.Studio.INITFLAGS.NORMAL | FMOD.Studio.INITFLAGS.DEFERRED_CALLBACKS;
 
             if (fmodSettings.IsLiveUpdateEnabled(fmodPlatform) && !forceNoNetwork)
             {

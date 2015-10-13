@@ -13,6 +13,7 @@ namespace FMODUnity
         static void ShowEventBrowser()
         {
             EventBrowser eventBrowser = EditorWindow.GetWindow<EventBrowser>("FMOD Events");
+            eventBrowser.minSize = new Vector2(500, 700);
             eventBrowser.Show();
         }
         void OnLostFocus()
@@ -181,7 +182,9 @@ namespace FMODUnity
                     if (fromInspector && e.clickCount >= 2)
                     {
                         outputProperty.FindPropertyRelative("Path").stringValue = item.EventRef.Path;
+                        EditorUtils.UpdateParamsOnEmmitter(outputProperty.serializedObject);
                         outputProperty.serializedObject.ApplyModifiedProperties();
+                        
                         Close();
                     }
 
@@ -190,7 +193,7 @@ namespace FMODUnity
                 if (e.type == EventType.mouseDrag && rect.Contains(e.mousePosition) && !fromInspector)
                 {
                     DragAndDrop.PrepareStartDrag();
-                    DragAndDrop.objectReferences = new UnityEngine.Object[] { item.EventRef };
+                    DragAndDrop.objectReferences = new UnityEngine.Object[] { ScriptableObject.Instantiate(item.EventRef) };
                     DragAndDrop.StartDrag("New FMOD Studio Emitter");
                     e.Use();
                 }
@@ -228,7 +231,7 @@ namespace FMODUnity
                 if (e.type == EventType.mouseDrag && rect.Contains(e.mousePosition) && !fromInspector)
                 {
                     DragAndDrop.PrepareStartDrag();
-                    DragAndDrop.objectReferences = new UnityEngine.Object[] { item.BankRef };
+                    DragAndDrop.objectReferences = new UnityEngine.Object[] { ScriptableObject.Instantiate(item.BankRef) };
                     DragAndDrop.StartDrag("New FMOD Studio Bank Loader");
                     e.Use();
                 }
@@ -284,8 +287,10 @@ namespace FMODUnity
                 return;
             }
 
-            // TODO: don't do this every redraw?
-            RebuildDisplayFromCache();
+            if (Event.current.type == EventType.Layout)
+            {
+                RebuildDisplayFromCache();
+            }
             
             //if (eventStyle == null)
             {
@@ -370,6 +375,7 @@ namespace FMODUnity
                     if (selectedItem.EventRef != null)
                     {
                         outputProperty.FindPropertyRelative("Path").stringValue = selectedItem.EventRef.Path;
+                        EditorUtils.UpdateParamsOnEmmitter(outputProperty.serializedObject);
                     }
                     else
                     {
@@ -754,10 +760,47 @@ namespace FMODUnity
             treeItems[1].Name = "Snapshots";
             treeItems[2].Name = "Banks";
         }
-
+        
         public void OnEnable()
         {
             SceneView.onSceneGUIDelegate += SceneUpdate;
+            EditorApplication.hierarchyWindowItemOnGUI += HierachachyUpdate;
+        }
+        
+        // This is an event handler on the hierachy view to handle dragging our objects from the browser
+        void HierachachyUpdate(int instance, Rect rect)
+        {
+            Event e = Event.current;
+            if (e.type == EventType.dragPerform && rect.Contains(e.mousePosition))
+            {
+                if (DragAndDrop.objectReferences.Length > 0 &&
+                    DragAndDrop.objectReferences[0] != null &&
+                        (DragAndDrop.objectReferences[0].GetType() == typeof(EditorEventRef) ||
+                         DragAndDrop.objectReferences[0].GetType() == typeof(EditorBankRef)))
+                {
+                    GameObject target = (GameObject)EditorUtility.InstanceIDToObject(instance);
+                    if (DragAndDrop.objectReferences[0].GetType() == typeof(EditorEventRef))
+                    {
+                        var emitter = Undo.AddComponent<StudioEventEmitter>(target);
+                        emitter.Event = new EventRef();
+                        emitter.Event.Path = ((EditorEventRef)DragAndDrop.objectReferences[0]).Path;
+                        var so = new SerializedObject(emitter);
+                        EditorUtils.UpdateParamsOnEmmitter(so);
+                        so.ApplyModifiedProperties();
+                    }
+                    else
+                    {
+                        var loader = Undo.AddComponent<StudioBankLoader>(target);
+                        loader.Banks = new BankRefList();
+                        loader.Banks.Banks = new List<BankRef>();
+                        BankRef bankRef = new BankRef(((EditorBankRef)DragAndDrop.objectReferences[0]).Name);
+                        loader.Banks.AllBanks = false;
+                        loader.Banks.Banks.Add(bankRef);
+                    }
+                    Selection.activeObject = target;
+                    e.Use();
+                }
+            }
         }
 
         // This is an event handler on the scene view to handle dragging our objects from the browser
@@ -776,20 +819,23 @@ namespace FMODUnity
                     if (DragAndDrop.objectReferences[0].GetType() == typeof(EditorEventRef))
                     {
                         newObject = new GameObject("FMOD Studio Emitter");
-                        newObject.AddComponent<StudioEventEmitter>();
-                        newObject.GetComponent<StudioEventEmitter>().Event = new EventRef();
-                        newObject.GetComponent<StudioEventEmitter>().Event.Path = ((EditorEventRef)DragAndDrop.objectReferences[0]).Path;
+                        var emitter = newObject.AddComponent<StudioEventEmitter>();
+                        emitter.Event = new EventRef();
+                        emitter.Event.Path = ((EditorEventRef)DragAndDrop.objectReferences[0]).Path;
+                        var so = new SerializedObject(emitter);
+                        EditorUtils.UpdateParamsOnEmmitter(so);
+                        so.ApplyModifiedPropertiesWithoutUndo();
                         Undo.RegisterCreatedObjectUndo(newObject, "Create FMOD Studio Emitter");
                     }
                     else
                     {
                         newObject = new GameObject("FMOD Studio Loader");
-                        newObject.AddComponent<StudioBankLoader>();
-                        newObject.GetComponent<StudioBankLoader>().Banks = new BankRefList();
-                        newObject.GetComponent<StudioBankLoader>().Banks.Banks = new List<BankRef>();
+                        var loader = newObject.AddComponent<StudioBankLoader>();
+                        loader.Banks = new BankRefList();
+                        loader.Banks.Banks = new List<BankRef>();
                         BankRef bankRef = new BankRef(((EditorBankRef)DragAndDrop.objectReferences[0]).Name);
-                        newObject.GetComponent<StudioBankLoader>().Banks.AllBanks = false;
-                        newObject.GetComponent<StudioBankLoader>().Banks.Banks.Add(bankRef);
+                        loader.Banks.AllBanks = false;
+                        loader.Banks.Banks.Add(bankRef);
                         Undo.RegisterCreatedObjectUndo(newObject, "Create FMOD Studio Loader");
                     }
                     Ray ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);

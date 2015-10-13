@@ -71,6 +71,17 @@ namespace FMODUnity
         }
     }
 
+    public enum GameEvent
+    {
+        None,
+        LevelStart,
+        LevelEnd,
+        TriggerEnter,
+        TriggerExit,
+        CollisionEnter,
+        CollisionExit,
+    }
+
     public enum BeginEvent
     {
         LevelStart,

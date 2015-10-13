@@ -8,11 +8,13 @@ namespace FMODUnity
     public class StudioEventEmitter : MonoBehaviour
     {
         public EventRef Event;
-        public BeginEvent PlayEvent;
-        public EndEvent StopEvent;
+        public GameEvent PlayEvent;
+        public GameEvent StopEvent;
         public String CollisionTag;
         public bool AllowFadeout = true;
         public bool TriggerOnce = false;
+
+        public ParamRef[] Params;
 
         private Collider triggerObject;
 
@@ -26,37 +28,50 @@ namespace FMODUnity
             enabled = false;
             cachedRigidBody = GetComponent<Rigidbody>();
 
-            if (PlayEvent == BeginEvent.LevelStart)
-            {
-                Play();
-            }
+            HandleGameEvent(GameEvent.LevelStart);
         }
 
         void OnDestroy()
         {
-            if (StopEvent == EndEvent.LevelEnd)
-            {
-                Stop();
-            }
+            HandleGameEvent(GameEvent.LevelEnd);
         }
 
         void OnTriggerEnter(Collider other)
         {
-            if (PlayEvent == BeginEvent.TriggerEnter &&
-                triggerObject == null &&
-                (String.IsNullOrEmpty(CollisionTag) || other.tag == CollisionTag))
+            if (String.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
             {
-                triggerObject = other;
-                Play();
+                HandleGameEvent(GameEvent.TriggerEnter);
             }
         }
 
         void OnTriggerExit(Collider other)
         {
-            if (StopEvent == EndEvent.TriggerExit && other == triggerObject)
+
+            if (String.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
+            {
+                HandleGameEvent(GameEvent.TriggerExit);
+            }
+        }
+
+        void OnCollisionEnter()
+        {
+            HandleGameEvent(GameEvent.CollisionEnter);
+        }
+
+        void OnCollisionExit()
+        {
+            HandleGameEvent(GameEvent.CollisionExit);
+        }
+
+        void HandleGameEvent(GameEvent gameEvent)
+        {
+            if (PlayEvent == gameEvent)
+            {
+                Play();
+            }
+            if (StopEvent == gameEvent)
             {
                 Stop();
-                triggerObject = null;
             }
         }
 
@@ -79,6 +94,10 @@ namespace FMODUnity
 
             eventDescription.createInstance(out instance);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject, cachedRigidBody));
+            foreach(var param in Params)
+            {
+                instance.setParameterValue(param.Name, param.Value);
+            }
             instance.start();
 
             hasTriggered = true;
@@ -108,6 +127,6 @@ namespace FMODUnity
             {
                 instance.setParameterValue(name, value);
             }
-        }
+        }        
     }
 }

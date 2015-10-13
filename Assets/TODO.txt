@@ -1,0 +1,17 @@
+﻿
+* all error/log message with a consistent format
+* Playback controls use icons
+* Animation state machine behaviours
+* Migration path
+* EventRefDrawer
+	- Add "Create New Event In Studio" button
+* Multi - select in event browser for drag-drop
+* Make sure streaming assets is always up to date
+  - more testing??
+
+---------------------------------------------------------------------
+
+BUGS
+- Why is the cache being re-created?
+- leaking system object PIE?
+- Exception during cache rebuild, how to recover?

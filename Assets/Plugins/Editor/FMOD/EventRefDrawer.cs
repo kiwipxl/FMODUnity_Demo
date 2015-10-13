@@ -9,6 +9,8 @@ namespace FMODUnity
     [CustomPropertyDrawer(typeof(EventRef))]
     class EventRefDrawer : PropertyDrawer
     {
+        bool displayProperties = false;
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             Texture browseIcon = EditorGUIUtility.Load("FMOD/SearchIconBlack.png") as Texture;
@@ -26,7 +28,7 @@ namespace FMODUnity
                     DragAndDrop.objectReferences[0].GetType() == typeof(EditorEventRef))
                 {
                     pathProperty.stringValue = ((EditorEventRef)DragAndDrop.objectReferences[0]).Path;
-                   
+                    GUI.changed = true;
                     e.Use();
                 }
             }
@@ -74,39 +76,44 @@ namespace FMODUnity
             
             if (!String.IsNullOrEmpty(pathProperty.stringValue) && EventManager.EventFromPath(pathProperty.stringValue) != null)
             {
-                var style = new GUIStyle(GUI.skin.label);
-                style.richText = true;
-                EditorEventRef eventRef = EventManager.EventFromPath(pathProperty.stringValue);
-                float width = style.CalcSize(new GUIContent("<b>Oneshot</b>")).x;
-                Rect labelRect = new Rect(position.x, position.y + baseHeight, width, baseHeight);
-                Rect valueRect = new Rect(position.x + width + 10, position.y + baseHeight, pathRect.width, baseHeight);
+                Rect foldoutRect = new Rect(position.x + 10, position.y + baseHeight, position.width, baseHeight);
+                displayProperties = EditorGUI.Foldout(foldoutRect, displayProperties, "Event Properties");
+                if (displayProperties)
+                {
+                    var style = new GUIStyle(GUI.skin.label);
+                    style.richText = true;
+                    EditorEventRef eventRef = EventManager.EventFromPath(pathProperty.stringValue);
+                    float width = style.CalcSize(new GUIContent("<b>Oneshot</b>")).x;
+                    Rect labelRect = new Rect(position.x, position.y + baseHeight * 2, width, baseHeight);
+                    Rect valueRect = new Rect(position.x + width + 10, position.y + baseHeight * 2, pathRect.width, baseHeight);
 
-                GUI.Label(labelRect, new GUIContent("<b>GUID</b>"), style);
-                EditorGUI.SelectableLabel(valueRect, eventRef.Guid.ToString("b"));
-                labelRect.y += baseHeight;
-                valueRect.y += baseHeight;
+                    GUI.Label(labelRect, new GUIContent("<b>GUID</b>"), style);
+                    EditorGUI.SelectableLabel(valueRect, eventRef.Guid.ToString("b"));
+                    labelRect.y += baseHeight;
+                    valueRect.y += baseHeight;
 
-                GUI.Label(labelRect, new GUIContent("<b>Banks</b>"), style);
-                StringBuilder builder = new StringBuilder();
-                eventRef.Banks.ForEach((x) => { builder.Append(Path.GetFileNameWithoutExtension(x.Path)); builder.Append(", "); });
-                GUI.Label(valueRect, builder.ToString(0, builder.Length - 2));
-                labelRect.y += baseHeight;
-                valueRect.y += baseHeight;
+                    GUI.Label(labelRect, new GUIContent("<b>Banks</b>"), style);
+                    StringBuilder builder = new StringBuilder();
+                    eventRef.Banks.ForEach((x) => { builder.Append(Path.GetFileNameWithoutExtension(x.Path)); builder.Append(", "); });
+                    GUI.Label(valueRect, builder.ToString(0, builder.Length - 2));
+                    labelRect.y += baseHeight;
+                    valueRect.y += baseHeight;
 
-                GUI.Label(labelRect, new GUIContent("<b>Panning</b>"), style);
-                GUI.Label(valueRect, eventRef.Is3D ? "3D" : "2D");
-                labelRect.y += baseHeight;
-                valueRect.y += baseHeight;
-                    
-                GUI.Label(labelRect, new GUIContent("<b>Stream</b>"), style);
-                GUI.Label(valueRect, eventRef.IsStream.ToString());
-                labelRect.y += baseHeight;
-                valueRect.y += baseHeight;
-                    
-                GUI.Label(labelRect, new GUIContent("<b>Oneshot</b>"), style);
-                GUI.Label(valueRect, eventRef.IsOneShot.ToString());
-                labelRect.y += baseHeight;
-                valueRect.y += baseHeight;
+                    GUI.Label(labelRect, new GUIContent("<b>Panning</b>"), style);
+                    GUI.Label(valueRect, eventRef.Is3D ? "3D" : "2D");
+                    labelRect.y += baseHeight;
+                    valueRect.y += baseHeight;
+
+                    GUI.Label(labelRect, new GUIContent("<b>Stream</b>"), style);
+                    GUI.Label(valueRect, eventRef.IsStream.ToString());
+                    labelRect.y += baseHeight;
+                    valueRect.y += baseHeight;
+
+                    GUI.Label(labelRect, new GUIContent("<b>Oneshot</b>"), style);
+                    GUI.Label(valueRect, eventRef.IsOneShot.ToString());
+                    labelRect.y += baseHeight;
+                    valueRect.y += baseHeight;
+                }
             }
             else
             {
@@ -120,7 +127,7 @@ namespace FMODUnity
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             float baseHeight = GUI.skin.textField.CalcSize(new GUIContent()).y;            
-            return baseHeight * 6; // 6 lines of info
+            return baseHeight * (displayProperties ? 7 : 2); // 6 lines of info
         }
     }
 }

@@ -43,7 +43,7 @@ namespace FMODUnity
         {
             if (LoadEvent == BeginEvent.TriggerEnter && 
                 triggerObject == null &&
-                (String.IsNullOrEmpty(CollisionTag) || other.tag == CollisionTag))
+                (String.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag)))
             {
                 triggerObject = other;
                 Load();
