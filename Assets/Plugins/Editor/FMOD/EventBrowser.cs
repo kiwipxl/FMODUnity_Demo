@@ -182,7 +182,8 @@ namespace FMODUnity
                     if (fromInspector && e.clickCount >= 2)
                     {
                         outputProperty.FindPropertyRelative("Path").stringValue = item.EventRef.Path;
-                        EditorUtils.UpdateParamsOnEmmitter(outputProperty.serializedObject);
+                        //--richman (generated error on eventref, which is not an emitter)
+                        //EditorUtils.UpdateParamsOnEmmitter(outputProperty.serializedObject);
                         outputProperty.serializedObject.ApplyModifiedProperties();
                         
                         Close();

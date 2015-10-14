@@ -24,17 +24,6 @@ public class StepSounds : MonoBehaviour {
         {
             Debug.Log(anim.parameters[n].name);
         }
-
-        //Callbacks.setMarkerCallback(stepEvent, callback);
-    }
-
-    void callback(string markerName)
-    {
-        Debug.Log(markerName);
-        //if (markerName == "sup!")
-        //{
-        //    surfaceParam.setValue(0);
-        //}
     }
 
     void Update() {
