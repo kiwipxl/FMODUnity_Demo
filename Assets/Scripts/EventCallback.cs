@@ -27,7 +27,7 @@ public class EventCallbackData
     }
 
     /*
-    * Creates a MarkerProperties instance
+    * Creates a MarkerProperties instance if the callback is a marker
     */
     public MarkerProperties createMarker()
     {
@@ -71,14 +71,14 @@ public class EventCallback
     {
         EVENT_CALLBACK evCallback = (EVENT_CALLBACK_TYPE type, IntPtr eventInstance, IntPtr parameters) =>
         {
-            EventCallbackData data = new EventCallbackData(type, eventInstance, parameters);
             try
             {
+                EventCallbackData data = new EventCallbackData(type, eventInstance, parameters);
                 callback(data);
             }
             catch (Exception ex)
             {
-                UnityEngine.Debug.Log("This is not supposed to happen. It took a day to try and fix this. IF THIS HAPPENS THEN GOD HELP US ALL. Error: " + ex.Message);
+                UnityEngine.Debug.LogError("Error occurred during event callback: " + ex.Message);
             }
             return RESULT.OK;
         };

@@ -7,26 +7,41 @@ using FMODUnity;
 public class Subtitles : MonoBehaviour {
 
     public EventRef p1WinsRef;
-    EventInstance p1Wins;
-    GUIText subtitleText;
+    private EventInstance p1Wins;
+
+    private static GUIText subtitleText;
 
 	void Start() {
-        p1Wins = RuntimeManager.CreateInstance(p1WinsRef);
-        p1Wins.start();
-
         subtitleText = GetComponent<GUIText>();
-        //subtitleText.text = "";
+        subtitleText.text = "";
 
-        EventCallback.setCallback(p1Wins, updateSubtitles, EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
+        p1Wins = RuntimeManager.CreateInstance(p1WinsRef);
+        startSubtitlesOn(p1Wins);
     }
-
-    void updateSubtitles(EventCallbackData data)
+    
+    private static void updateSubtitles(EventCallbackData data)
     {
         if (data.type == EVENT_CALLBACK_TYPE.TIMELINE_MARKER)
         {
             MarkerProperties marker = data.createMarker();
-            subtitleText.text = marker.name;
-            UnityEngine.Debug.Log(marker.name);
+
+            ExecuteOnMainThread.queue.Enqueue(() =>
+            {
+                subtitleText.text = marker.name;
+            });
         }
+        else if (data.type == EVENT_CALLBACK_TYPE.STOPPED)
+        {
+            ExecuteOnMainThread.queue.Enqueue(() =>
+            {
+                subtitleText.text = "";
+            });
+        }
+    }
+
+    public static void startSubtitlesOn(EventInstance instance)
+    {
+        instance.start();
+        EventCallback.setCallback(instance, updateSubtitles);
     }
 }
