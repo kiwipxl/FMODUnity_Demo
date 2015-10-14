@@ -85,11 +85,12 @@ namespace Complete
 
         private void FixedUpdate ()
         {
-            // Adjust the rigidbodies position and orientation in FixedUpdate.
+            m_TurnInputValue = Input.GetAxis("Horizontal");
+            m_MovementInputValue = Input.GetAxis("Vertical");
+
             Move ();
             Turn ();
         }
-
 
         private void Move ()
         {
@@ -100,17 +101,14 @@ namespace Complete
             m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
         }
 
-
         private void Turn ()
         {
             // Determine the number of degrees to be turned based on the input, speed and time between frames.
             float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
 
-            // Make this into a rotation in the y axis.
-            Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
-
-            // Apply this rotation to the rigidbody's rotation.
-            m_Rigidbody.MoveRotation (m_Rigidbody.rotation * turnRotation);
+            Vector3 euler = transform.localEulerAngles;
+            euler.y += turn;
+            transform.localEulerAngles = euler;
         }
     }
 }

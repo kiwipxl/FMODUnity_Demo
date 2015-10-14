@@ -14,6 +14,8 @@ public class StepSounds : MonoBehaviour {
     bool stone_collide = false;
     bool water_collide = false;
 
+    bool onGround = false;
+
     void Start() {
         anim = GetComponent<Animator>();
 
@@ -24,7 +26,7 @@ public class StepSounds : MonoBehaviour {
     }
 
     public void footDown() {
-        if (anim.GetFloat("Forward") >= .1f) stepEvent.start();
+        if (onGround && anim.GetFloat("Forward") >= .1f) stepEvent.start();
     }
 
     void Update() {
@@ -41,7 +43,10 @@ public class StepSounds : MonoBehaviour {
         sand_collide = false;
         stone_collide = false;
         water_collide = false;
-	}
+
+        if (!onGround && anim.GetBool("OnGround")) stepEvent.start();
+        onGround = anim.GetBool("OnGround");
+    }
 
     void OnTriggerStay(Collider col)
     {
