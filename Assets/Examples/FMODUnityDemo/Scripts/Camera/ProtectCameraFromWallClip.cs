@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-namespace UnityStandardAssets.Cameras
+namespace FMODUnityDemo.Cameras
 {
     public class ProtectCameraFromWallClip : MonoBehaviour
     {

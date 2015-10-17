@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 #if UNITY_EDITOR
 using UnityEditor;
 
 #endif
 
-namespace UnityStandardAssets.Cameras
+namespace FMODUnityDemo.Cameras
 {
     public class FreeLookCam : PivotBasedCameraRig
     {
@@ -63,8 +62,8 @@ namespace UnityStandardAssets.Cameras
         private void HandleRotationMovement()
         {
             // Read the user input
-            var x = CrossPlatformInputManager.GetAxis("Mouse X");
-            var y = CrossPlatformInputManager.GetAxis("Mouse Y");
+            var x = Input.GetAxis("Mouse X");
+            var y = Input.GetAxis("Mouse Y");
 
             // smooth the user input
             if (turnSmoothing > 0)

@@ -164,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 144300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea1a4f6f1bfe14429765e0f87c4034b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9335b7808e4a7094a9f7e4a636cb7fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clipMoveTime: .0500000007
@@ -234,15 +234,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 144300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb9e2119885a8e8479ef4889e4508965, type: 3}
+  m_Script: {fileID: 11500000, guid: b96460cd097098b4cb7ce15c76f16c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  autoTargetPlayer: 0
-  updateType: 1
-  moveSpeed: 5
-  turnSpeed: 10
-  turnSmoothing: 0
+  autoTargetPlayer: 1
+  updateType: 0
+  moveSpeed: 1
+  turnSpeed: 1.5
+  turnSmoothing: .100000001
   tiltMax: 75
   tiltMin: 45
   lockCursor: 0
