@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
-namespace UnityStandardAssets.Characters.ThirdPerson
+namespace FMODUnityDemo.Characters.ThirdPerson
 {
 
     [RequireComponent(typeof (ThirdPersonCharacter))]
@@ -42,7 +41,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void Update()
         {
             if(!jump)
-                jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                jump = Input.GetButtonDown("Jump");
         }
 
         // Fixed update is called in sync with physics
@@ -51,8 +50,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // read inputs
             bool crouch = false;
 
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
             crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character

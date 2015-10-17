@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace UnityStandardAssets.Characters.ThirdPerson
+namespace FMODUnityDemo.Characters.ThirdPerson
 {
     public class ThirdPersonCharacter : MonoBehaviour
     {
