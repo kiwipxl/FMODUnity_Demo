@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Water
+namespace FMODUnityDemo.Water
 {
     [RequireComponent(typeof(WaterBase))]
     [ExecuteInEditMode]
