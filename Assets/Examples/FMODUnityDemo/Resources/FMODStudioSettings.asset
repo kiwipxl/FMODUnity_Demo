@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  SourceProjectPath: E:/Development/Unity Projects/FMODUnity_Demo/FMOD_Tanks/FMOD_Tanks.fspro
-  SourceBankPath: E:/Development/Unity Projects/FMODUnity_Demo/FMOD_Tanks\Build
+  SourceProjectPath: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks/FMOD_Tanks.fspro
+  SourceBankPath: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build
   SpeakerModeSettings:
   - Platform: 2
     Value: 0

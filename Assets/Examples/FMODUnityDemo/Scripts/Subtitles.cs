@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
@@ -9,10 +10,10 @@ public class Subtitles : MonoBehaviour {
     public EventRef p1WinsRef;
     private EventInstance p1Wins;
 
-    private static GUIText subtitleText;
+    private static Text subtitleText;
 
 	void Start() {
-        subtitleText = GetComponent<GUIText>();
+        subtitleText = GetComponent<Text>();
         subtitleText.text = "";
 
         p1Wins = RuntimeManager.CreateInstance(p1WinsRef);

@@ -12,31 +12,31 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 11490366}
-  - {fileID: 11465000}
-  - {fileID: 11489268}
+  - {fileID: 11464508}
+  - {fileID: 11467710}
+  - {fileID: 11403554}
   EditorEvents:
-  - {fileID: 11459218}
-  - {fileID: 11465398}
-  - {fileID: 11494754}
-  - {fileID: 11455740}
-  - {fileID: 11465788}
-  - {fileID: 11466190}
-  - {fileID: 11405250}
-  - {fileID: 11434684}
-  - {fileID: 11402308}
-  - {fileID: 11437888}
-  - {fileID: 11471402}
-  - {fileID: 11406914}
-  - {fileID: 11474776}
-  - {fileID: 11429438}
-  - {fileID: 11498286}
-  - {fileID: 11466042}
-  - {fileID: 11490912}
-  - {fileID: 11437530}
-  - {fileID: 11498924}
-  MasterBankRef: {fileID: 11489268}
-  stringsBankWriteTime: 635805312188418810
+  - {fileID: 11442370}
+  - {fileID: 11494606}
+  - {fileID: 11409740}
+  - {fileID: 11495414}
+  - {fileID: 11432008}
+  - {fileID: 11407694}
+  - {fileID: 11449630}
+  - {fileID: 11485852}
+  - {fileID: 11431668}
+  - {fileID: 11479268}
+  - {fileID: 11444498}
+  - {fileID: 11463546}
+  - {fileID: 11445668}
+  - {fileID: 11464378}
+  - {fileID: 11499992}
+  - {fileID: 11452562}
+  - {fileID: 11467270}
+  - {fileID: 11424090}
+  - {fileID: 11432204}
+  MasterBankRef: {fileID: 11403554}
+  stringsBankWriteTime: 635805442078910792
 --- !u!114 &11400620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +143,25 @@ MonoBehaviour:
   - {fileID: 11416316}
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11403554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master
+    Bank.bank
+  lastModified: 635805442116852668
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1775328
+  Exists: 1
 --- !u!114 &11404228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +269,27 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+--- !u!114 &11407694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/VO/SWE/SWE_P1wins
+  guid: f71695f3c5ca4449b1af87621a032911
+  Banks:
+  - {fileID: 11467710}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11409014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +304,41 @@ MonoBehaviour:
   Name: Time
   Min: 0
   Max: 1
+--- !u!114 &11409740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/VO/ENG/ENG_Tanks
+  guid: ac10575d97533f48a16249083510bc40
+  Banks:
+  - {fileID: 11464508}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+--- !u!114 &11411104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 10000
 --- !u!114 &11411462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +503,42 @@ MonoBehaviour:
   - {fileID: 11425982}
   MinDistance: 2
   MaxDistance: 100
+--- !u!114 &11424084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: T_Surface
+  Min: 0
+  Max: 1
+--- !u!114 &11424090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Health
+  guid: d5c4736f26f5bc44a085edaa7b8b8908
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 11462318}
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11425172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +693,86 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11431668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Shell Explode
+  guid: 3a2215828ec5e942860d7a06f6c9278b
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 11452882}
+  MinDistance: 1
+  MaxDistance: 20
+--- !u!114 &11432008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/VO/SWE/SWE_Tanks
+  guid: cb799fc8f9bee9498e6881e3a1796c62
+  Banks:
+  - {fileID: 11467710}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+--- !u!114 &11432204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tanks/Total Engine
+  guid: fd3fde53fa2ef6459f3f01ebc2f84b4b
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 11411104}
+  - {fileID: 11459514}
+  MinDistance: 2
+  MaxDistance: 100
+--- !u!114 &11432350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: 0
+  Max: 1
 --- !u!114 &11433164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,6 +808,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11435618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Surface
+  Min: 0
+  Max: 3
+--- !u!114 &11435928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
 --- !u!114 &11437000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,6 +1051,27 @@ MonoBehaviour:
   Name: Speed
   Min: 0
   Max: 3000
+--- !u!114 &11442370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/VO/ENG/ENG_byFMOD
+  guid: 4bd44a087088104dbcbbe25ef377d4ee
+  Banks:
+  - {fileID: 11464508}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11443098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,6 +1093,27 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11444498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Health Warning
+  guid: 47d6e29cfe33bf44a960a077c532869f
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
 --- !u!114 &11445214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +1136,27 @@ MonoBehaviour:
   - {fileID: 11475774}
   MinDistance: 0
   MaxDistance: 0
+--- !u!114 &11445668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/UI/HUDOR
+  guid: 6fb8aa0ca5b5c1479198c93974f09ef9
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11446492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +1244,27 @@ MonoBehaviour:
   Name: RPM
   Min: 0
   Max: 2000
+--- !u!114 &11449630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Environment/Env Ambience
+  guid: 2d2b309f2af70645ba67278f9f584c40
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
 --- !u!114 &11450258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +1301,57 @@ MonoBehaviour:
   - {fileID: 11465678}
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11452562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tanks/Engine
+  guid: bd424e63cb744c4aba3ff450b42e1851
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 11435928}
+  - {fileID: 11432350}
+  MinDistance: 1
+  MaxDistance: 20
+--- !u!114 &11452824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 3000
+--- !u!114 &11452882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Target
+  Min: 0
+  Max: 1
 --- !u!114 &11453494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,6 +1469,20 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11459514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: 0
+  Max: 1
 --- !u!114 &11460132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1497,20 @@ MonoBehaviour:
   Name: RPM
   Min: 0
   Max: 2000
+--- !u!114 &11462318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health%
+  Min: 0
+  Max: 1
 --- !u!114 &11463382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,6 +1525,66 @@ MonoBehaviour:
   Name: Load
   Min: 0
   Max: 1
+--- !u!114 &11463546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: snapshot:/HUDOR
+  guid: 5b2135a4a3a1f242a696d1974e2693bb
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+--- !u!114 &11464378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Reverb
+  guid: 740aa879672cb846882f654a8c422e05
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+--- !u!114 &11464508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\VO_ENG.bank
+  lastModified: 635805442118415250
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 66624
+  Exists: 1
 --- !u!114 &11465000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,6 +1788,46 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11467270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Character/Footsteps
+  guid: bd8e32c55220f443b106e42d568e0b3f
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 11435618}
+  MinDistance: 1
+  MaxDistance: 20
+--- !u!114 &11467710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\VO_SWE.bank
+  lastModified: 635805442120446605
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 83616
+  Exists: 1
 --- !u!114 &11468576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,6 +2119,29 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 100
   MaxDistance: 500
+--- !u!114 &11479268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tanks/Tread Rolling
+  guid: 46df08d0127b0e4a99e41f24ee4878ac
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 11424084}
+  - {fileID: 11452824}
+  MinDistance: 0
+  MaxDistance: 0
 --- !u!114 &11479506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,6 +2266,27 @@ MonoBehaviour:
   Parameters:
   - {fileID: 11421104}
   - {fileID: 11463382}
+  MinDistance: 1
+  MaxDistance: 20
+--- !u!114 &11485852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Shell Fire
+  guid: 3543dbec5f510641a01ccb004fba3a40
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11487182
@@ -1951,6 +2477,27 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+--- !u!114 &11494606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/VO/ENG/ENG_P1wins
+  guid: 69a4ad2c8312604cb040e794f3e0de2a
+  Banks:
+  - {fileID: 11464508}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11494754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,6 +2513,27 @@ MonoBehaviour:
   guid: ac10575d97533f48a16249083510bc40
   Banks:
   - {fileID: 11490366}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+--- !u!114 &11495414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/VO/SWE/SWE_byFMOD
+  guid: 064113694636cd439dfaaca015885dd9
+  Banks:
+  - {fileID: 11467710}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2030,3 +2598,24 @@ MonoBehaviour:
   - {fileID: 11405922}
   MinDistance: 2
   MaxDistance: 100
+--- !u!114 &11499992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Tank Explode
+  guid: b1edcdf60f966446b39abe5947c621c6
+  Banks:
+  - {fileID: 11403554}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 100
+  MaxDistance: 500
