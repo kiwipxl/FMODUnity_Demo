@@ -17472,7 +17472,7 @@ GameObject:
   - 114: {fileID: 2051347425}
   - 114: {fileID: 2051347424}
   - 114: {fileID: 2051347426}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17558,6 +17558,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4c43c05bcbb0d4cbdf969a6a3c2c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleEnginePath:
+    Path: event:/Tanks/Engine
+  enginePath:
+    Path: event:/Tanks/Total Engine
+  treadRollingPath:
+    Path: event:/Tanks/Tread Rolling
   shellFirePath:
     Path: event:/Weapons/Shell Explode
 --- !u!65 &2051347428

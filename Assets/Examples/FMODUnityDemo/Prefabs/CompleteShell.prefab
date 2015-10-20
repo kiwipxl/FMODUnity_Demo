@@ -66,6 +66,7 @@ GameObject:
   - 54: {fileID: 5409530}
   - 108: {fileID: 10833074}
   - 114: {fileID: 11426614}
+  - 114: {fileID: 11491220}
   m_Layer: 0
   m_Name: CompleteShell
   m_TagString: Untagged
@@ -288,11 +289,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   m_ExplosionParticles: {fileID: 19870274}
-  m_ExplosionAudio: {fileID: 8204558}
   m_MaxDamage: 100
   m_ExplosionForce: 1000
   m_MaxLifeTime: 2
   m_ExplosionRadius: 5
+--- !u!114 &11491220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92567ba91b4ec6b42ae460f7eb62e6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shellExplosionPath:
+    Path: event:/Weapons/Shell Explode
 --- !u!136 &13693818
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3588,6 +3601,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shellExplosionPath.Path
+      value: event:/Weapons/Shell Explode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -45,8 +45,6 @@ namespace Complete
             // Store the value of both input axes.
             m_MovementInputValue = Input.GetAxis("Vertical");
             m_TurnInputValue = Input.GetAxis("Horizontal");
-
-            tankAudio.updateDriving(m_Rigidbody.velocity, m_MovementInputValue, m_TurnInputValue);
         }
 
         private void EngineAudio ()
@@ -91,6 +89,9 @@ namespace Complete
         {
             // Create a vector in the direction the tank is facing with a magnitude based on the input, speed and the time between frames.
             Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
+
+            float speed = Mathf.Max(Mathf.Abs(movement.x), Mathf.Abs(movement.z)) / .3f;
+            tankAudio.updateDriving(speed, m_MovementInputValue, m_TurnInputValue);
 
             // Apply this movement to the rigidbody's position.
             m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
