@@ -14,11 +14,12 @@ namespace Complete
         private float m_MovementInputValue;         // The current value of the movement input.
         private float m_TurnInputValue;             // The current value of the turn input.
         private float m_OriginalPitch;              // The pitch of the audio source at the start of the scene.
-
+        private TankAudio tankAudio;
 
         private void Awake ()
         {
-            m_Rigidbody = GetComponent<Rigidbody> ();
+            m_Rigidbody = GetComponent<Rigidbody>();
+            tankAudio = GetComponent<TankAudio>();
         }
 
 
@@ -45,7 +46,7 @@ namespace Complete
             m_MovementInputValue = Input.GetAxis("Vertical");
             m_TurnInputValue = Input.GetAxis("Horizontal");
 
-            EngineAudio ();
+            tankAudio.updateDriving(m_Rigidbody.velocity, m_MovementInputValue, m_TurnInputValue);
         }
 
         private void EngineAudio ()
@@ -88,7 +89,6 @@ namespace Complete
 
         private void Move ()
         {
-            Debug.Log("moving");
             // Create a vector in the direction the tank is facing with a magnitude based on the input, speed and the time between frames.
             Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
 

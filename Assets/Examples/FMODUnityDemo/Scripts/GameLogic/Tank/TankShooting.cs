@@ -13,11 +13,10 @@ namespace Complete
         public float m_MaxLaunchForce = 30f;        // The force given to the shell if the fire button is held for the max charge time.
         public float m_MaxChargeTime = 0.75f;       // How long the shell can charge for before it is fired at max force.
 
-
         private float m_CurrentLaunchForce;         // The force that will be given to the shell when the fire button is released.
         private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
         private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
-
+        private TankAudio m_audio;
 
         private void OnEnable()
         {
@@ -31,6 +30,8 @@ namespace Complete
         {
             // The rate that the launch force charges up is the range of possible forces by the max charge time.
             m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+
+            m_audio = GetComponent<TankAudio>();
         }
 
         private void Update ()
@@ -54,7 +55,7 @@ namespace Complete
 
                 //todo: richman
             }
-            else if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space) && !m_Fired)
+            else if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && !m_Fired)
             {
                 m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;
 
@@ -81,7 +82,7 @@ namespace Complete
             // Set the shell's velocity to the launch force in the fire position's forward direction.
             shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;
 
-            //todo: richman
+            m_audio.fireShell(m_FireTransform.position);
 
             // Reset the launch force.  This is a precaution in case of missing button events.
             m_CurrentLaunchForce = m_MinLaunchForce;
