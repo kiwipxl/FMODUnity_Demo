@@ -8,7 +8,7 @@ namespace Complete
         public float m_Speed = 12f;                 // How fast the tank moves forward and back.
         public float m_TurnSpeed = 180f;            // How fast the tank turns in degrees per second.
 		public float m_PitchRange = 0.2f;           // The amount by which the pitch of the engine noises can vary.
-
+        public bool enableInput = true;
 
         private Rigidbody m_Rigidbody;              // Reference used to move the tank.
         private float m_MovementInputValue;         // The current value of the movement input.
@@ -43,8 +43,13 @@ namespace Complete
         private void Update ()
         {
             // Store the value of both input axes.
-            m_MovementInputValue = Input.GetAxis("Vertical");
-            m_TurnInputValue = Input.GetAxis("Horizontal");
+            m_MovementInputValue = 0;
+            m_TurnInputValue = 0;
+            if (enableInput)
+            {
+                m_MovementInputValue = Input.GetAxis("Vertical");
+                m_TurnInputValue = Input.GetAxis("Horizontal");
+            }
         }
 
         private void EngineAudio ()

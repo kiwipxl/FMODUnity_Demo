@@ -19,7 +19,7 @@ namespace Complete
 
         public void shellExplode(Vector3 position)
         {
-            RuntimeManager.PlayOneShot(shellExplosionPath, position);
+            RuntimeManager.PlayOneShot(shellExplosionPath, Camera.main.transform.position);
         }
     }
 }

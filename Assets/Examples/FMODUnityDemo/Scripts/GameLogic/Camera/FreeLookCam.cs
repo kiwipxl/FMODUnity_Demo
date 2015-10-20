@@ -34,35 +34,11 @@ namespace FMODUnityDemo.Cameras
         protected override void Awake()
         {
             base.Awake();
-            updateCursor();
-        }
-
-        private void updateCursor()
-        {
-            CursorLockMode lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
-            if (Cursor.lockState != lockState)
-            {
-                Cursor.lockState = lockState;
-                Cursor.visible = !lockCursor;
-            }
         }
 
         protected void Update()
         {
-            if (PauseGame.gamePaused)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                return;
-            }else updateCursor();
-
-            HandleRotationMovement();
-            if (Cursor.lockState == CursorLockMode.None) Cursor.visible = true;
-        }
-
-        private void OnDisable()
-        {
-            updateCursor();
+            if (!PauseGame.gamePaused) HandleRotationMovement();
         }
 
         protected override void FollowTarget(float deltaTime)

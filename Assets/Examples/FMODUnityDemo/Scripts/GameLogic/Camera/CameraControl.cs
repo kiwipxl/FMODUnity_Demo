@@ -24,8 +24,6 @@ namespace Complete
 
         private void FixedUpdate ()
         {
-            GameObject.Find("cameraRig").transform.position = GameObject.Find("tank").transform.position;
-
             // Move the camera towards a desired position.
             Move ();
 

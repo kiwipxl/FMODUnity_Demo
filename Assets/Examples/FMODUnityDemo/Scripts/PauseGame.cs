@@ -16,7 +16,6 @@ public class PauseGame : MonoBehaviour
 
     public static bool gamePaused = false;
     private static GameObject pauseGameText;
-    private static BlurOptimized blurCameraScript;
 
     public EventRef pauseSnapshotPath;
     public static EventInstance pauseSnapshot;
@@ -29,7 +28,6 @@ public class PauseGame : MonoBehaviour
         pauseSound = RuntimeManager.CreateInstance(pauseSoundPath);
 
         pauseGameText = GameObject.Find("pauseGameText");
-        blurCameraScript = Camera.main.GetComponent<BlurOptimized>();
 
         unPauseGame();
     }
@@ -52,8 +50,8 @@ public class PauseGame : MonoBehaviour
     {
         gamePaused = false;
         Time.timeScale = 1;
+        Camera.main.GetComponent<BlurOptimized>().enabled = false;
 
-        if (blurCameraScript) blurCameraScript.enabled = false;
         pauseGameText.SetActive(false);
 
         pauseSound.stop(STOP_MODE.IMMEDIATE);
@@ -64,8 +62,8 @@ public class PauseGame : MonoBehaviour
     {
         gamePaused = true;
         Time.timeScale = 0;
+        Camera.main.GetComponent<BlurOptimized>().enabled = true;
 
-        if (blurCameraScript) blurCameraScript.enabled = true;
         pauseGameText.SetActive(true);
 
         pauseSound.start();

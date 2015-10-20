@@ -3,6 +3,9 @@ using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 
+/*
+* Handles step sounds for the player character on different surfaces
+*/
 public class StepSounds : MonoBehaviour {
 
     public EventRef stepEventRef;
@@ -16,9 +19,11 @@ public class StepSounds : MonoBehaviour {
     private void Start() {
         anim = GetComponent<Animator>();
 
+        //create instance of step sound event
         stepEvent = RuntimeManager.CreateInstance(stepEventRef);
         stepEvent.start();
 
+        //get surface parameter, used when walking on different types of surfaces
         stepEvent.getParameter("Surface", out surfaceParam);
     }
 

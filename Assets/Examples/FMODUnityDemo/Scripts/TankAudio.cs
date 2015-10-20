@@ -55,7 +55,7 @@ namespace Complete
 
         public void fireShell(Vector3 position)
         {
-            RuntimeManager.PlayOneShot(shellFirePath, position);
+            RuntimeManager.PlayOneShot(shellFirePath, Camera.main.transform.position);
         }
 
         private void OnTriggerStay(Collider col)

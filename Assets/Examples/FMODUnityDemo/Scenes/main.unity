@@ -2035,7 +2035,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 144300, guid: 446541c40218577448685f18406797b0, type: 2}
       propertyPath: m_Name
-      value: cameraRig2
+      value: playerCameraRig
       objectReference: {fileID: 0}
     - target: {fileID: 11485152, guid: 446541c40218577448685f18406797b0, type: 2}
       propertyPath: target
@@ -2063,7 +2063,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 144300, guid: 446541c40218577448685f18406797b0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 446541c40218577448685f18406797b0, type: 2}
@@ -2829,45 +2829,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 396086269}
   m_Mesh: {fileID: 4300000, guid: 12783825d19a606449c1d81b822fb4a2, type: 3}
---- !u!1 &396281139
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 396281141}
-  - 114: {fileID: 396281140}
-  m_Layer: 0
-  m_Name: gameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &396281140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 396281139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44eec5adfdf9a31438c327277780de1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &396281141
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 396281139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.08170128, y: .00899780542, z: -.187036514}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
 --- !u!1 &435811408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3198,8 +3159,9 @@ GameObject:
   - 92: {fileID: 496373226}
   - 81: {fileID: 496373225}
   - 114: {fileID: 496373229}
+  - 114: {fileID: 496373230}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3283,6 +3245,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &496373230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496373223}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403b2aa7e086f27408d4e3ff312ca8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downsample: 2
+  blurSize: 2
+  blurIterations: 1
+  blurType: 0
+  blurShader: {fileID: 4800000, guid: 9198929a7cc9d2146aa2a15a114270c6, type: 3}
 --- !u!1 &507439597
 GameObject:
   m_ObjectHideFlags: 0
@@ -6557,7 +6535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1037258150
 GameObject:
   m_ObjectHideFlags: 0
@@ -7121,7 +7099,7 @@ GameObject:
   - 4: {fileID: 1109269205}
   - 114: {fileID: 1109269206}
   m_Layer: 0
-  m_Name: cameraRig
+  m_Name: tankCameraRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7165,6 +7143,8 @@ GameObject:
   - 4: {fileID: 1116070424}
   - 114: {fileID: 1116070425}
   - 114: {fileID: 1116070423}
+  - 114: {fileID: 1116070427}
+  - 114: {fileID: 1116070426}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -7210,6 +7190,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496956edf12274040aeebf27ef78432c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1116070426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116070422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c084659a7711b340931064d62368531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1116070427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116070422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9468c5f457ace64f8d4df6d642b107f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadEvent: 0
+  UnloadEvent: 0
+  Banks:
+    Banks: []
+    AllBanks: 1
+  CollisionTag: 
+  PreloadSamples: 0
 --- !u!1 &1120134770
 GameObject:
   m_ObjectHideFlags: 0
@@ -8842,7 +8851,7 @@ MonoBehaviour:
   blurSize: 2
   blurIterations: 1
   blurType: 0
-  blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
+  blurShader: {fileID: 4800000, guid: 9198929a7cc9d2146aa2a15a114270c6, type: 3}
 --- !u!1 &1181476600
 GameObject:
   m_ObjectHideFlags: 0
@@ -10404,7 +10413,7 @@ GameObject:
   - 95: {fileID: 1253868332}
   - 114: {fileID: 1253868331}
   m_Layer: 9
-  m_Name: base
+  m_Name: characterBase
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10454,6 +10463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkByDefault: 0
+  enableInput: 1
   lookInCameraDirection: 1
 --- !u!114 &1253868334
 MonoBehaviour:
@@ -12741,7 +12751,7 @@ RectTransform:
   - {fileID: 1109004096}
   - {fileID: 1852354188}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -13042,7 +13052,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400084, guid: 05c98027197f10d48b41ecd91f0e49f3, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634407873}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.78393291e-05, y: -7.68808095e-05, z: .0325337835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16431,7 +16441,7 @@ Transform:
   m_Children:
   - {fileID: 2016298486}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1922001261
 GameObject:
   m_ObjectHideFlags: 0
@@ -16500,53 +16510,7 @@ Transform:
   - {fileID: 799879626}
   - {fileID: 1752636871}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
---- !u!1 &1942072451
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1942072453}
-  - 114: {fileID: 1942072452}
-  m_Layer: 0
-  m_Name: bankLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1942072452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1942072451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9468c5f457ace64f8d4df6d642b107f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoadEvent: 0
-  UnloadEvent: 0
-  Banks:
-    Banks: []
-    AllBanks: 1
-  CollisionTag: 
-  PreloadSamples: 0
---- !u!4 &1942072453
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1942072451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.0436783, y: -29.691124, z: 36.9234314}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1951719886
 GameObject:
   m_ObjectHideFlags: 0
@@ -17529,6 +17493,7 @@ MonoBehaviour:
   m_Speed: 12
   m_TurnSpeed: 180
   m_PitchRange: .200000003
+  enableInput: 1
 --- !u!114 &2051347425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17565,7 +17530,7 @@ MonoBehaviour:
   treadRollingPath:
     Path: event:/Tanks/Tread Rolling
   shellFirePath:
-    Path: event:/Weapons/Shell Explode
+    Path: event:/Weapons/Shell Fire
 --- !u!65 &2051347428
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace FMODUnityDemo.Characters.ThirdPerson
     {
 
         public bool walkByDefault = false; // toggle for walking state
-
+        public bool enableInput = true;
         public bool lookInCameraDirection = true;// should the character be looking in the same direction that the camera is facing
 
         private Vector3 lookPos; // The position that the character should be looking towards
@@ -48,11 +48,16 @@ namespace FMODUnityDemo.Characters.ThirdPerson
         private void FixedUpdate()
         {
             // read inputs
+            float h = 0;
+            float v = 0;
             bool crouch = false;
 
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-            crouch = Input.GetKey(KeyCode.C);
+            if (enableInput)
+            {
+                h = Input.GetAxis("Horizontal");
+                v = Input.GetAxis("Vertical");
+                crouch = Input.GetKey(KeyCode.C);
+            }
 
             // calculate move direction to pass to character
             if (cam != null)
