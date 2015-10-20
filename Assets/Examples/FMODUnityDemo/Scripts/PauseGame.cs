@@ -53,7 +53,7 @@ public class PauseGame : MonoBehaviour
         gamePaused = false;
         Time.timeScale = 1;
 
-        blurCameraScript.enabled = false;
+        if (blurCameraScript) blurCameraScript.enabled = false;
         pauseGameText.SetActive(false);
 
         pauseSound.stop(STOP_MODE.IMMEDIATE);
@@ -65,7 +65,7 @@ public class PauseGame : MonoBehaviour
         gamePaused = true;
         Time.timeScale = 0;
 
-        blurCameraScript.enabled = true;
+        if (blurCameraScript) blurCameraScript.enabled = true;
         pauseGameText.SetActive(true);
 
         pauseSound.start();

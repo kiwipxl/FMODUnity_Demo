@@ -23,7 +23,7 @@ public class Subtitles : MonoBehaviour {
         subtitleText.text = "";
 
         p1Wins = RuntimeManager.CreateInstance(p1WinsRef);
-        startSubtitlesOn(p1Wins);
+        //startSubtitlesOn(p1Wins);
     }
     
     private static void updateSubtitles(EventCallbackData data)

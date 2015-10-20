@@ -29,8 +29,8 @@ public class StepSounds : MonoBehaviour {
     }
 
     private void Update() {
-        //positions the step event at the position of the player
-        stepEvent.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+        //always position the event at the camera position so no 3d panning occurs
+        stepEvent.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
 
         if (collidingWithLayer("Sand"))  surfaceParam.setValue(1);
         if (collidingWithLayer("Stone")) surfaceParam.setValue(3);
@@ -43,6 +43,10 @@ public class StepSounds : MonoBehaviour {
         onGround = anim.GetBool("OnGround");
     }
 
+    /*
+    * Get layer bitmasks to calculate collisions per frame, 
+    * (so they can be ordered manually)
+    */
     private bool collidingWithLayer(string layerName)
     {
         return (collidingLayers & (1 << LayerMask.NameToLayer(layerName))) != 0;
