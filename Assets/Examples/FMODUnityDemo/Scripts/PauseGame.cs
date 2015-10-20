@@ -29,6 +29,8 @@ public class PauseGame : MonoBehaviour
 
     private void Update()
     {
+        pauseSound.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
+
         if (gamePaused && Input.GetMouseButtonUp(0)) unPauseGame();
         if (Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape)) togglePause();
     }
@@ -42,8 +44,8 @@ public class PauseGame : MonoBehaviour
     public static void unPauseGame()
     {
         gamePaused = false;
+        Time.timeScale = 1;
 
-        UnityEngine.Debug.Log(GameObject.Find("pauseGameText"));
         blurCameraScript.enabled = false;
         pauseGameText.SetActive(false);
 
@@ -54,6 +56,7 @@ public class PauseGame : MonoBehaviour
     public static void pauseGame()
     {
         gamePaused = true;
+        Time.timeScale = 0;
 
         blurCameraScript.enabled = true;
         pauseGameText.SetActive(true);
