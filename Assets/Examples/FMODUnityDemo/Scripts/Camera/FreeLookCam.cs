@@ -49,8 +49,14 @@ namespace FMODUnityDemo.Cameras
 
         protected void Update()
         {
+            if (PauseGame.gamePaused)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                return;
+            }else updateCursor();
+
             HandleRotationMovement();
-            if (Input.GetMouseButtonUp(0)) updateCursor();
             if (Cursor.lockState == CursorLockMode.None) Cursor.visible = true;
         }
 
