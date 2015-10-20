@@ -7,6 +7,25 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
+/*
+* This script simplifies the process of event callbacks.
+* The following is an example on how this class can be used:
+*
+* EventCallback.setCallback(my_callback_function);
+*
+* public void my_callback_function(EventCallbackData data) {
+*   //all callback types can be handled here
+*   //beware: this is run on FMOD's thread, not Unity's
+*   
+*   if (data.type == EVENT_CALLBACK_TYPE.MARKER) {          //a marker has been reached in the event
+*       string markerName = data.createMarker();
+*   }else if (data.type == EVENT_CALLBACK_TYPE.STARTED) {   //event has started
+*       //code
+*   }
+* }
+*
+*/
+
 public class MarkerProperties
 {
     public string name;

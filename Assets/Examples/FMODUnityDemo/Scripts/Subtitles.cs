@@ -5,6 +5,12 @@ using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 
+/*
+* Handles subtitles
+* todo: example of usage
+* todo: how it works
+*/
+
 public class Subtitles : MonoBehaviour {
 
     public EventRef p1WinsRef;
@@ -28,7 +34,7 @@ public class Subtitles : MonoBehaviour {
 
             ExecuteOnMainThread.queue.Enqueue(() =>
             {
-                subtitleText.text = marker.name;
+                subtitleText.text = marker.name.ToUpper();
             });
         }
         else if (data.type == EVENT_CALLBACK_TYPE.STOPPED)

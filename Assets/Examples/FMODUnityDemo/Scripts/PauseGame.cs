@@ -3,13 +3,20 @@ using System.Collections;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
+using ImageEffects;
+
+/*
+* Handles pausing and unpausing the game (press escape or P to toggle).
+* A pause snapshot instance and sound instance is created at runtime and 
+* are played when paused.
+*/
 
 public class PauseGame : MonoBehaviour
 {
 
     public static bool gamePaused = false;
     private static GameObject pauseGameText;
-    private static UnityStandardAssets.ImageEffects.BlurOptimized blurCameraScript;
+    private static BlurOptimized blurCameraScript;
 
     public EventRef pauseSnapshotPath;
     public static EventInstance pauseSnapshot;
@@ -22,7 +29,7 @@ public class PauseGame : MonoBehaviour
         pauseSound = RuntimeManager.CreateInstance(pauseSoundPath);
 
         pauseGameText = GameObject.Find("pauseGameText");
-        blurCameraScript = Camera.main.GetComponent<UnityStandardAssets.ImageEffects.BlurOptimized>();
+        blurCameraScript = Camera.main.GetComponent<BlurOptimized>();
 
         unPauseGame();
     }

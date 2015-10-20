@@ -8,9 +8,6 @@ TagManager:
   - Dangerous
   - Smelly
   - Fire
-  - Stone
-  - Floor
-  - Water
   layers:
   - Default
   - TransparentFX
@@ -20,9 +17,9 @@ TagManager:
   - UI
   - 
   - 
-  - Menu Items
-  - Environment
-  - floor
+  - Sand
+  - Stone
+  - 
   - 
   - 
   - 
