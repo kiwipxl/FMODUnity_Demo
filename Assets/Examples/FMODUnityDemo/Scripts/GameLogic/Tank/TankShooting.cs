@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Complete
+namespace GameLogic
 {
     public class TankShooting : MonoBehaviour
     {
@@ -38,6 +38,8 @@ namespace Complete
 
         private void Update ()
         {
+            if (!enabled) return;
+
             if (!m_tankMovement.enableInput)
             {
                 if (!m_Fired) Fire();
@@ -90,7 +92,8 @@ namespace Complete
             // Set the shell's velocity to the launch force in the fire position's forward direction.
             shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;
 
-            m_audio.playShellFire();
+            shellInstance.GetComponent<ShellExplosion>().tankParent = gameObject;
+            shellInstance.GetComponent<ShellAudio>().playShellFire();
 
             // Reset the launch force.  This is a precaution in case of missing button events.
             m_CurrentLaunchForce = m_MinLaunchForce;

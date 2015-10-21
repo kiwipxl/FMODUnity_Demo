@@ -15,7 +15,8 @@ using System.Collections.Generic;
 *
 * public void my_callback_function(EventCallbackData data) {
 *   //all callback types can be handled here
-*   //beware: this is run on FMOD's thread, not Unity's
+*   //beware: depending on the type, the callback may not run on Unity's main thread.
+*   //which means you are unable to modify the GUI on that thread.
 *   
 *   if (data.type == EVENT_CALLBACK_TYPE.MARKER) {          //a marker has been reached in the event
 *       string markerName = data.createMarker();

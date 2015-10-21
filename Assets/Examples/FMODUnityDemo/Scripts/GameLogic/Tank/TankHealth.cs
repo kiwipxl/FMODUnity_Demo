@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Complete
+namespace GameLogic
 {
     public class TankHealth : MonoBehaviour
     {
@@ -11,22 +11,15 @@ namespace Complete
         public Color m_FullHealthColor = Color.green;       // The color the health bar will be when on full health.
         public Color m_ZeroHealthColor = Color.red;         // The color the health bar will be when on no health.
         public GameObject m_ExplosionPrefab;                // A prefab that will be instantiated in Awake, then used whenever the tank dies.
-        
-        
-        private AudioSource m_ExplosionAudio;               // The audio source to play when the tank explodes.
+
         private ParticleSystem m_ExplosionParticles;        // The particle system the will play when the tank is destroyed.
         private float m_CurrentHealth;                      // How much health the tank currently has.
         private bool m_Dead;                                // Has the tank been reduced beyond zero health yet?
 
-
         private void Awake ()
         {
             // Instantiate the explosion prefab and get a reference to the particle system on it.
-            Debug.Log(m_ExplosionPrefab);
-            m_ExplosionParticles = Instantiate (m_ExplosionPrefab).GetComponent<ParticleSystem> ();
-
-            // Get a reference to the audio source on the instantiated prefab.
-            m_ExplosionAudio = m_ExplosionParticles.GetComponent<AudioSource> ();
+            m_ExplosionParticles = Instantiate(m_ExplosionPrefab).GetComponent<ParticleSystem>();
 
             // Disable the prefab so it can be activated when it's required.
             m_ExplosionParticles.gameObject.SetActive (false);
@@ -59,7 +52,6 @@ namespace Complete
             }
         }
 
-
         private void SetHealthUI ()
         {
             // Set the slider's value appropriately.
@@ -68,7 +60,6 @@ namespace Complete
             // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
             m_FillImage.color = Color.Lerp (m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
         }
-
 
         private void OnDeath ()
         {
@@ -80,10 +71,9 @@ namespace Complete
             m_ExplosionParticles.gameObject.SetActive (true);
 
             // Play the particle system of the tank exploding.
-            m_ExplosionParticles.Play ();
+            m_ExplosionParticles.Play();
 
-            // Play the tank explosion sound effect.
-            m_ExplosionAudio.Play();
+            GetComponent<TankAudio>().playTankExplosion();
 
             // Turn the tank off.
             gameObject.SetActive (false);

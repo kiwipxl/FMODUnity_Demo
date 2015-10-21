@@ -1,8 +1,7 @@
 using UnityEngine;
 
-namespace FMODUnityDemo.Characters.ThirdPerson
+namespace GameLogic
 {
-
     [RequireComponent(typeof (ThirdPersonCharacter))]
     public class ThirdPersonUserControl : MonoBehaviour
     {

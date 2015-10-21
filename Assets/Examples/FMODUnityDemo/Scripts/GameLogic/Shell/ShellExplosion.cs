@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Complete
+namespace GameLogic
 {
     public class ShellExplosion : MonoBehaviour
     {
@@ -10,14 +10,13 @@ namespace Complete
         public float m_ExplosionForce = 1000f;              // The amount of force added to a tank at the centre of the explosion.
         public float m_MaxLifeTime = 2f;                    // The time in seconds before the shell is removed.
         public float m_ExplosionRadius = 5f;                // The maximum distance away from the explosion tanks can be and are still affected.
-
+        [HideInInspector] public GameObject tankParent;
 
         private void Start ()
         {
             // If it isn't destroyed by then, destroy the shell after it's lifetime.
             Destroy (gameObject, m_MaxLifeTime);
         }
-
 
         private void OnTriggerEnter (Collider other)
         {
@@ -58,11 +57,10 @@ namespace Complete
             m_ExplosionParticles.Play();
 
             //temp
-            GameObject tank = GameObject.Find("tank");
-            Vector3 tankPos = tank.transform.position;
+            Vector3 tankPos = tankParent.transform.position;
             float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - tankPos.x, 2) + Mathf.Pow(transform.position.z - tankPos.z, 2));
             float volume = 1.0f - (Mathf.Min(dist, 30.0f) / 30.0f);
-            tank.GetComponent<TankAudio>().playShellExplosion(volume);
+            GetComponent<ShellAudio>().playShellExplosion(volume);
 
             // Once the particles have finished, destroy the gameobject they are on.
             Destroy (m_ExplosionParticles.gameObject, m_ExplosionParticles.duration);
@@ -70,7 +68,6 @@ namespace Complete
             // Destroy the shell.
             Destroy (gameObject);
         }
-
 
         private float CalculateDamage (Vector3 targetPosition)
         {

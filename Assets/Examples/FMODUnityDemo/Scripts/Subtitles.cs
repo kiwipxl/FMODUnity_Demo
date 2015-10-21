@@ -48,12 +48,12 @@ public class Subtitles : MonoBehaviour {
         if (currentSubtitle != null)
         {
             currentSubtitle.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
-        }
 
-        //check if the current subtitle has ended
-        PLAYBACK_STATE playbackState;
-        currentSubtitle.getPlaybackState(out playbackState);
-        if (playbackState == PLAYBACK_STATE.STOPPED) subtitleText.text = "";
+            //check if the current subtitle has ended
+            PLAYBACK_STATE playbackState;
+            currentSubtitle.getPlaybackState(out playbackState);
+            if (playbackState == PLAYBACK_STATE.STOPPED) subtitleText.text = "";
+        }
     }
 
     private static void eventCallback(EventCallbackData data)

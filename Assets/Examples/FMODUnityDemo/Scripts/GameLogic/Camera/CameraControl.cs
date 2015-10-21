@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Complete
+namespace GameLogic
 {
     public class CameraControl : MonoBehaviour
     {

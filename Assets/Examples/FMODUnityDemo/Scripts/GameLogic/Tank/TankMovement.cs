@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Complete
+namespace GameLogic
 {
     public class TankMovement : MonoBehaviour
     {
@@ -22,7 +22,6 @@ namespace Complete
             tankAudio = GetComponent<TankAudio>();
         }
 
-
         private void OnEnable ()
         {
             // When the tank is turned on, make sure it's not kinematic.
@@ -33,7 +32,6 @@ namespace Complete
             m_TurnInputValue = 0f;
         }
 
-
         private void OnDisable ()
         {
             // When the tank is turned off, set it to kinematic so it stops moving.
@@ -42,6 +40,8 @@ namespace Complete
 
         private void Update ()
         {
+            if (!enabled) return;
+
             // Store the value of both input axes.
             m_MovementInputValue = 0;
             m_TurnInputValue = 0;
@@ -52,43 +52,12 @@ namespace Complete
             }
         }
 
-        private void EngineAudio ()
-        {
-            // If there is no input (the tank is stationary)...
-            if (Mathf.Abs (m_MovementInputValue) < 0.1f && Mathf.Abs (m_TurnInputValue) < 0.1f)
-            {
-                // ... and if the audio source is currently playing the driving clip...
-                //todo: richman
-                //if (m_MovementAudio.clip == m_EngineDriving)
-                //{
-                //    // ... change the clip to idling and play it.
-                //    m_MovementAudio.clip = m_EngineIdling;
-                //    m_MovementAudio.pitch = Random.Range (m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);
-                //    m_MovementAudio.Play ();
-                //}
-            }
-            else
-            {
-                // Otherwise if the tank is moving and if the idling clip is currently playing...
-                //todo: richman
-                //if (m_MovementAudio.clip == m_EngineIdling)
-                //{
-                //    // ... change the clip to driving and play.
-                //    m_MovementAudio.clip = m_EngineDriving;
-                //    m_MovementAudio.pitch = Random.Range(m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);
-                //    m_MovementAudio.Play();
-                //}
-            }
-        }
-
-
         private void FixedUpdate ()
         {
             // Adjust the rigidbodies position and orientation in FixedUpdate.
             Move ();
             Turn ();
         }
-
 
         private void Move ()
         {
@@ -101,7 +70,6 @@ namespace Complete
             // Apply this movement to the rigidbody's position.
             m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
         }
-
 
         private void Turn ()
         {

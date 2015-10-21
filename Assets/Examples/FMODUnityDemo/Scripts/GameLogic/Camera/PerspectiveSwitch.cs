@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
-using FMODUnityDemo.Characters.ThirdPerson;
-using Complete;
 
 public class PerspectiveSwitch : MonoBehaviour {
 
     private GameObject playerCameraRig;
     private GameObject tankCameraRig;
     public static bool isPlayerRig = true;
-    private ThirdPersonUserControl playerUserControl;
-    private TankMovement tankMovement;
+    private GameLogic.ThirdPersonUserControl playerUserControl;
+    private GameLogic.TankMovement tankMovement;
+    private GameObject tank;
 
     private void Start() {
         playerCameraRig = GameObject.Find("playerCameraRig");
         tankCameraRig = GameObject.Find("tankCameraRig");
-        playerUserControl = GameObject.Find("characterBase").GetComponent<ThirdPersonUserControl>();
-        tankMovement = GameObject.Find("tank").GetComponent<TankMovement>();
+        playerUserControl = GameObject.Find("characterBase").GetComponent<GameLogic.ThirdPersonUserControl>();
+        tank = GameObject.Find("tank");
+        tankMovement = tank.GetComponent<GameLogic.TankMovement>();
 
         updateRig();
 	}
@@ -29,7 +29,7 @@ public class PerspectiveSwitch : MonoBehaviour {
 
         if (!isPlayerRig)
         {
-            tankCameraRig.transform.position = GameObject.Find("tank").transform.position;
+            tankCameraRig.transform.position = tank.transform.position;
         }
 
         if (GamePause.isPaused)

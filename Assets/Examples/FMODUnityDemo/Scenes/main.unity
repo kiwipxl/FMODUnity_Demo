@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4231075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TankRenderers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3427,7 +3427,7 @@ GameObject:
   - 223: {fileID: 518836912}
   - 114: {fileID: 518836911}
   - 114: {fileID: 518836910}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6129,7 +6129,7 @@ GameObject:
   - 224: {fileID: 943688915}
   - 222: {fileID: 943688917}
   - 114: {fileID: 943688916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6880,7 +6880,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1046274198}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7334,13 +7334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4825cd06c7a5eca40b22ce5277907dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subtitleList:
-  - Path: event:/VO/ENG/ENG_Tanks
-  - Path: event:/VO/ENG/ENG_byFMOD
-  - Path: event:/VO/ENG/ENG_P1wins
-  - Path: event:/VO/SWE/SWE_P1wins
-  - Path: event:/VO/SWE/SWE_byFMOD
-  - Path: event:/VO/SWE/SWE_Tanks
+  subtitleEventList: []
 --- !u!114 &1109004098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7407,7 +7401,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1116070424}
-  - 114: {fileID: 1116070425}
   - 114: {fileID: 1116070423}
   - 114: {fileID: 1116070427}
   - 114: {fileID: 1116070426}
@@ -7445,17 +7438,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &1116070425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1116070422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 496956edf12274040aeebf27ef78432c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1116070426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7831,7 +7813,7 @@ GameObject:
   - 4: {fileID: 1170876743}
   - 33: {fileID: 1170876745}
   - 23: {fileID: 1170876744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TankTracksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7922,7 +7904,7 @@ GameObject:
   - 4: {fileID: 1180513354}
   - 198: {fileID: 1180513356}
   - 199: {fileID: 1180513355}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9157,7 +9139,7 @@ GameObject:
   - 4: {fileID: 1181476601}
   - 198: {fileID: 1181476603}
   - 199: {fileID: 1181476602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10877,7 +10859,7 @@ GameObject:
   - 224: {fileID: 1266567408}
   - 114: {fileID: 1266567410}
   - 114: {fileID: 1266567409}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12005,7 +11987,7 @@ GameObject:
   - 4: {fileID: 1379609439}
   - 33: {fileID: 1379609441}
   - 23: {fileID: 1379609440}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TankChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12303,7 +12285,7 @@ GameObject:
   - 224: {fileID: 1388951006}
   - 222: {fileID: 1388951008}
   - 114: {fileID: 1388951007}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12872,7 +12854,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1497468792}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13842,7 +13824,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400084, guid: 05c98027197f10d48b41ecd91f0e49f3, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634407873}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.78393291e-05, y: -7.68808095e-05, z: .0325337835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14475,7 +14457,7 @@ GameObject:
   - 224: {fileID: 1723592191}
   - 222: {fileID: 1723592193}
   - 114: {fileID: 1723592192}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15952,7 +15934,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 1768502073}
   - 114: {fileID: 1768502074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AimSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16514,7 +16496,7 @@ GameObject:
   - 4: {fileID: 1800861947}
   - 33: {fileID: 1800861949}
   - 23: {fileID: 1800861948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TankTracksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17761,7 +17743,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1989220203}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18360,7 +18342,7 @@ GameObject:
   - 114: {fileID: 2051347425}
   - 114: {fileID: 2051347424}
   - 114: {fileID: 2051347426}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18453,10 +18435,8 @@ MonoBehaviour:
     Path: event:/Tanks/Total Engine
   treadRollingPath:
     Path: event:/Tanks/Tread Rolling
-  shellFirePath:
-    Path: event:/Weapons/Shell Fire
-  shellExplosionPath:
-    Path: event:/Weapons/Shell Explode
+  tankExplosionPath:
+    Path: event:/Weapons/Tank Explode
 --- !u!65 &2051347428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18644,7 +18624,7 @@ GameObject:
   - 4: {fileID: 2093257898}
   - 33: {fileID: 2093257900}
   - 23: {fileID: 2093257899}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TankTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}

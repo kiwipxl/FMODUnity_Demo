@@ -287,12 +287,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TankMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   m_ExplosionParticles: {fileID: 19870274}
   m_MaxDamage: 100
   m_ExplosionForce: 1000
   m_MaxLifeTime: 2
   m_ExplosionRadius: 5
+  tankParent: {fileID: 0}
 --- !u!114 &11491220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,6 +305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92567ba91b4ec6b42ae460f7eb62e6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shellFirePath:
+    Path: event:/Weapons/Shell Fire
   shellExplosionPath:
     Path: event:/Weapons/Shell Explode
 --- !u!136 &13693818
@@ -3596,7 +3599,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TankMask.m_Bits
-      value: 512
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
@@ -3605,6 +3608,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: shellExplosionPath.Path
       value: event:/Weapons/Shell Explode
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shellFirePath.Path
+      value: event:/Weapons/Shell Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
