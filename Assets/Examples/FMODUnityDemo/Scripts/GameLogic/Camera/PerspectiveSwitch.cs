@@ -5,13 +5,13 @@ using Complete;
 
 public class PerspectiveSwitch : MonoBehaviour {
 
-    GameObject playerCameraRig;
-    GameObject tankCameraRig;
-    bool isPlayerRig = true;
-    ThirdPersonUserControl playerUserControl;
-    TankMovement tankMovement;
+    private GameObject playerCameraRig;
+    private GameObject tankCameraRig;
+    public static bool isPlayerRig = true;
+    private ThirdPersonUserControl playerUserControl;
+    private TankMovement tankMovement;
 
-    void Start() {
+    private void Start() {
         playerCameraRig = GameObject.Find("playerCameraRig");
         tankCameraRig = GameObject.Find("tankCameraRig");
         playerUserControl = GameObject.Find("characterBase").GetComponent<ThirdPersonUserControl>();
@@ -20,8 +20,8 @@ public class PerspectiveSwitch : MonoBehaviour {
         updateRig();
 	}
 
-    void Update() {
-        if (!PauseGame.gamePaused && Input.GetKeyUp(KeyCode.V))
+    private void Update() {
+        if (!GamePause.isPaused && Input.GetKeyUp(KeyCode.V))
         {
             isPlayerRig = !isPlayerRig;
             updateRig();
@@ -32,7 +32,7 @@ public class PerspectiveSwitch : MonoBehaviour {
             tankCameraRig.transform.position = GameObject.Find("tank").transform.position;
         }
 
-        if (PauseGame.gamePaused)
+        if (GamePause.isPaused)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -44,7 +44,7 @@ public class PerspectiveSwitch : MonoBehaviour {
         }
     }
 
-    void updateRig()
+    private void updateRig()
     {
         playerCameraRig.SetActive(isPlayerRig);
         playerUserControl.enableInput = isPlayerRig;

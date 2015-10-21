@@ -36,7 +36,7 @@ MonoBehaviour:
   - {fileID: 11419262}
   - {fileID: 11436750}
   MasterBankRef: {fileID: 11403554}
-  stringsBankWriteTime: 635809595431907288
+  stringsBankWriteTime: 635810297644386872
 --- !u!114 &11400054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,11 +212,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master
     Bank.bank
-  lastModified: 635809595434761479
+  lastModified: 635810234704787720
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1776064
+    Value: 1775776
   Exists: 1
 --- !u!114 &11404228
 MonoBehaviour:
@@ -786,7 +786,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 11442000}
+  - {fileID: 11441198}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11419138
@@ -829,7 +829,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11408742}
+  - {fileID: 11422312}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11421104
@@ -915,9 +915,23 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 11498264}
+  - {fileID: 11446672}
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11422312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health%
+  Min: 0
+  Max: 1
 --- !u!114 &11423010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,6 +969,20 @@ MonoBehaviour:
   Name: RPM
   Min: 0
   Max: 2000
+--- !u!114 &11423358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: 0
+  Max: 1
 --- !u!114 &11424084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,6 +1172,20 @@ MonoBehaviour:
   Name: Load
   Min: 0
   Max: 1
+--- !u!114 &11427768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 10000
 --- !u!114 &11429284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,6 +1545,20 @@ MonoBehaviour:
   Name: Surface
   Min: 0
   Max: 3
+--- !u!114 &11435620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: 0
+  Max: 1
 --- !u!114 &11435768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,8 +1626,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11400164}
-  - {fileID: 11481908}
+  - {fileID: 11427768}
+  - {fileID: 11423358}
   MinDistance: 2
   MaxDistance: 100
 --- !u!114 &11437000
@@ -1791,6 +1847,20 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11441198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Target
+  Min: 0
+  Max: 1
 --- !u!114 &11441796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1827,6 +1897,20 @@ MonoBehaviour:
   Min: 0
   Max: 1
 --- !u!114 &11442076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 3000
+--- !u!114 &11442230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1981,6 +2065,34 @@ MonoBehaviour:
   - {fileID: 11401516}
   MinDistance: 2
   MaxDistance: 100
+--- !u!114 &11446672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Surface
+  Min: 0
+  Max: 3
+--- !u!114 &11446892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: T_Surface
+  Min: 0
+  Max: 1
 --- !u!114 &11447382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2388,8 +2500,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11410752}
-  - {fileID: 11498612}
+  - {fileID: 11497160}
+  - {fileID: 11435620}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11455740
@@ -2673,11 +2785,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\VO_ENG.bank
-  lastModified: 635809595435001837
+  lastModified: 635810234705939413
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 66624
+    Value: 66688
   Exists: 1
 --- !u!114 &11464736
 MonoBehaviour:
@@ -2957,11 +3069,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\VO_SWE.bank
-  lastModified: 635809595435252200
+  lastModified: 635810234706840738
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 83616
+    Value: 83776
   Exists: 1
 --- !u!114 &11468576
 MonoBehaviour:
@@ -3649,8 +3761,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 11410794}
-  - {fileID: 11494596}
+  - {fileID: 11446892}
+  - {fileID: 11442230}
   MinDistance: 0
   MaxDistance: 0
 --- !u!114 &11487846
@@ -4047,6 +4159,20 @@ MonoBehaviour:
   Name: T_Surface
   Min: 0
   Max: 1
+--- !u!114 &11497160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
 --- !u!114 &11497766
 MonoBehaviour:
   m_ObjectHideFlags: 0

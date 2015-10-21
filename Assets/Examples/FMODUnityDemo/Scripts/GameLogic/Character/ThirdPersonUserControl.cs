@@ -40,8 +40,8 @@ namespace FMODUnityDemo.Characters.ThirdPerson
 
         void Update()
         {
-            if(!jump)
-                jump = Input.GetButtonDown("Jump");
+            if (!jump && enableInput)
+                jump = Input.GetKeyDown(KeyCode.Space);
         }
 
         // Fixed update is called in sync with physics

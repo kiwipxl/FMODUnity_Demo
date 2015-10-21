@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FMOD;
@@ -6,49 +7,84 @@ using FMOD.Studio;
 using FMODUnity;
 
 /*
-* Handles subtitles
-* todo: example of usage
-* todo: how it works
+* Handles subtitles.
+* For example, in Studio, you can have a voice over sound 
+* such as "This is a subtitle. Hello".
+* You can then place a named marker above the audio called "This is a subtitle."
+* and another one later on in the track called "Hello".
+*
+* You can use this class by attaching it to a UI Text component and then by
+* calling the following:
+* Subtitles.start(eventInstance);
+*
+* Any named markers found will change the text of the UI Text component
 */
 
 public class Subtitles : MonoBehaviour {
 
-    public EventRef p1WinsRef;
-    private EventInstance p1Wins;
+    public EventRef[] subtitleEventList;
 
     private static Text subtitleText;
+    private static EventInstance currentSubtitle = null;
 
-	void Start() {
+    private void Start() {
         subtitleText = GetComponent<Text>();
-        subtitleText.text = "";
+        if (subtitleText == null) UnityEngine.Debug.LogError("No UI Text component added!");
 
-        p1Wins = RuntimeManager.CreateInstance(p1WinsRef);
-        //startSubtitlesOn(p1Wins);
+        subtitleText.text = "";
     }
-    
-    private static void updateSubtitles(EventCallbackData data)
+
+    private void Update()
+    {
+        //temporary code
+        //press B to spawn random subtitles from a list set in the editor
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            start(subtitleEventList[UnityEngine.Random.Range(0, subtitleEventList.Length)]);
+        }
+
+        //set the subtitle event sound position to the camera position to fake a 2D sound with
+        //no 3D panner
+        if (currentSubtitle != null)
+        {
+            currentSubtitle.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
+        }
+
+        //check if the current subtitle has ended
+        PLAYBACK_STATE playbackState;
+        currentSubtitle.getPlaybackState(out playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED) subtitleText.text = "";
+    }
+
+    private static void eventCallback(EventCallbackData data)
     {
         if (data.type == EVENT_CALLBACK_TYPE.TIMELINE_MARKER)
         {
+            //if a marker has been hit, then create the marker properties
+            //data and set the subtitles text to the name of the marker
+
             MarkerProperties marker = data.createMarker();
 
-            ExecuteOnMainThread.queue.Enqueue(() =>
-            {
-                subtitleText.text = marker.name.ToUpper();
-            });
-        }
-        else if (data.type == EVENT_CALLBACK_TYPE.STOPPED)
-        {
-            ExecuteOnMainThread.queue.Enqueue(() =>
-            {
-                subtitleText.text = "";
-            });
+            subtitleText.text = marker.name.ToUpper();
         }
     }
 
-    public static void startSubtitlesOn(EventInstance instance)
+    public static void start(EventInstance eventInstance)
     {
-        instance.start();
-        EventCallback.setCallback(instance, updateSubtitles);
+        //stop the current subtitle playing if it exists
+        if (currentSubtitle != null) currentSubtitle.stop(STOP_MODE.IMMEDIATE);
+
+        //start the event instance and release
+        eventInstance.start();
+        eventInstance.release();
+
+        //set the callback
+        EventCallback.setCallback(eventInstance, eventCallback);
+        currentSubtitle = eventInstance;
+    }
+
+    public static void start(EventRef eventPath)
+    {
+        start(RuntimeManager.CreateInstance(eventPath));
     }
 }

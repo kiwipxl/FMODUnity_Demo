@@ -38,7 +38,7 @@ namespace FMODUnityDemo.Cameras
 
         protected void Update()
         {
-            if (!PauseGame.gamePaused) HandleRotationMovement();
+            if (!GamePause.isPaused) HandleRotationMovement();
         }
 
         protected override void FollowTarget(float deltaTime)

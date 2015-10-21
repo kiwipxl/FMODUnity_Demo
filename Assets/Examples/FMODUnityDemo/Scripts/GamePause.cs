@@ -11,19 +11,19 @@ using ImageEffects;
 * are played when paused.
 */
 
-public class PauseGame : MonoBehaviour
+public class GamePause : MonoBehaviour
 {
-
-    public static bool gamePaused = false;
-    private static GameObject pauseGameText;
+    public static bool isPaused = false;
+    private GameObject pauseGameText;
 
     public EventRef pauseSnapshotPath;
-    public static EventInstance pauseSnapshot;
+    private EventInstance pauseSnapshot;
     public EventRef pauseSoundPath;
-    public static EventInstance pauseSound;
+    private EventInstance pauseSound;
 
     private void Start()
     {
+        //creates pause snapshot and sound event instances
         pauseSnapshot = RuntimeManager.CreateInstance(pauseSnapshotPath);
         pauseSound = RuntimeManager.CreateInstance(pauseSoundPath);
 
@@ -36,34 +36,34 @@ public class PauseGame : MonoBehaviour
     {
         pauseSound.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
 
-        if (gamePaused && Input.GetMouseButtonUp(0)) unPauseGame();
+        if (isPaused && Input.GetMouseButtonUp(0)) unPauseGame();
         if (Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape)) togglePause();
     }
 
-    public static void togglePause()
+    public void togglePause()
     {
-        if (gamePaused) unPauseGame();
+        if (isPaused) unPauseGame();
         else pauseGame();
     }
 
-    public static void unPauseGame()
+    public void unPauseGame()
     {
-        gamePaused = false;
+        isPaused = false;
         Time.timeScale = 1;
-        Camera.main.GetComponent<BlurOptimized>().enabled = false;
 
+        Camera.main.GetComponent<BlurOptimized>().enabled = false;
         pauseGameText.SetActive(false);
 
         pauseSound.stop(STOP_MODE.IMMEDIATE);
         pauseSnapshot.stop(STOP_MODE.IMMEDIATE);
     }
 
-    public static void pauseGame()
+    public void pauseGame()
     {
-        gamePaused = true;
+        isPaused = true;
         Time.timeScale = 0;
-        Camera.main.GetComponent<BlurOptimized>().enabled = true;
 
+        Camera.main.GetComponent<BlurOptimized>().enabled = true;
         pauseGameText.SetActive(true);
 
         pauseSound.start();

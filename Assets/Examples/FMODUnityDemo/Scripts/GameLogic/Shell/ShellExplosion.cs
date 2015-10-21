@@ -57,6 +57,13 @@ namespace Complete
             // Play the particle system.
             m_ExplosionParticles.Play();
 
+            //temp
+            GameObject tank = GameObject.Find("tank");
+            Vector3 tankPos = tank.transform.position;
+            float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - tankPos.x, 2) + Mathf.Pow(transform.position.z - tankPos.z, 2));
+            float volume = 1.0f - (Mathf.Min(dist, 30.0f) / 30.0f);
+            tank.GetComponent<TankAudio>().playShellExplosion(volume);
+
             // Once the particles have finished, destroy the gameobject they are on.
             Destroy (m_ExplosionParticles.gameObject, m_ExplosionParticles.duration);
 

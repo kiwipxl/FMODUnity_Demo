@@ -17,6 +17,7 @@ namespace Complete
         private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
         private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
         private TankAudio m_audio;
+        private TankMovement m_tankMovement;
 
         private void OnEnable()
         {
@@ -32,10 +33,17 @@ namespace Complete
             m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
 
             m_audio = GetComponent<TankAudio>();
+            m_tankMovement = GetComponent<TankMovement>();
         }
 
         private void Update ()
         {
+            if (!m_tankMovement.enableInput)
+            {
+                if (!m_Fired) Fire();
+                return;
+            }
+
             // The slider should have a default value of the minimum launch force.
             m_AimSlider.value = m_MinLaunchForce;
 
@@ -82,7 +90,7 @@ namespace Complete
             // Set the shell's velocity to the launch force in the fire position's forward direction.
             shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;
 
-            m_audio.fireShell(m_FireTransform.position);
+            m_audio.playShellFire();
 
             // Reset the launch force.  This is a precaution in case of missing button events.
             m_CurrentLaunchForce = m_MinLaunchForce;

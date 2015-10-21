@@ -4,6 +4,10 @@ using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 
+/*
+* Handles all shell-related audio (shooting/explosions)
+*/
+
 namespace Complete
 {
     public class ShellAudio : MonoBehaviour
