@@ -3,7 +3,8 @@ using FMOD.Studio;
 using FMODUnity;
 
 /*
-* Handles all shell-related audio (shooting/explosions)
+* Handles all shell-related audio (shooting/explosions).
+* The play functions are called from game logic scripts
 */
 
 public class ShellAudio : MonoBehaviour
@@ -26,6 +27,8 @@ public class ShellAudio : MonoBehaviour
 
     public void playShellExplosion(float volume)
     {
+        //creates a shell explosion instance and sets it's position to the camera (where the
+        //listener is) to fake a 2D sound
         EventInstance ev = RuntimeManager.CreateInstance(shellExplosionPath);
         ev.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
         ev.setVolume(volume);

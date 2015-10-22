@@ -43,10 +43,9 @@ public class Subtitles : MonoBehaviour {
             start(subtitleEventList[UnityEngine.Random.Range(0, subtitleEventList.Length)]);
         }
 
-        //set the subtitle event sound position to the camera position to fake a 2D sound with
-        //no 3D panner
         if (currentSubtitle != null)
         {
+            //set the subtitle event sound position to the camera position (where the listener is) to fake a 2D sound
             currentSubtitle.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
 
             //check if the current subtitle has ended

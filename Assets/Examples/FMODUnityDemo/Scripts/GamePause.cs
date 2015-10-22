@@ -16,9 +16,12 @@ public class GamePause : MonoBehaviour
     public static bool isPaused = false;
     private GameObject pauseGameText;
 
+    //snapshot and sound path (set in editor)
     public EventRef pauseSnapshotPath;
-    private EventInstance pauseSnapshot;
     public EventRef pauseSoundPath;
+
+    //snapshot and sound instances
+    private EventInstance pauseSnapshot;
     private EventInstance pauseSound;
 
     private void Start()
@@ -34,6 +37,7 @@ public class GamePause : MonoBehaviour
 
     private void Update()
     {
+        //sets the pause sound position to the camera (where the listener is) to fake a 2D sound
         pauseSound.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
 
         if (isPaused && Input.GetMouseButtonUp(0)) unPauseGame();
@@ -48,24 +52,30 @@ public class GamePause : MonoBehaviour
 
     public void unPauseGame()
     {
+        //set time to 1
         isPaused = false;
         Time.timeScale = 1;
 
+        //disable blur on camera and "Game Paused" text
         Camera.main.GetComponent<BlurOptimized>().enabled = false;
         pauseGameText.SetActive(false);
 
+        //stop snapshot and sound event
         pauseSound.stop(STOP_MODE.IMMEDIATE);
         pauseSnapshot.stop(STOP_MODE.IMMEDIATE);
     }
 
     public void pauseGame()
     {
+        //set time to 0
         isPaused = true;
         Time.timeScale = 0;
 
+        //enable blur on camera and "Game Paused" text
         Camera.main.GetComponent<BlurOptimized>().enabled = true;
         pauseGameText.SetActive(true);
 
+        //start snapshot and sound event
         pauseSound.start();
         pauseSnapshot.start();
     }
