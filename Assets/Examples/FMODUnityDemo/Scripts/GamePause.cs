@@ -20,6 +20,7 @@ public class GamePause : MonoBehaviour
     private Text timeText;
     private int hours;
     private float minutes;
+    private const float MINS_PER_SECOND = 10;
 
     //snapshot and sound path (set in editor)
     public EventRef pauseSnapshotPath;
@@ -63,7 +64,7 @@ public class GamePause : MonoBehaviour
     {
         if (isPaused) return;
 
-        minutes += .5f;
+        minutes += MINS_PER_SECOND * Time.deltaTime;
         if (minutes >= 60)
         {
             minutes = 0;
@@ -81,7 +82,7 @@ public class GamePause : MonoBehaviour
 
         //format time to string
         timeText.text = (hourWrapped < 10 ? "0" : "") + hourWrapped + ":" +
-                        (minutes < 10 ? "0" : "") + (int)minutes +
+                        ((int)minutes < 10 ? "0" : "") + (int)minutes +
                         (is_am ? "am" : "pm");
     }
 
