@@ -8,6 +8,7 @@ TagManager:
   - Dangerous
   - Smelly
   - Fire
+  - Tank
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Sand
   - Stone
   - Tank
-  - 
+  - Player
   - 
   - 
   - 

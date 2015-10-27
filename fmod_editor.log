@@ -59,8 +59,6 @@
 [LOG] SystemI::close                           : Free emulated output.
 [LOG] SystemI::close                           : Free channel pool.
 [LOG] SystemI::close                           : Remove miscllaneous DSP stuff.
-[LOG] Global::decRef                           : Shut down streamer and FMOD_NONBLOCKING and FileSystem thread.
-[LOG] Global::decRef                           : Shut down file system.
 [LOG] SystemI::close                           : done.
 
 [LOG] System::create                           : Header version = 1.07.00. Current version = 1.07.01.

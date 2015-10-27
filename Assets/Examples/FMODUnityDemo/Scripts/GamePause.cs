@@ -7,8 +7,9 @@ using ImageEffects;
 
 /*
 * Handles pausing and unpausing the game (press escape or P to toggle).
-* A pause snapshot instance and sound instance is created at runtime and 
-* are played when paused.
+*
+* This script is an example of a snapshot event, which is triggered when the
+* game is paused.
 */
 
 public class GamePause : MonoBehaviour
