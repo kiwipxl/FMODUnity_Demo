@@ -17,11 +17,6 @@ public class GamePause : MonoBehaviour
     public static bool isPaused = false;
     private GameObject pauseGameText;
 
-    private Text timeText;
-    private int hours;
-    private float minutes;
-    private const float MINS_PER_SECOND = 10;
-
     //snapshot and sound path (set in editor)
     public EventRef pauseSnapshotPath;
     public EventRef pauseSoundPath;
@@ -39,14 +34,6 @@ public class GamePause : MonoBehaviour
         pauseGameText = GameObject.Find("pauseGameText");
 
         unPauseGame();
-
-        //get time text UI and set initial time to current machine time
-        timeText = GameObject.Find("timeText").GetComponent<Text>();
-
-        System.DateTime time = System.DateTime.Now;
-        minutes = time.Minute;
-        hours = time.Hour;
-        hours = 8;
     }
 
     private void Update()
@@ -56,34 +43,6 @@ public class GamePause : MonoBehaviour
 
         if (isPaused && Input.GetMouseButtonUp(0)) unPauseGame();
         if (Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape)) togglePause();
-
-        updateTime();
-    }
-
-    private void updateTime()
-    {
-        if (isPaused) return;
-
-        minutes += MINS_PER_SECOND * Time.deltaTime;
-        if (minutes >= 60)
-        {
-            minutes = 0;
-            ++hours;
-            if (hours > 24)
-            {
-                hours = 1;
-            }
-        }
-
-        //format time
-        bool is_am = hours < 12;
-        if (hours == 24) is_am = true;
-        int hourWrapped = hours <= 12 ? hours : hours - 12;
-
-        //format time to string
-        timeText.text = (hourWrapped < 10 ? "0" : "") + hourWrapped + ":" +
-                        ((int)minutes < 10 ? "0" : "") + (int)minutes +
-                        (is_am ? "am" : "pm");
     }
 
     public void togglePause()

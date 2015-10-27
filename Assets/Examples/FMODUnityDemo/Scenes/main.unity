@@ -8680,6 +8680,7 @@ GameObject:
   - 114: {fileID: 1116070427}
   - 114: {fileID: 1116070426}
   - 114: {fileID: 1116070425}
+  - 114: {fileID: 1116070428}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -8754,6 +8755,19 @@ MonoBehaviour:
     AllBanks: 1
   CollisionTag: 
   PreloadSamples: 0
+--- !u!114 &1116070428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116070422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4796c8ceb864c2b49b5aacea1782a168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  envEventPath:
+    Path: event:/Environment/Env Ambience
 --- !u!1 &1120134770
 GameObject:
   m_ObjectHideFlags: 0
@@ -18964,7 +18978,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: 1, g: .929411769, b: .709803939, a: 1}
+  m_Color: {r: .95588237, g: .902883351, b: .737997413, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -22382,13 +22396,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleEnginePath:
-    Path: event:/Tanks/Engine
+    Path: event:/Tanks/Idle Engine
   enginePath:
-    Path: event:/Tanks/Total Engine
+    Path: event:/Tanks/Engine
   treadRollingPath:
     Path: event:/Tanks/Tread Rolling
   tankExplosionPath:
-    Path: event:/Weapons/Tank Explode
+    Path: event:/Tanks/Tank Explode
 --- !u!65 &2051347428
 BoxCollider:
   m_ObjectHideFlags: 0
