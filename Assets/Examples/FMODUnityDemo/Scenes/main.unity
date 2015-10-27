@@ -8768,6 +8768,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   envEventPath:
     Path: event:/Environment/Env Ambience
+  envLight: {fileID: 1793255981}
+  dayColour: {r: .971304119, g: .985294104, b: .731725752, a: 0}
+  nightColour: {r: .472825438, g: .428200692, b: .808823526, a: 0}
 --- !u!1 &1120134770
 GameObject:
   m_ObjectHideFlags: 0
@@ -16401,7 +16404,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400084, guid: 05c98027197f10d48b41ecd91f0e49f3, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634407873}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.78393291e-05, y: -7.68808095e-05, z: .0325337835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18978,7 +18981,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: .95588237, g: .902883351, b: .737997413, a: 1}
+  m_Color: {r: .967241347, g: .970588207, b: .727941155, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

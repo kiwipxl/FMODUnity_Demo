@@ -8,10 +8,19 @@ public class EnvironmentSounds : MonoBehaviour
     public EventRef envEventPath;
     private EventInstance envEvent;
 
+    public Light envLight;
+    public Color dayColour;
+    public Color nightColour;
+
+    private const float DAY_SWITCH = 1.0f;
+    private float dayHourStart = 6.0f;
+    private float nightHourStart = 18.0f;
+
     private Text timeText;
     private int hours;
     private float minutes;
-    private const float MINS_PER_SECOND = 100;
+    private const float MINS_PER_SECOND = 10;
+    private const float MINS_PER_SECOND_SPEEDUP = 100;
 
     private void Start()
     {
@@ -41,7 +50,6 @@ public class EnvironmentSounds : MonoBehaviour
         System.DateTime time = System.DateTime.Now;
         minutes = time.Minute;
         hours = time.Hour;
-        hours = 8;
     }
 
     private void updateTime()
@@ -49,7 +57,9 @@ public class EnvironmentSounds : MonoBehaviour
         if (GamePause.isPaused) return;
 
         //calculate game time
-        minutes += MINS_PER_SECOND * Time.deltaTime;
+        if (Input.GetKey(KeyCode.O)) minutes += MINS_PER_SECOND_SPEEDUP * Time.deltaTime;
+        else minutes += MINS_PER_SECOND * Time.deltaTime;
+
         if (minutes >= 60)
         {
             minutes = 0;
@@ -68,5 +78,29 @@ public class EnvironmentSounds : MonoBehaviour
         timeText.text = (hourWrapped < 10 ? "0" : "") + hourWrapped + ":" +
                         ((int)minutes < 10 ? "0" : "") + (int)minutes +
                         (is_am ? "am" : "pm");
+
+        //calculate hours with floats instead of whole numbers.
+        float hoursF = hours + (minutes / 60.0f);
+
+        //calculate normalised time for lerping colours
+        float timeNormalised;
+        if (hoursF >= dayHourStart - DAY_SWITCH && hoursF <= nightHourStart - DAY_SWITCH)
+        {
+            timeNormalised = 0.0f;
+            if (hoursF >= dayHourStart - DAY_SWITCH && hoursF <= dayHourStart + DAY_SWITCH)
+            {
+                timeNormalised = 1 - (((hoursF - dayHourStart) / (DAY_SWITCH * 2.0f)) + (DAY_SWITCH / 2.0f));
+            }
+        }else {
+            timeNormalised = 1.0f;
+            if (hoursF >= nightHourStart - DAY_SWITCH && hoursF <= nightHourStart + DAY_SWITCH)
+            {
+                timeNormalised = ((hoursF - nightHourStart) / (DAY_SWITCH * 2.0f)) + (DAY_SWITCH / 2.0f);
+            }
+        }
+
+        //lerp day colour and night colour based on normalised time
+        Color envColour = Color.Lerp(dayColour, nightColour, timeNormalised);
+        envLight.color = envColour;
     }
 }
