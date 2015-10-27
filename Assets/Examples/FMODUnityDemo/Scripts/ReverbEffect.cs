@@ -15,7 +15,7 @@ public class ReverbEffect : MonoBehaviour
         reverb.setProperties(ref props);
 
         VECTOR pos = RuntimeUtils.ToFMODVector(transform.position);
-        float max_dist = radius * 20.0f;
+        float max_dist = radius * 2.0f;
         float min_dist = max_dist / 2.0f;
         reverb.set3DAttributes(ref pos, min_dist, max_dist);
 	}
