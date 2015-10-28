@@ -8112,7 +8112,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1109269205}
   - 114: {fileID: 1109269206}
-  - 114: {fileID: 1109269207}
   m_Layer: 0
   m_Name: cameraRig
   m_TagString: Untagged
@@ -8146,17 +8145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTank: {fileID: 2051347421}
   cameraSpeed: .100000001
---- !u!114 &1109269207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109269204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1116070422
 GameObject:
   m_ObjectHideFlags: 0
@@ -8189,6 +8177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreenGroup: {fileID: 948833168}
+  playerHuman: {fileID: 0}
   pauseSnapshotPath:
     Path: snapshot:/HUDOR
   pauseSoundPath:
@@ -9875,6 +9864,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1180588446}
   m_Mesh: {fileID: 4300000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+--- !u!1 &1180946938 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 139106, guid: 446541c40218577448685f18406797b0, type: 2}
+  m_PrefabInternal: {fileID: 320505395}
+--- !u!114 &1180946940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180946938}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403b2aa7e086f27408d4e3ff312ca8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downsample: 2
+  blurSize: 2
+  blurIterations: 1
+  blurType: 0
+  blurShader: {fileID: 4800000, guid: 9198929a7cc9d2146aa2a15a114270c6, type: 3}
 --- !u!1 &1181476600
 GameObject:
   m_ObjectHideFlags: 0
@@ -14106,7 +14115,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400084, guid: 05c98027197f10d48b41ecd91f0e49f3, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634407873}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.78393291e-05, y: -7.68808095e-05, z: .0325337835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18587,6 +18596,7 @@ GameObject:
   - 114: {fileID: 2051347425}
   - 114: {fileID: 2051347424}
   - 114: {fileID: 2051347426}
+  - 114: {fileID: 2051347427}
   m_Layer: 10
   m_Name: tank
   m_TagString: Tank
@@ -18682,6 +18692,17 @@ MonoBehaviour:
     Path: event:/Tanks/Tread Rolling
   tankExplosionPath:
     Path: event:/Tanks/Tank Explode
+--- !u!114 &2051347427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051347421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2051347428
 BoxCollider:
   m_ObjectHideFlags: 0

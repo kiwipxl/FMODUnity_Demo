@@ -82,8 +82,8 @@ public class TankAudio : MonoBehaviour
 
     public void playTankExplosion()
     {
-        //play an explosion sound once and forget about it
-        RuntimeManager.PlayOneShot(tankExplosionPath, Camera.main.transform.position);
+        //play an explosion sound once on the tank and then forget about it
+        RuntimeManager.PlayOneShot(tankExplosionPath, transform.position);
     }
 
     private void OnTriggerStay(Collider col)

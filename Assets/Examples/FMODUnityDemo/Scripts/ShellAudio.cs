@@ -23,8 +23,8 @@ public class ShellAudio : MonoBehaviour
 
     public void playShellFire()
     {
-        //play shell fire sound once and forget about it
-        RuntimeManager.PlayOneShot(shellFirePath, Camera.main.transform.position);
+        //play shell fire sound once on the tank and then forget about it
+        RuntimeManager.PlayOneShot(shellFirePath, transform.position);
     }
 
     public void playShellExplosion(Vector3 pos)

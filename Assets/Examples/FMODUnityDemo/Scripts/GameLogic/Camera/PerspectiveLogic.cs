@@ -17,6 +17,9 @@ namespace GameLogic
         public GameObject playerTank;
         public static bool isPlayerRig = true;
 
+        private FMODUnity.Listener humanListener;
+        private FMODUnity.Listener tankListener;
+
         //components
         private ThirdPersonUserControl playerUserControl;
         private TankMovement tankMovement;
@@ -26,6 +29,10 @@ namespace GameLogic
             //get components
             playerUserControl = playerHuman.GetComponent<ThirdPersonUserControl>();
             tankMovement = playerTank.GetComponent<TankMovement>();
+
+            //get fmod listeners
+            humanListener = playerHuman.GetComponent<FMODUnity.Listener>();
+            tankListener = playerTank.GetComponent<FMODUnity.Listener>();
 
             updateRig();
         }
@@ -64,10 +71,13 @@ namespace GameLogic
             //is the player's rig.
 
             playerCameraRig.SetActive(isPlayerRig);
-            playerUserControl.enableInput = isPlayerRig;
-
             tankCameraRig.SetActive(!isPlayerRig);
+
+            playerUserControl.enableInput = isPlayerRig;
             tankMovement.enableInput = !isPlayerRig;
+
+            humanListener.enabled = isPlayerRig;
+            tankListener.enabled = !isPlayerRig;
         }
     }
 };
