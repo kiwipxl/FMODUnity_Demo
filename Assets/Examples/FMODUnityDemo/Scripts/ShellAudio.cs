@@ -14,7 +14,7 @@ public class ShellAudio : MonoBehaviour
     public EventRef shellFirePath;
     public EventRef shellExplosionPath;
 
-    private GameLogic.TankShooting tankShooting;
+    private GameLogic.TankShooting tankShooting;    //tank shooting component
 
     private void Start()
     {
@@ -27,13 +27,12 @@ public class ShellAudio : MonoBehaviour
         RuntimeManager.PlayOneShot(shellFirePath, Camera.main.transform.position);
     }
 
-    public void playShellExplosion(float volume)
+    public void playShellExplosion(Vector3 pos)
     {
-        //creates a shell explosion instance and sets it's position to the camera (where the
-        //listener is) to fake a 2D sound
+        //creates a one time shell explosion sound and
+        //sets it's position to where the shell exploded.
         EventInstance ev = RuntimeManager.CreateInstance(shellExplosionPath);
-        ev.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
-        ev.setVolume(volume);
+        ev.set3DAttributes(RuntimeUtils.To3DAttributes(pos));
         ev.start();
         ev.release();
     }

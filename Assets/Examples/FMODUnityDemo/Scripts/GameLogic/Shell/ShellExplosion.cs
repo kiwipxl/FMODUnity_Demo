@@ -56,11 +56,7 @@ namespace GameLogic
             // Play the particle system.
             m_ExplosionParticles.Play();
 
-            //temp
-            Vector3 tankPos = tankParent.transform.position;
-            float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - tankPos.x, 2) + Mathf.Pow(transform.position.z - tankPos.z, 2));
-            float volume = 1.0f - (Mathf.Min(dist, 30.0f) / 30.0f);
-            GetComponent<ShellAudio>().playShellExplosion(volume);
+            GetComponent<ShellAudio>().playShellExplosion(transform.position);
 
             // Once the particles have finished, destroy the gameobject they are on.
             Destroy (m_ExplosionParticles.gameObject, m_ExplosionParticles.duration);

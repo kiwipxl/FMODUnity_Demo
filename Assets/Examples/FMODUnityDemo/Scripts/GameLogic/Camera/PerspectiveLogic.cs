@@ -1,21 +1,29 @@
 ﻿using UnityEngine;
 
+/*
+* Handles switching from the player human mode and the tank game mode.
+*/
+
 namespace GameLogic
 {
     public class PerspectiveLogic : MonoBehaviour
     {
+        //player and tank camera rigs set in editor
         public GameObject playerCameraRig;
         public GameObject tankCameraRig;
 
+        //player and tank objects set in editor
         public GameObject playerHuman;
         public GameObject playerTank;
         public static bool isPlayerRig = true;
 
+        //components
         private ThirdPersonUserControl playerUserControl;
         private TankMovement tankMovement;
 
         private void Start()
         {
+            //get components
             playerUserControl = playerHuman.GetComponent<ThirdPersonUserControl>();
             tankMovement = playerTank.GetComponent<TankMovement>();
 
@@ -24,6 +32,8 @@ namespace GameLogic
 
         private void Update()
         {
+            //switch modes if V key is pressed
+            //and the game isn't paused.
             if (!GamePause.isPaused && Input.GetKeyUp(KeyCode.V))
             {
                 isPlayerRig = !isPlayerRig;
@@ -32,9 +42,10 @@ namespace GameLogic
 
             if (!isPlayerRig)
             {
-                tankCameraRig.transform.position = playerTank.transform.position;
+                //tankCameraRig.transform.position = playerTank.transform.position;
             }
 
+            //lock cursor's state and visibility depending on if the game is paused or not
             if (GamePause.isPaused)
             {
                 Cursor.lockState = CursorLockMode.None;
@@ -49,6 +60,9 @@ namespace GameLogic
 
         private void updateRig()
         {
+            //set active and enable/disable input depending on whether or not it
+            //is the player's rig.
+
             playerCameraRig.SetActive(isPlayerRig);
             playerUserControl.enableInput = isPlayerRig;
 

@@ -50,7 +50,7 @@ public class TankAudio : MonoBehaviour
         else
         {
             //tank is being controlled, fake a 2D sound by setting the audio position to the camera listener position
-            idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
+            idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.parent.position));
         }
     }
 
