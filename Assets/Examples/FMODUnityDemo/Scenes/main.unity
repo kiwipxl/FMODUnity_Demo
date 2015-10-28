@@ -7626,7 +7626,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 16.7999992, y: -56.7999992}
+  m_AnchoredPosition: {x: -21.7000008, y: -52}
   m_SizeDelta: {x: 140, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1054506804
@@ -7664,7 +7664,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3d7fe0a26ba72d949874021dc3d6995e, type: 3}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -8111,7 +8111,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1109269205}
-  - 114: {fileID: 1109269206}
   m_Layer: 0
   m_Name: cameraRig
   m_TagString: Untagged
@@ -8132,19 +8131,6 @@ Transform:
   - {fileID: 496373224}
   m_Father: {fileID: 91458376}
   m_RootOrder: 1
---- !u!114 &1109269206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109269204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e26b621854da943aeca10c9a73880c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTank: {fileID: 2051347421}
-  cameraSpeed: .100000001
 --- !u!1 &1116070422
 GameObject:
   m_ObjectHideFlags: 0
@@ -8205,6 +8191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdf6a87d6c55ef4b8a5b72bc51067da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameoverScreenGroup: {fileID: 1035776840}
 --- !u!114 &1116070426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8220,6 +8207,7 @@ MonoBehaviour:
   tankCameraRig: {fileID: 1109269204}
   playerHuman: {fileID: 1253868330}
   playerTank: {fileID: 2051347421}
+  modeText: {fileID: 1054506805}
 --- !u!114 &1116070427
 MonoBehaviour:
   m_ObjectHideFlags: 0

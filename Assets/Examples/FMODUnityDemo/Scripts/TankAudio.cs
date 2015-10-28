@@ -42,16 +42,8 @@ public class TankAudio : MonoBehaviour
         if (collidingLayers.contains("Water")) treadRolling.setParameterValue("T_Surface", 1);
         collidingLayers.reset();
 
-        if (GameLogic.PerspectiveLogic.isPlayerRig)
-        {
-            //player is being controlled, set the idle engine to the position of the player.
-            idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
-        }
-        else
-        {
-            //tank is being controlled, fake a 2D sound by setting the audio position to the camera listener position
-            idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.parent.position));
-        }
+        //set idle engine position to the position of the tank
+        idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
     }
 
     private void OnDisable()

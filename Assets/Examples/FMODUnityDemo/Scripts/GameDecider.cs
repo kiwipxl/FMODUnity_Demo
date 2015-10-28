@@ -6,11 +6,15 @@ using System.Runtime.InteropServices;
 
 public class GameDecider : MonoBehaviour
 {
-    private void Start() {
+    public GameObject gameoverScreenGroup;
 
+    private void Start()
+    {
+        gameoverScreenGroup.SetActive(false);
     }
 
-    private void Update() {
+    private void Update()
+    {
 
 	}
 }

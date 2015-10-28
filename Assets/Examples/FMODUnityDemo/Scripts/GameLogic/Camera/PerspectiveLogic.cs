@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /*
 * Handles switching from the player human mode and the tank game mode.
@@ -8,17 +9,23 @@ namespace GameLogic
 {
     public class PerspectiveLogic : MonoBehaviour
     {
-        //player and tank camera rigs set in editor
+        //camera rigs set in editor
         public GameObject playerCameraRig;
         public GameObject tankCameraRig;
 
-        //player and tank objects set in editor
+        //player and tank set in editor
         public GameObject playerHuman;
         public GameObject playerTank;
-        public static bool isPlayerRig = true;
 
+        //ui
+        public Text modeText;
+        
+        //listeners set in editor
         private FMODUnity.Listener humanListener;
         private FMODUnity.Listener tankListener;
+
+        //misc
+        public static bool isPlayerRig = true;
 
         //components
         private ThirdPersonUserControl playerUserControl;
@@ -34,7 +41,7 @@ namespace GameLogic
             humanListener = playerHuman.GetComponent<FMODUnity.Listener>();
             tankListener = playerTank.GetComponent<FMODUnity.Listener>();
 
-            updateRig();
+            updatePerspective();
         }
 
         private void Update()
@@ -44,12 +51,13 @@ namespace GameLogic
             if (!GamePause.isPaused && Input.GetKeyUp(KeyCode.V))
             {
                 isPlayerRig = !isPlayerRig;
-                updateRig();
+                updatePerspective();
             }
 
+            //move the player tank rig to the tank's position if the tank is being controlled
             if (!isPlayerRig)
             {
-                //tankCameraRig.transform.position = playerTank.transform.position;
+                tankCameraRig.transform.position = playerTank.transform.position;
             }
 
             //lock cursor's state and visibility depending on if the game is paused or not
@@ -57,15 +65,17 @@ namespace GameLogic
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                modeText.enabled = false;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                modeText.enabled = true;
             }
         }
 
-        private void updateRig()
+        private void updatePerspective()
         {
             //set active and enable/disable input depending on whether or not it
             //is the player's rig.
@@ -78,6 +88,9 @@ namespace GameLogic
 
             humanListener.enabled = isPlayerRig;
             tankListener.enabled = !isPlayerRig;
+
+            if (isPlayerRig) modeText.text = "Player";
+            else modeText.text = "Tank";
         }
     }
 };
