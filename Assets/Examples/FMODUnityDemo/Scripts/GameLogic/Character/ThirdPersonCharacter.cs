@@ -1,6 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
+/*
+* Handles the logic for a third person character.
+*
+* Note: This script was taken from the Unity Standard Assets package.
+*/
+
 namespace GameLogic
 {
     public class ThirdPersonCharacter : MonoBehaviour

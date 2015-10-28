@@ -1,7 +1,12 @@
 using UnityEngine;
 
+/*
+* Used in combination with the FreeLookCam for handling the player's third person camera.
+*
+* Note: This script was taken from the Unity Standard Assets package.
+*/
 
-namespace FMODUnityDemo.Cameras
+namespace GameLogic
 {
     public abstract class PivotBasedCameraRig : AbstractTargetFollower
     {

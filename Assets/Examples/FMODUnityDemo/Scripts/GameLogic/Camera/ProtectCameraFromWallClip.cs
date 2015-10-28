@@ -2,7 +2,13 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-namespace FMODUnityDemo.Cameras
+/*
+* Attempts to move the camera away from any obstacles in view.
+*
+* Note: This script was taken from the Unity Standard Assets package.
+*/
+
+namespace GameLogic
 {
     public class ProtectCameraFromWallClip : MonoBehaviour
     {

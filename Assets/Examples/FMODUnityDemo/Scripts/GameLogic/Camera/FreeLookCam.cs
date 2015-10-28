@@ -1,10 +1,15 @@
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
-
 #endif
 
-namespace FMODUnityDemo.Cameras
+/*
+* A free look camera used for the player third person camera.
+*
+* Note: This script was taken from the Unity Standard Assets package.
+*/
+
+namespace GameLogic
 {
     public class FreeLookCam : PivotBasedCameraRig
     {
