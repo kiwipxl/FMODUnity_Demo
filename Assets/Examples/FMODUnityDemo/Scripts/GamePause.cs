@@ -38,9 +38,6 @@ public class GamePause : MonoBehaviour
 
     private void Update()
     {
-        //sets the pause sound position to the camera (where the listener is) to fake a 2D sound
-        pauseSound.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
-
         if (isPaused && Input.GetMouseButtonUp(0)) unPauseGame();
         if (Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape)) togglePause();
     }

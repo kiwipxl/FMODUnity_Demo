@@ -34,9 +34,6 @@ public class StepSounds : MonoBehaviour {
     }
 
     private void Update() {
-        //always position the event at the camera position (where the listener is) so no 3d panning occurs
-        stepEvent.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
-
         //if the player is colliding with any of these layers, change their surface param
         if (collidingLayers.contains("Sand"))  surfaceParam.setValue(1);
         if (collidingLayers.contains("Stone")) surfaceParam.setValue(3);

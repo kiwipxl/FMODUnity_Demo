@@ -12,9 +12,9 @@
 [LOG] Thread::initThread                       : - Stacksize 0.  Stack pointer 0000000000000000 : usesemaphore = 0 : sleeptime = 0
 [LOG] Thread::callback                         : * FMOD (WASAPI) feeder thread started
 [LOG] Thread::initThread                       : Initializing FMOD mixer thread.  priority 2
-[LOG] OutputWASAPI::feederUpdate               : WASAPI feeder thread set to 'Audio' characteristic
 [LOG] Thread::initThread                       : - Stacksize 49152.  Stack pointer 0000000000000000 : usesemaphore = 1 : sleeptime = 0
 [LOG] Thread::callback                         : * FMOD mixer thread started
+[LOG] OutputWASAPI::feederUpdate               : WASAPI feeder thread set to 'Audio' characteristic
 [LOG] SystemI::init                            : Set up emulated output
 [LOG] SystemI::init                            : create the channel pool
 [LOG] SystemI::init                            : Set up streamer
@@ -25,6 +25,18 @@
 [LOG] Thread::initThread                       : - Stacksize 65536.  Stack pointer 0000000000000000 : usesemaphore = 0 : sleeptime = 1
 [LOG] Thread::callback                         : * FMOD Studio load thread started
 [LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[ERR] FMOD_OS_File_Open                        : GetLastError = 00000020 (filename = C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank)
+[ERR] BankLoader::openBankFile                 : Failed to open file 'C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank'
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
 [LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
 [WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
 [WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
@@ -40,6 +52,75 @@
 [WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
 [WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
 [LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[ERR] FMOD_OS_File_Open                        : GetLastError = 00000020 (filename = C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank)
+[ERR] BankLoader::openBankFile                 : Failed to open file 'C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank'
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[ERR] FMOD_OS_File_Open                        : GetLastError = 00000020 (filename = C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank)
+[ERR] BankLoader::openBankFile                 : Failed to open file 'C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank'
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[WRN] ObjectLookup::get                        : Lookup failed for BusWithSends: {9aadc352-60e2-4466-8020-ee455ef11a85}
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
+[LOG] Manager::finishLoadBank                  : Bank with guid {aed73c3e-d60d-4909-ab4c-9cdd8eef0243} has already been loaded[LOG] SystemI::createSound                     : filename = C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank : mode 0a010202
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] OutputSoftware::createSample             : lengthpcm 0, lengthbytes 0, channels 0, format 0, freq 0, mode 00000000
+[LOG] SystemI::createSound                     : setdata soundi = 000000002F0E0B98 : node = 000000002F1E82F0
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000023CBA150.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000000002F0E0B98
+[LOG] SystemI::createSoundInternal             :     filename = C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank : mode 0a010202
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 216
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1445632
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 332448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000002F1E83F8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Format has 1 subsounds.
+[LOG] SystemI::createSoundInternal             :     Create as FMOD_CREATESAMPLE
+[LOG] SystemI::createSoundInternal             :     Multi-sample sound (1 subsounds), create a sample container.
+[LOG] SystemI::createSoundInternal             :     creating subsound 0/1
+[LOG] SystemI::createSample                    :     mode 0a010202 length 460800 samples, lengthbytes 115424
+[LOG] SystemI::createSample                    :     channels = 2
+[LOG] SystemI::createSample                    :     output = 000000002F0E00A8
+[LOG] OutputSoftware::createSample             :     lengthpcm 460800, lengthbytes 115424, channels 2, format 2, freq 48000, mode 0a01020a
+[LOG] SystemI::createSoundInternal             :     done.  OpenState now = FMOD_OPENSTATE_READY.
+
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000000002F0E0B98
+[LOG] SoundI::release                          : (null) (000000002F0E0B98)
+[LOG] SoundI::release                          : release subsounds. (000000002F0E0B98)
+[LOG] SoundI::release                          :     (null) (000000002F0E0D28)
+[LOG] SoundI::release                          : release codec. (000000002F0E0B98)
 [LOG] Thread::callback                         : * FMOD Studio load thread finished
 [LOG] Thread::close                            : FMOD Studio load thread thread destroyed
 [LOG] LiveUpdate::release                      : 
@@ -59,8 +140,6 @@
 [LOG] SystemI::close                           : Free emulated output.
 [LOG] SystemI::close                           : Free channel pool.
 [LOG] SystemI::close                           : Remove miscllaneous DSP stuff.
-[LOG] Global::decRef                           : Shut down streamer and FMOD_NONBLOCKING and FileSystem thread.
-[LOG] Global::decRef                           : Shut down file system.
 [LOG] SystemI::close                           : done.
 
 [LOG] System::create                           : Header version = 1.07.00. Current version = 1.07.01.
