@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /*
-* A simple helper class to add layers and check if they contain
+* A simple, fast helper class to add layers and check if they contain
 * other layers.
 * For example, when colliding with something, you can add the collision
 * layer number to this object and then later you can check if

@@ -3,12 +3,12 @@ using FMOD.Studio;
 using FMODUnity;
 
 /*
-* Handles tank related audio (engine sounds / explosions)
+* Handles tank related audio (engine sounds / explosions).
 */
 
 public class TankAudio : MonoBehaviour
 {
-    //engine and explosion event paths (set in Unity editor)
+    //engine and explosion event paths (set in Unity editor to their respective paths)
     public EventRef idleEnginePath;
     public EventRef enginePath;
     public EventRef treadRollingPath;
@@ -26,7 +26,7 @@ public class TankAudio : MonoBehaviour
     {
         tankShooting = GetComponent<GameLogic.TankShooting>();
 
-        //create engine event instances from event refs
+        //create engine event instances from event paths, which is set in the editor
         idleEngine = RuntimeManager.CreateInstance(idleEnginePath);
         idleEngine.start();
         engine = RuntimeManager.CreateInstance(enginePath);
@@ -37,19 +37,21 @@ public class TankAudio : MonoBehaviour
 
     private void Update()
     {
-        //set surface parameter values for the tank tread sound
+        //set the surface parameter value for the tank tread sound
         if (collidingLayers.contains("Sand"))  treadRolling.setParameterValue("T_Surface", 0);
         if (collidingLayers.contains("Water")) treadRolling.setParameterValue("T_Surface", 1);
         collidingLayers.reset();
 
-        //todo (rich):
-        //3d panner can't be removed in engine (FMOD Studio)!
-        engine.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
-
-        //set the position of the audio to the position of the tank if the player is being controlled.
-        //if the tank is being controlled, then fake 2D by setting the audio position to the camera listener position
-        if (PerspectiveSwitch.isPlayerRig) idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
-        else                               idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
+        //if the player is being controlled, set the idle engine to the position of the player.
+        //if the tank is being controlled, then fake a 2D sound by setting the audio position to the camera listener position
+        if (GameLogic.PerspectiveLogic.isPlayerRig)
+        {
+            idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+        }
+        else
+        {
+            idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
+        }
     }
 
     private void OnDisable()
@@ -62,13 +64,17 @@ public class TankAudio : MonoBehaviour
 
     public void updateDriving(float normalisedSpeed, float forwardInput, float turnInput)
     {
-        //these calculations should probably be normalised in FMOD Studio!
+        //todo: normalise these in studio
 
+        //set tread rolling speed to forward input (1 if moving forward, 0 otherwise)
         treadRolling.setParameterValue("Speed", Mathf.Abs(forwardInput) * 1500.0f);
 
+        //set the tank engine RPM to the normalised speed
         engine.setParameterValue("RPM", normalisedSpeed * 2000.0f);
+        //set engine load to forward input
         engine.setParameterValue("Load", forwardInput);
 
+        //set idle engine RPM to the inverse of the normalised speed of the tank
         idleEngine.setParameterValue("RPM", (1 - normalisedSpeed) * 800.0f);
     }
 

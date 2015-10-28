@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 
 /*
 * Handles step sounds for the player character on different surfaces
 */
+
 public class StepSounds : MonoBehaviour {
 
     public EventRef stepEventRef;
     private EventInstance stepEvent;
-    private ParameterInstance surfaceParam;
 
     private Animator anim;
     private bool onGround = false;
@@ -22,22 +21,20 @@ public class StepSounds : MonoBehaviour {
         //create instance of step sound event
         stepEvent = RuntimeManager.CreateInstance(stepEventRef);
         stepEvent.start();
-
-        //get surface parameter, used when walking on different types of surfaces
-        stepEvent.getParameter("Surface", out surfaceParam);
     }
 
-    //called from the animation window once the player's foot is on the ground
+    //called from the animation tab in the editor once the player's foot is on the ground.
     public void footDown() {
-        //if the player is on the ground and is moving forward, play the step sound
+        //make sure the player is on the ground and is moving forward
+        //and then play the step sound if they are.
         if (onGround && anim.GetFloat("Forward") >= .1f) stepEvent.start();
     }
 
     private void Update() {
-        //if the player is colliding with any of these layers, change their surface param
-        if (collidingLayers.contains("Sand"))  surfaceParam.setValue(1);
-        if (collidingLayers.contains("Stone")) surfaceParam.setValue(3);
-        if (collidingLayers.contains("Water")) surfaceParam.setValue(0);
+        //if the player is colliding with any of these layers, change their surface param.
+        if (collidingLayers.contains("Sand"))  stepEvent.setParameterValue("Surface", 1);
+        if (collidingLayers.contains("Stone")) stepEvent.setParameterValue("Surface", 3);
+        if (collidingLayers.contains("Water")) stepEvent.setParameterValue("Surface", 0);
         collidingLayers.reset();
 
         //if not on ground last frame, but now on ground, play

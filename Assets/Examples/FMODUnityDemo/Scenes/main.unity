@@ -7587,6 +7587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09552673c76c6154098dcb9d9536994e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &961517539 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144300, guid: 446541c40218577448685f18406797b0, type: 2}
+  m_PrefabInternal: {fileID: 320505395}
 --- !u!1 &971610698
 GameObject:
   m_ObjectHideFlags: 0
@@ -8745,6 +8749,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c084659a7711b340931064d62368531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCameraRig: {fileID: 961517539}
+  tankCameraRig: {fileID: 1109269204}
+  playerHuman: {fileID: 1253868330}
+  playerTank: {fileID: 2051347421}
 --- !u!114 &1116070427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8776,9 +8784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   envEventPath:
     Path: event:/Environment/Env Ambience
-  envLight: {fileID: 1793255981}
-  dayColour: {r: .971304119, g: .985294104, b: .731725752, a: 0}
-  nightColour: {r: .472825438, g: .428200692, b: .808823526, a: 0}
+  envObj: {fileID: 0}
 --- !u!1 &1120134770
 GameObject:
   m_ObjectHideFlags: 0
@@ -12004,7 +12010,7 @@ GameObject:
   - 114: {fileID: 1253868331}
   - 136: {fileID: 1253868338}
   m_Layer: 11
-  m_Name: characterBase
+  m_Name: playerHuman
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21050,34 +21056,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1913050118}
   m_Mesh: {fileID: 4300000, guid: 50912a5d3c9322a46afa5ca162962a5c, type: 3}
---- !u!1 &1915823649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1915823650}
-  m_Layer: 0
-  m_Name: character
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1915823650
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1915823649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2016298486}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1 &1920470353
 GameObject:
   m_ObjectHideFlags: 0
@@ -21269,6 +21247,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1929457389}
+  - 114: {fileID: 1929457390}
   m_Layer: 0
   m_Name: environment
   m_TagString: Untagged
@@ -21302,6 +21281,20 @@ Transform:
   - {fileID: 1752636871}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &1929457390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929457388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e737590f1ec53de41a42d6aebf936bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  envLight: {fileID: 1793255981}
+  dayColour: {r: .995943189, g: 1, b: .705882311, a: 0}
+  nightColour: {r: .390462846, g: .304660439, b: .845588207, a: 0}
 --- !u!1 &1951710746
 GameObject:
   m_ObjectHideFlags: 0
@@ -21979,8 +21972,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 292928491}
-  m_Father: {fileID: 1915823650}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &2023365530
 GameObject:
   m_ObjectHideFlags: 0
@@ -22324,7 +22317,7 @@ GameObject:
   - 114: {fileID: 2051347424}
   - 114: {fileID: 2051347426}
   m_Layer: 10
-  m_Name: tank
+  m_Name: playerTank
   m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -45,7 +45,9 @@ public class ReverbEffect : MonoBehaviour
 
     private void Update()
     {
-        float intensity = Mathf.Max(calcIntensity(player), calcIntensity(playerTank));
+        float intensity;
+        if (GameLogic.PerspectiveLogic.isPlayerRig) intensity = calcIntensity(player);
+        else                                        intensity = calcIntensity(playerTank);
 
         reverbEvent.setParameterValue("Intensity", intensity);
 
