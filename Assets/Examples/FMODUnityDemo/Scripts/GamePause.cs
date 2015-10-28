@@ -17,9 +17,6 @@ public class GamePause : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseScreenGroup;
 
-    public GameObject playerHuman;
-    private Listener humanListener;
-
     //snapshot and sound path (set in editor)
     public EventRef pauseSnapshotPath;
     public EventRef pauseSoundPath;
