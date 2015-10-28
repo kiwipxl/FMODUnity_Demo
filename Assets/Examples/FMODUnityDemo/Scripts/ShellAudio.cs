@@ -4,7 +4,8 @@ using FMODUnity;
 
 /*
 * Handles all shell-related audio (shooting/explosions).
-* The play functions are called from game logic scripts
+*
+* The play functions are called from game logic scripts.
 */
 
 public class ShellAudio : MonoBehaviour
@@ -22,6 +23,7 @@ public class ShellAudio : MonoBehaviour
 
     public void playShellFire()
     {
+        //play shell fire sound once and forget about it
         RuntimeManager.PlayOneShot(shellFirePath, Camera.main.transform.position);
     }
 

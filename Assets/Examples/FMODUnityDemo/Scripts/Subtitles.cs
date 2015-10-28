@@ -20,8 +20,8 @@ using FMODUnity;
 * Any named markers found will change the text of the UI Text component
 */
 
-public class Subtitles : MonoBehaviour {
-
+public class Subtitles : MonoBehaviour
+{
     public EventRef[] subtitleEventList;
 
     private static Text subtitleText;
@@ -45,10 +45,8 @@ public class Subtitles : MonoBehaviour {
 
         if (currentSubtitle != null)
         {
-            //set the subtitle event sound position to the camera position (where the listener is) to fake a 2D sound
-            currentSubtitle.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
-
-            //check if the current subtitle has ended
+            //if the current subtitle has stopped playing, then set the subtitle
+            //text to nothing
             PLAYBACK_STATE playbackState;
             currentSubtitle.getPlaybackState(out playbackState);
             if (playbackState == PLAYBACK_STATE.STOPPED) subtitleText.text = "";
@@ -59,11 +57,10 @@ public class Subtitles : MonoBehaviour {
     {
         if (data.type == EVENT_CALLBACK_TYPE.TIMELINE_MARKER)
         {
-            //if a marker has been hit, then create the marker properties
-            //data and set the subtitles text to the name of the marker
-
+            //if a marker has been hit, then create a marker properties instance
             MarkerProperties marker = data.createMarker();
 
+            //set subtitle text to the marker name
             subtitleText.text = marker.name.ToUpper();
         }
     }

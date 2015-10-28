@@ -15,7 +15,7 @@ using ImageEffects;
 public class GamePause : MonoBehaviour
 {
     public static bool isPaused = false;
-    private GameObject pauseGameText;
+    public GameObject pauseScreenGroup;
 
     //snapshot and sound path (set in editor)
     public EventRef pauseSnapshotPath;
@@ -30,8 +30,6 @@ public class GamePause : MonoBehaviour
         //creates pause snapshot and sound event instances
         pauseSnapshot = RuntimeManager.CreateInstance(pauseSnapshotPath);
         pauseSound = RuntimeManager.CreateInstance(pauseSoundPath);
-
-        pauseGameText = GameObject.Find("pauseGameText");
 
         unPauseGame();
     }
@@ -56,7 +54,7 @@ public class GamePause : MonoBehaviour
 
         //disable blur on camera and "Game Paused" text
         Camera.main.GetComponent<BlurOptimized>().enabled = false;
-        pauseGameText.SetActive(false);
+        pauseScreenGroup.SetActive(false);
 
         //stop snapshot and sound event
         pauseSound.stop(STOP_MODE.IMMEDIATE);
@@ -71,7 +69,7 @@ public class GamePause : MonoBehaviour
 
         //enable blur on camera and "Game Paused" text
         Camera.main.GetComponent<BlurOptimized>().enabled = true;
-        pauseGameText.SetActive(true);
+        pauseScreenGroup.SetActive(true);
 
         //start snapshot and sound event
         pauseSound.start();

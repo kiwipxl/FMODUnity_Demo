@@ -4178,11 +4178,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1581957876}
-  m_RootOrder: 4
+  m_Father: {fileID: 948833169}
+  m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -198.300003, y: -49.7000008}
+  m_AnchoredPosition: {x: 312.700012, y: 161.299988}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &640141969
@@ -4826,7 +4826,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1581957876}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: -71, y: -109.600037}
@@ -6532,6 +6532,41 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 943688914}
+--- !u!1 &948833168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 948833169}
+  m_Layer: 5
+  m_Name: pauseScreenGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &948833169
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 948833168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 640141968}
+  - {fileID: 1852354188}
+  - {fileID: 1001229205}
+  m_Father: {fileID: 1581957876}
+  m_RootOrder: 3
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -221, y: -98}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &955067342
 GameObject:
   m_ObjectHideFlags: 0
@@ -7174,7 +7209,7 @@ GameObject:
   - 114: {fileID: 1001229207}
   - 114: {fileID: 1001229206}
   m_Layer: 5
-  m_Name: shortcutsText (1)
+  m_Name: shortcutsTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7190,11 +7225,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1581957876}
-  m_RootOrder: 5
+  m_Father: {fileID: 948833169}
+  m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -561, y: -261}
+  m_AnchoredPosition: {x: -50, y: -50}
   m_SizeDelta: {x: 550, y: 200}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1001229206
@@ -7328,7 +7363,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1581957876}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1037258150
 GameObject:
   m_ObjectHideFlags: 0
@@ -7960,6 +7995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7fa55d35814fd448326269b0945186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseScreenGroup: {fileID: 948833168}
   pauseSnapshotPath:
     Path: snapshot:/HUDOR
   pauseSoundPath:
@@ -8033,7 +8069,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   envEventPath:
     Path: event:/Environment/Env Ambience
-  envObj: {fileID: 1929457388}
 --- !u!1 &1120134770
 GameObject:
   m_ObjectHideFlags: 0
@@ -13672,11 +13707,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1109004096}
-  - {fileID: 1852354188}
   - {fileID: 743836945}
   - {fileID: 1020871385}
-  - {fileID: 640141968}
-  - {fileID: 1001229205}
+  - {fileID: 948833169}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -16944,11 +16977,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1581957876}
+  m_Father: {fileID: 948833169}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -163.300049, y: -105.699997}
+  m_AnchoredPosition: {x: -232.300049, y: 105.300003}
   m_SizeDelta: {x: 500, y: 99}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1852354189

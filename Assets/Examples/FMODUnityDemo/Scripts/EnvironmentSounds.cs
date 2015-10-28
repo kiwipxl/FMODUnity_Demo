@@ -2,28 +2,26 @@
 using FMOD.Studio;
 using FMODUnity;
 
+/*
+* Plays an ambient environmental event that changes according to the time of the day.
+*/
+
 public class EnvironmentSounds : MonoBehaviour
 {
-    public EventRef envEventPath;
-    private EventInstance envEvent;
+    public EventRef envEventPath;   //event path set in unity editor
 
-    public GameObject envObj;
-    private GameLogic.Environment env;
+    private EventInstance envEvent; //environment event instance
 
     private void Start()
     {
+        //create instance and start playing it
         envEvent = RuntimeManager.CreateInstance(envEventPath);
         envEvent.start();
-
-        env = envObj.GetComponent<GameLogic.Environment>();
-        if (env == null) Debug.LogError("Could not find 'Environment' component");
-        env.initTime();
     }
 
     private void Update()
     {
-        env.updateTime();
-
-        envEvent.setParameterValue("TimeOfDay", env.getHours());
+        //update the time of day parameter on the environment event
+        envEvent.setParameterValue("TimeOfDay", GameLogic.Environment.hours);
 	}
 }

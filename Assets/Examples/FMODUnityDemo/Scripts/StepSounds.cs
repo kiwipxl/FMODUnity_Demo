@@ -13,7 +13,7 @@ public class StepSounds : MonoBehaviour {
 
     private Animator anim;
     private bool onGround = false;
-    private CollidingLayers collidingLayers = new CollidingLayers();
+    private GameLogic.CollidingLayers collidingLayers = new GameLogic.CollidingLayers();
 
     private void Start() {
         anim = GetComponent<Animator>();
@@ -23,7 +23,7 @@ public class StepSounds : MonoBehaviour {
         stepEvent.start();
     }
 
-    //called from the animation tab in the editor once the player's foot is on the ground.
+    /* Called from the animation tab in the editor once the player's foot is on the ground. */
     public void footDown() {
         //make sure the player is on the ground and is moving forward
         //and then play the step sound if they are.

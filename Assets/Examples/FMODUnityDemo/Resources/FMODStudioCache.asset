@@ -22,22 +22,8 @@ MonoBehaviour:
   - {fileID: 11444766}
   - {fileID: 11497060}
   - {fileID: 11432442}
-  - {fileID: 11443086}
-  - {fileID: 11429672}
-  - {fileID: 11472370}
-  - {fileID: 11437524}
-  - {fileID: 11449150}
-  - {fileID: 11469338}
-  - {fileID: 11423288}
-  - {fileID: 11472444}
-  - {fileID: 11409982}
-  - {fileID: 11474172}
-  - {fileID: 11492154}
-  - {fileID: 11439730}
-  - {fileID: 11455028}
-  - {fileID: 11465914}
   MasterBankRef: {fileID: 11403554}
-  stringsBankWriteTime: 635816281336769552
+  stringsBankWriteTime: 635816390018975445
 --- !u!114 &11400032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,11 +320,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master
     Bank.bank
-  lastModified: 635816281339580723
-  LoadResult: 0
+  lastModified: 635816390019135669
+  LoadResult: 13
   FileSizes:
   - Name: Desktop
-    Value: 1778336
+    Value: 332672
   Exists: 1
 --- !u!114 &11403918
 MonoBehaviour:
@@ -981,8 +967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/UI/Reverb
   guid: b1e9a530de811649b17dbcc6eec12c4d
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -1909,8 +1894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/UI/HUDOR
   guid: 6fb8aa0ca5b5c1479198c93974f09ef9
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -2357,8 +2341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Weapons/Shell Fire
   guid: 3543dbec5f510641a01ccb004fba3a40
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3173,8 +3156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Tanks/Tread Rolling
   guid: 46df08d0127b0e4a99e41f24ee4878ac
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -3384,8 +3366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Character/Footsteps
   guid: bd8e32c55220f443b106e42d568e0b3f
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3589,8 +3570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Environment/Env Ambience
   guid: 2d2b309f2af70645ba67278f9f584c40
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -4167,8 +4147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: snapshot:/Health Warning
   guid: 47d6e29cfe33bf44a960a077c532869f
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4732,8 +4711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/UI/Health
   guid: d5c4736f26f5bc44a085edaa7b8b8908
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -5535,8 +5513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Tanks/Idle Engine
   guid: fd3fde53fa2ef6459f3f01ebc2f84b4b
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -5833,8 +5810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: snapshot:/HUDOR
   guid: 5b2135a4a3a1f242a696d1974e2693bb
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -6046,8 +6022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Weapons/Shell Explode
   guid: 3a2215828ec5e942860d7a06f6c9278b
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -6068,8 +6043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: snapshot:/Reverb
   guid: 740aa879672cb846882f654a8c422e05
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -6194,8 +6168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Tanks/Tank Explode
   guid: b1edcdf60f966446b39abe5947c621c6
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -7486,8 +7459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Tanks/Engine
   guid: bd424e63cb744c4aba3ff450b42e1851
-  Banks:
-  - {fileID: 11403554}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 0

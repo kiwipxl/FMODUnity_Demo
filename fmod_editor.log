@@ -25,9 +25,6 @@
 [LOG] Thread::initThread                       : - Stacksize 65536.  Stack pointer 0000000000000000 : usesemaphore = 0 : sleeptime = 1
 [LOG] Thread::callback                         : * FMOD Studio load thread started
 [LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
-[ERR] FMOD_OS_File_Open                        : GetLastError = 00000020 (filename = C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank)
-[ERR] BankLoader::openBankFile                 : Failed to open file 'C:/Users/marini/Desktop/Develop/FMODUnity_Demo/FMOD_Tanks\Build\Desktop\Master Bank.bank'
-[LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
 [LOG] Manager::readBank                        : fileversion = 68, compatVersion = 68 (oldest = 44, newest = 68)
 [WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
 [WRN] ObjectLookup::get                        : Lookup failed for BusWithInputs: {844be52d-e935-4dfc-a2b6-6947c42e73e3}
@@ -62,6 +59,8 @@
 [LOG] SystemI::close                           : Free emulated output.
 [LOG] SystemI::close                           : Free channel pool.
 [LOG] SystemI::close                           : Remove miscllaneous DSP stuff.
+[LOG] Global::decRef                           : Shut down streamer and FMOD_NONBLOCKING and FileSystem thread.
+[LOG] Global::decRef                           : Shut down file system.
 [LOG] SystemI::close                           : done.
 
 [LOG] System::create                           : Header version = 1.07.00. Current version = 1.07.01.

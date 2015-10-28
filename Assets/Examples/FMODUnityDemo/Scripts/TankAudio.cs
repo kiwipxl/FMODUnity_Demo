@@ -19,8 +19,8 @@ public class TankAudio : MonoBehaviour
     private EventInstance engine;
     private EventInstance treadRolling;
 
-    private GameLogic.TankShooting tankShooting;                        //tank shooting component
-    private CollidingLayers collidingLayers = new CollidingLayers();    //colliding layer mask
+    private GameLogic.TankShooting tankShooting;                                            //tank shooting component
+    private GameLogic.CollidingLayers collidingLayers = new GameLogic.CollidingLayers();    //colliding layer mask
 
     private void Start()
     {
@@ -42,14 +42,14 @@ public class TankAudio : MonoBehaviour
         if (collidingLayers.contains("Water")) treadRolling.setParameterValue("T_Surface", 1);
         collidingLayers.reset();
 
-        //if the player is being controlled, set the idle engine to the position of the player.
-        //if the tank is being controlled, then fake a 2D sound by setting the audio position to the camera listener position
         if (GameLogic.PerspectiveLogic.isPlayerRig)
         {
+            //player is being controlled, set the idle engine to the position of the player.
             idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
         }
         else
         {
+            //tank is being controlled, fake a 2D sound by setting the audio position to the camera listener position
             idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform.position));
         }
     }
@@ -62,6 +62,7 @@ public class TankAudio : MonoBehaviour
         treadRolling.stop(STOP_MODE.IMMEDIATE);
     }
 
+    /* Called from TankMovement component to update driving audio */
     public void updateDriving(float normalisedSpeed, float forwardInput, float turnInput)
     {
         //todo: normalise these in studio
@@ -71,6 +72,7 @@ public class TankAudio : MonoBehaviour
 
         //set the tank engine RPM to the normalised speed
         engine.setParameterValue("RPM", normalisedSpeed * 2000.0f);
+
         //set engine load to forward input
         engine.setParameterValue("Load", forwardInput);
 
@@ -80,6 +82,7 @@ public class TankAudio : MonoBehaviour
 
     public void playTankExplosion()
     {
+        //play an explosion sound once and forget about it
         RuntimeManager.PlayOneShot(tankExplosionPath, Camera.main.transform.position);
     }
 

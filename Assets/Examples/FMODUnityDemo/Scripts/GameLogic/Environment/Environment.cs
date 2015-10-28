@@ -14,18 +14,18 @@ namespace GameLogic
         public Color dayColour;
         public Color nightColour;
 
-        private const float TRANSITION_TIME = 1.0f; //the amount of hours it takes to transition from day/night
+        private const float TRANSITION_TIME = 2.0f; //the amount of hours it takes to transition from day/night
         private float dayHourStart = 6.0f;          //the hour (24 hour time) the day time transition starts
         private float nightHourStart = 18.0f;       //the hour (24 hour time) the night time transition starts
 
         private Text timeText;      //the UI text component
-        private int hours;          //current hour (24 hour time)
+        public static int hours;          //current hour (24 hour time)
         private float minutes;      //current minutes
 
         private const float MINS_PER_SECOND = 10;           //minutes per second that the time moves
-        private const float MINS_PER_SECOND_SPEEDUP = 100;  //when a speedup key is pressed, use this value per second instead
+        private const float MINS_PER_SECOND_SPEEDUP = 250;  //when a speedup key is pressed, use this value per second instead
 
-        public void initTime()
+        private void Start()
         {
             //get time text UI object
             timeText = GameObject.Find("timeText").GetComponent<Text>();
@@ -36,7 +36,7 @@ namespace GameLogic
             hours = time.Hour;
         }
 
-        public void updateTime()
+        private void Update()
         {
             if (GamePause.isPaused) return;
 
@@ -73,7 +73,7 @@ namespace GameLogic
                 timeNormalised = 0.0f;
                 if (hoursF >= dayHourStart - TRANSITION_TIME && hoursF <= dayHourStart + TRANSITION_TIME)
                 {
-                    timeNormalised = 1 - (((hoursF - dayHourStart) / (TRANSITION_TIME * 2.0f)) + (TRANSITION_TIME / 2.0f));
+                    timeNormalised = 1 - (((hoursF - dayHourStart) / (TRANSITION_TIME * 2.0f))) - .5f;
                 }
             }
             else
@@ -81,18 +81,13 @@ namespace GameLogic
                 timeNormalised = 1.0f;
                 if (hoursF >= nightHourStart - TRANSITION_TIME && hoursF <= nightHourStart + TRANSITION_TIME)
                 {
-                    timeNormalised = ((hoursF - nightHourStart) / (TRANSITION_TIME * 2.0f)) + (TRANSITION_TIME / 2.0f);
+                    timeNormalised = ((hoursF - nightHourStart) / (TRANSITION_TIME * 2.0f)) + .5f;
                 }
             }
 
             //lerp day colour and night colour based on normalised time
             Color envColour = Color.Lerp(dayColour, nightColour, timeNormalised);
             envLight.color = envColour;
-        }
-
-        public int getHours()
-        {
-            return hours;
         }
     }
 };
