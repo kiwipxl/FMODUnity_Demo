@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using FMOD;
 using FMOD.Studio;
+using System.Runtime.InteropServices;
 
 /*
 * Handles subtitles.
@@ -25,6 +26,7 @@ public class Subtitles : MonoBehaviour
 
     private static Text subtitleText;
     private static EventInstance currentSubtitle = null;
+    private static string targetSubtitleText = "";
 
     private void Start() {
         subtitleText = GetComponent<Text>();
@@ -50,18 +52,13 @@ public class Subtitles : MonoBehaviour
             currentSubtitle.getPlaybackState(out playbackState);
             if (playbackState == PLAYBACK_STATE.STOPPED) subtitleText.text = "";
         }
+
+        subtitleText.text = targetSubtitleText;
     }
 
-    private static void eventCallback(EventCallbackData data)
+    public static void start(FMODAsset eventPath)
     {
-        if (data.type == EVENT_CALLBACK_TYPE.TIMELINE_MARKER)
-        {
-            //if a marker has been hit, then create a marker properties instance
-            MarkerProperties marker = data.createMarker();
-
-            //set subtitle text to the marker name
-            subtitleText.text = marker.name.ToUpper();
-        }
+        start(FMOD_StudioSystem.instance.GetEvent(eventPath));
     }
 
     public static void start(EventInstance eventInstance)
@@ -73,13 +70,29 @@ public class Subtitles : MonoBehaviour
         eventInstance.start();
         eventInstance.release();
 
-        //set the callback
-        EventCallback.setCallback(eventInstance, eventCallback);
+        /*
+        ** Set a callback using the EventCallbackHelper used here for checking
+        ** when a marker was received or when an event has stopped.
+        **
+        ** Note: The helper class is not part of the FMOD API or Unity integration, 
+        ** it is just used for this demo.
+        */
+        EventCallbackHelper.setCallback(eventInstance, eventCallback);
         currentSubtitle = eventInstance;
     }
 
-    public static void start(FMODAsset eventPath)
+    private static void eventCallback(EventCallbackData data)
     {
-        start(FMOD_StudioSystem.instance.GetEvent(eventPath));
+        if (data.type == EVENT_CALLBACK_TYPE.TIMELINE_MARKER)
+        {
+            //if a marker was encountered, then get the marker name and 
+            //set it to the subtitle text
+            targetSubtitleText = data.createMarker().name;
+        }else if (data.type == EVENT_CALLBACK_TYPE.STOPPED)
+        {
+            //the subtitle event has ended, so set the subtitle text to blank
+            targetSubtitleText = "";
+        }
     }
+
 }

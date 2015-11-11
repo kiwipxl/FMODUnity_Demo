@@ -8,7 +8,7 @@ using System.Text;
 using System.Collections.Generic;
 
 /*
-* This script simplifies the process of event callbacks.
+* This script simplifies a bit of the process of event callbacks.
 * The following is an example on how this class can be used:
 *
 * EventCallback.setCallback(my_callback_function);
@@ -25,6 +25,7 @@ using System.Collections.Generic;
 *   }
 * }
 *
+* Note: This is not part of the FMOD API or Unity integration, it is just a helper class for this demo.
 */
 
 public class MarkerProperties
@@ -75,7 +76,7 @@ public class EventCallbackData
 /*
 * Simplified functions for fmod event callbacks
 */
-public class EventCallback
+public class EventCallbackHelper
 {
     //List used to make sure event callbacks are not GC'd
     private static List<EVENT_CALLBACK> evCallbacks = new List<EVENT_CALLBACK>();
