@@ -6,12 +6,12 @@ using UnityEditor;
 /*
 * A free look camera used for the player third person camera.
 *
-* Note: This script was taken from the Unity Standard Assets package.
+* Note: This script was taken from the Unity Standard Assets package and is slightly modified.
 */
 
 namespace GameLogic
 {
-    public class FreeLookCam : PivotBasedCameraRig
+    public class FreeLookCam : MonoBehaviour
     {
         // This script is designed to be placed on the root object of a camera rig,
         // comprising 3 gameobjects, each parented to the next:
@@ -36,17 +36,46 @@ namespace GameLogic
         private float smoothXvelocity = 0;
         private float smoothYvelocity = 0;
 
-        protected override void Awake()
+        protected Transform cam; // the transform of the camera
+        protected Transform pivot; // the point at which the camera pivots around
+        protected Vector3 lastTargetPosition;
+
+        [SerializeField]
+        protected Transform target; // The target object to follow
+        [SerializeField]
+        private bool autoTargetPlayer = true; // Whether the rig should automatically target the player.
+
+        private void Awake()
         {
-            base.Awake();
+            // find the camera in the object hierarchy
+            cam = GetComponentInChildren<Camera>().transform;
+            pivot = cam.parent;
         }
 
-        protected void Update()
+        private void Update()
         {
             if (!GamePause.isPaused) HandleRotationMovement();
+
+            // we update from here if updatetype is set to Late, or in auto mode,
+            // if the target does not have a rigidbody, or - does have a rigidbody but is set to kinematic.
+            if (autoTargetPlayer && (target == null || !target.gameObject.activeSelf))
+            {
+                FindAndTargetPlayer();
+            }
+            FollowTarget(Time.deltaTime);
         }
 
-        protected override void FollowTarget(float deltaTime)
+        public void FindAndTargetPlayer()
+        {
+            // auto target an object tagged player, if no target has been assigned
+            var targetObj = GameObject.FindGameObjectWithTag("Player");
+            if (targetObj)
+            {
+                target = targetObj.transform;
+            }
+        }
+
+        private void FollowTarget(float deltaTime)
         {
             // Move the rig towards target position.
             transform.position = Vector3.Lerp(transform.position, target.position, deltaTime*moveSpeed);

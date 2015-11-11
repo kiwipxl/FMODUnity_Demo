@@ -9,40 +9,50 @@ public class StepSounds : MonoBehaviour
 {
     //step event asset (set in editor)
     public FMODAsset stepEventAsset;
+    public FMODAsset jumpOrLandAsset;
 
     //step event instance
     private EventInstance stepEvent;
+    private EventInstance jumpOrLand;
 
-    private Animator anim;
-    private bool onGround = false;
-    private GameLogic.CollidingLayers collidingLayers = new GameLogic.CollidingLayers();
+    public GameLogic.CollidingLayers collidingLayers = new GameLogic.CollidingLayers();
 
-    private void Start() {
-        anim = GetComponent<Animator>();
-
+    private void Start()
+    {
         //create instance of step sound event
         stepEvent = FMOD_StudioSystem.instance.GetEvent(stepEventAsset);
         stepEvent.start();
+
+        jumpOrLand = FMOD_StudioSystem.instance.GetEvent(jumpOrLandAsset);
+        jumpOrLand.start();
     }
 
     /* Called from the animation tab in the editor once the player's foot is on the ground. */
-    public void footDown() {
+    public void footDown()
+    {
         //make sure the player is on the ground and is moving forward
-        //and then play the step sound if they are.
-        if (onGround && anim.GetFloat("Forward") >= .1f) stepEvent.start();
+        //and then play the step sounds
+        Animator anim = GetComponent<Animator>();
+        if (anim.GetBool("OnGround") && anim.GetFloat("Forward") >= .1f) stepEvent.start();
     }
 
-    private void Update() {
+    public void landedOnGround()
+    {
+        stepEvent.start();
+    }
+
+    public void jumpPressed()
+    {
+        FMOD_StudioSystem.instance.PlayOneShot(jumpOrLandAsset, transform.position);
+    }
+
+    private void Update()
+    {
         //if the player is colliding with any of these layers, change their surface param.
-        if (collidingLayers.contains("Sand"))  stepEvent.setParameterValue("Surface", 1);
+        if (collidingLayers.contains("Sand")) stepEvent.setParameterValue("Surface", 1);
         if (collidingLayers.contains("Stone")) stepEvent.setParameterValue("Surface", 3);
         if (collidingLayers.contains("Water")) stepEvent.setParameterValue("Surface", 0);
         collidingLayers.reset();
-
-        //if not on ground last frame, but now on ground, play
-        //step sound (for landing on your feet).
-        if (!onGround && anim.GetBool("OnGround")) stepEvent.start();
-        onGround = anim.GetBool("OnGround");
     }
 
     private void OnTriggerStay(Collider col)

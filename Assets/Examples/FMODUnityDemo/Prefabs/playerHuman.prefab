@@ -1990,7 +1990,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166140}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.78393291e-05, y: -7.68808095e-05, z: .0325337835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2788,6 +2788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepEventAsset: {fileID: 11400000, guid: 0d499161c14570142bda12cd1e307056, type: 2}
+  jumpOrLandAsset: {fileID: 11400000, guid: f7ca599c7d309f744a6aec79db021736, type: 2}
 --- !u!124 &12477574
 Behaviour:
   m_ObjectHideFlags: 1
@@ -3010,6 +3011,11 @@ Prefab:
       propertyPath: stepEventAsset
       value: 
       objectReference: {fileID: 11400000, guid: 0d499161c14570142bda12cd1e307056,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: jumpOrLandAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f7ca599c7d309f744a6aec79db021736,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

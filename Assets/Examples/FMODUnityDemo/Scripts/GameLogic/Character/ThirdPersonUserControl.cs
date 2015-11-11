@@ -25,6 +25,10 @@ namespace GameLogic
         private Vector3 move;
         private bool jump;// the world-relative desired move direction, calculated from the camForward and user input.
 
+        private StepSounds stepSounds;
+        private Animator anim;
+        private bool onGround = false;
+
         // Use this for initialization
         private void Start()
         {
@@ -42,12 +46,22 @@ namespace GameLogic
 
             // get the third person character ( this should never be null due to require component )
             character = GetComponent<ThirdPersonCharacter>();
+            anim = GetComponent<Animator>();
+            stepSounds = GetComponent<StepSounds>();
         }
 
         void Update()
         {
             if (!jump && enableInput)
+            {
                 jump = Input.GetKeyDown(KeyCode.Space);
+                if (jump && onGround) stepSounds.jumpPressed();
+            }
+
+            //if not on ground last frame, but now on ground, play
+            //step sound (for landing on your feet).
+            if (!onGround && anim.GetBool("OnGround")) stepSounds.landedOnGround();
+            onGround = anim.GetBool("OnGround");
         }
 
         // Fixed update is called in sync with physics
