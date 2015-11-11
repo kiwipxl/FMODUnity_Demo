@@ -21,8 +21,8 @@ namespace GameLogic
         public Text modeText;
         
         //listeners set in editor
-        private FMODUnity.Listener humanListener;
-        private FMODUnity.Listener tankListener;
+        private FMOD_Listener humanListener;
+        private FMOD_Listener tankListener;
 
         //misc
         public static bool isPlayerRig = true;
@@ -38,8 +38,8 @@ namespace GameLogic
             tankMovement = playerTank.GetComponent<TankMovement>();
 
             //get fmod listeners
-            humanListener = playerHuman.GetComponent<FMODUnity.Listener>();
-            tankListener = playerTank.GetComponent<FMODUnity.Listener>();
+            humanListener = playerHuman.GetComponent<FMOD_Listener>();
+            tankListener = playerTank.GetComponent<FMOD_Listener>();
 
             updatePerspective();
         }
@@ -77,6 +77,7 @@ namespace GameLogic
 
         private void updatePerspective()
         {
+
             //set active and enable/disable input depending on whether or not it
             //is the player's rig.
 
@@ -85,6 +86,16 @@ namespace GameLogic
 
             playerUserControl.enableInput = isPlayerRig;
             tankMovement.enableInput = !isPlayerRig;
+
+            //enabled/disable listeners while making sure that 
+            //both listeners are not enabled at the same time
+            if (isPlayerRig) {
+                tankListener.enabled = !isPlayerRig;
+                humanListener.enabled = isPlayerRig;
+            }else {
+                humanListener.enabled = isPlayerRig;
+                tankListener.enabled = !isPlayerRig;
+            }
 
             humanListener.enabled = isPlayerRig;
             tankListener.enabled = !isPlayerRig;

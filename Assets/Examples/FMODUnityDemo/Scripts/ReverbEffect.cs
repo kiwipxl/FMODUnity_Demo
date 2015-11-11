@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using FMOD;
 using FMOD.Studio;
-using FMODUnity;
 
 /*
 * Creates a reverb 3D effect whose size depends on the sphere collider attached.
@@ -9,14 +8,14 @@ using FMODUnity;
 
 public class ReverbEffect : MonoBehaviour
 {
-    //reverb event path set in editor
-    public EventRef reverbEventPath;
+    //reverb event asset set in editor
+    public FMODAsset reverbEventAsset;
     private EventInstance reverbEvent;
 
     private void Start()
     {
-        reverbEvent = RuntimeManager.CreateInstance(reverbEventPath);
-        reverbEvent.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
+        reverbEvent = FMOD_StudioSystem.instance.GetEvent(reverbEventAsset);
+        reverbEvent.set3DAttributes(UnityUtil.to3DAttributes(transform.position));
         reverbEvent.start();
     }
 }

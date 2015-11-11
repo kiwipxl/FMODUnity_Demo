@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using FMOD.Studio;
-using FMODUnity;
 
 /*
 * Plays an ambient environmental event that changes according to the time of the day.
@@ -8,20 +7,20 @@ using FMODUnity;
 
 public class EnvironmentSounds : MonoBehaviour
 {
-    public EventRef envEventPath;   //event path set in unity editor
+    public FMODAsset environmentAsset;
 
-    private EventInstance envEvent; //environment event instance
+    private EventInstance environmentEvent;     //environment event instance
 
     private void Start()
     {
         //create instance and start playing it
-        envEvent = RuntimeManager.CreateInstance(envEventPath);
-        envEvent.start();
+        environmentEvent = FMOD_StudioSystem.instance.GetEvent(environmentAsset);
+        environmentEvent.start();
     }
 
     private void Update()
     {
         //update the time of day parameter on the environment event
-        envEvent.setParameterValue("TimeOfDay", GameLogic.Environment.hours);
+        environmentEvent.setParameterValue("TimeOfDay", GameLogic.Environment.hours);
 	}
 }

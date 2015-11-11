@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using FMOD;
 using FMOD.Studio;
-using FMODUnity;
 
 /*
 * Handles subtitles.
 * For example, in Studio, you can have a voice over sound 
-* such as "This is a subtitle. Hello".
+* such as "This is a subtitle... Hello".
 * You can then place a named marker above the audio called "This is a subtitle."
 * and another one later on in the track called "Hello".
 *
@@ -22,7 +21,7 @@ using FMODUnity;
 
 public class Subtitles : MonoBehaviour
 {
-    public EventRef[] subtitleEventList;
+    public FMODAsset[] subtitleEventList;
 
     private static Text subtitleText;
     private static EventInstance currentSubtitle = null;
@@ -79,8 +78,8 @@ public class Subtitles : MonoBehaviour
         currentSubtitle = eventInstance;
     }
 
-    public static void start(EventRef eventPath)
+    public static void start(FMODAsset eventPath)
     {
-        start(RuntimeManager.CreateInstance(eventPath));
+        start(FMOD_StudioSystem.instance.GetEvent(eventPath));
     }
 }

@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using FMOD.Studio;
-using FMODUnity;
 
 /*
 * Handles step sounds for the player character on different surfaces
 */
 
-public class StepSounds : MonoBehaviour {
+public class StepSounds : MonoBehaviour
+{
+    //step event asset (set in editor)
+    public FMODAsset stepEventAsset;
 
-    public EventRef stepEventRef;
+    //step event instance
     private EventInstance stepEvent;
 
     private Animator anim;
@@ -19,7 +21,7 @@ public class StepSounds : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         //create instance of step sound event
-        stepEvent = RuntimeManager.CreateInstance(stepEventRef);
+        stepEvent = FMOD_StudioSystem.instance.GetEvent(stepEventAsset);
         stepEvent.start();
     }
 

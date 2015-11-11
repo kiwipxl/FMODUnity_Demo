@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using FMOD.Studio;
-using FMODUnity;
 
 /*
 * Handles tank related audio (engine sounds / explosions).
@@ -8,11 +7,11 @@ using FMODUnity;
 
 public class TankAudio : MonoBehaviour
 {
-    //engine and explosion event paths (set in Unity editor to their respective paths)
-    public EventRef idleEnginePath;
-    public EventRef enginePath;
-    public EventRef treadRollingPath;
-    public EventRef tankExplosionPath;
+    //engine and explosion event assets (set in editor)
+    public FMODAsset idleEngineAsset;
+    public FMODAsset engineAsset;
+    public FMODAsset treadRollingAsset;
+    public FMODAsset tankExplosionAsset;
 
     //engine event instances
     private EventInstance idleEngine;
@@ -26,12 +25,12 @@ public class TankAudio : MonoBehaviour
     {
         tankShooting = GetComponent<GameLogic.TankShooting>();
 
-        //create engine event instances from event paths, which is set in the editor
-        idleEngine = RuntimeManager.CreateInstance(idleEnginePath);
+        //create engine event instances from event assets, which is set in the editor
+        idleEngine = FMOD_StudioSystem.instance.GetEvent(idleEngineAsset);
         idleEngine.start();
-        engine = RuntimeManager.CreateInstance(enginePath);
+        engine = FMOD_StudioSystem.instance.GetEvent(engineAsset);
         engine.start();
-        treadRolling = RuntimeManager.CreateInstance(treadRollingPath);
+        treadRolling = FMOD_StudioSystem.instance.GetEvent(treadRollingAsset);
         treadRolling.start();
     }
 
@@ -43,7 +42,7 @@ public class TankAudio : MonoBehaviour
         collidingLayers.reset();
 
         //set idle engine position to the position of the tank
-        idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+        idleEngine.set3DAttributes(UnityUtil.to3DAttributes(transform.position));
     }
 
     private void OnDisable()
@@ -75,7 +74,7 @@ public class TankAudio : MonoBehaviour
     public void playTankExplosion()
     {
         //play an explosion sound once on the tank and then forget about it
-        RuntimeManager.PlayOneShot(tankExplosionPath, transform.position);
+        FMOD_StudioSystem.instance.PlayOneShot(tankExplosionAsset, transform.position);
     }
 
     private void OnTriggerStay(Collider col)

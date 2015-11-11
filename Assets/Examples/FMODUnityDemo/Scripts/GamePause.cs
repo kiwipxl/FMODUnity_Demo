@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using FMOD;
 using FMOD.Studio;
-using FMODUnity;
 using ImageEffects;
 
 /*
@@ -17,9 +16,9 @@ public class GamePause : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseScreenGroup;
 
-    //snapshot and sound path (set in editor)
-    public EventRef pauseSnapshotPath;
-    public EventRef pauseSoundPath;
+    //snapshot and sound asset (set in editor)
+    public FMODAsset pauseSnapshotAsset;
+    public FMODAsset pauseSoundAsset;
 
     //snapshot and sound instances
     private EventInstance pauseSnapshot;
@@ -28,8 +27,8 @@ public class GamePause : MonoBehaviour
     private void Start()
     {
         //creates pause snapshot and sound event instances
-        pauseSnapshot = RuntimeManager.CreateInstance(pauseSnapshotPath);
-        pauseSound = RuntimeManager.CreateInstance(pauseSoundPath);
+        pauseSnapshot = FMOD_StudioSystem.instance.GetEvent(pauseSnapshotAsset);
+        pauseSound = FMOD_StudioSystem.instance.GetEvent(pauseSoundAsset);
 
         unPauseGame();
     }
