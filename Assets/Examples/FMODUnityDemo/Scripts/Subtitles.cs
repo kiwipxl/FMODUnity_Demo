@@ -48,9 +48,7 @@ public class Subtitles : MonoBehaviour
         {
             //if the current subtitle has stopped playing, then set the subtitle
             //text to nothing
-            PLAYBACK_STATE playbackState;
-            currentSubtitle.getPlaybackState(out playbackState);
-            if (playbackState == PLAYBACK_STATE.STOPPED) subtitleText.text = "";
+            if (!isPlaying()) subtitleText.text = "";
         }
 
         subtitleText.text = targetSubtitleText;
@@ -59,6 +57,11 @@ public class Subtitles : MonoBehaviour
     public static void start(FMODAsset eventPath)
     {
         start(FMOD_StudioSystem.instance.GetEvent(eventPath));
+    }
+
+    public static void stop()
+    {
+        if (currentSubtitle != null) currentSubtitle.stop(STOP_MODE.IMMEDIATE);
     }
 
     public static void start(EventInstance eventInstance)
@@ -95,4 +98,16 @@ public class Subtitles : MonoBehaviour
         }
     }
 
+    /*
+    ** Returns whether or not the current subtitle is playing
+    */
+    public static bool isPlaying()
+    {
+        if (currentSubtitle == null) return false;
+
+        PLAYBACK_STATE playState;
+        currentSubtitle.getPlaybackState(out playState);
+
+        return playState == PLAYBACK_STATE.PLAYING;
+    }
 }

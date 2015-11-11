@@ -18,18 +18,18 @@ public class TankAudio : MonoBehaviour
     private EventInstance engine;
     private EventInstance treadRolling;
 
-    private GameLogic.TankShooting tankShooting;                                            //tank shooting component
-    private GameLogic.CollidingLayers collidingLayers = new GameLogic.CollidingLayers();    //colliding layer mask
+    //colliding layer mask (to check which layers the tank is colliding with)
+    private GameLogic.CollidingLayers collidingLayers = new GameLogic.CollidingLayers();
 
     private void Start()
     {
-        tankShooting = GetComponent<GameLogic.TankShooting>();
-
         //create engine event instances from event assets, which is set in the editor
         idleEngine = FMOD_StudioSystem.instance.GetEvent(idleEngineAsset);
         idleEngine.start();
+
         engine = FMOD_StudioSystem.instance.GetEvent(engineAsset);
         engine.start();
+
         treadRolling = FMOD_StudioSystem.instance.GetEvent(treadRollingAsset);
         treadRolling.start();
     }
@@ -56,19 +56,17 @@ public class TankAudio : MonoBehaviour
     /* Called from TankMovement component to update driving audio */
     public void updateDriving(float normalisedSpeed, float forwardInput, float turnInput)
     {
-        //todo: normalise these in studio
-
         //set tread rolling speed to forward input (1 if moving forward, 0 otherwise)
-        treadRolling.setParameterValue("Speed", Mathf.Abs(forwardInput) * 1500.0f);
+        treadRolling.setParameterValue("Speed", Mathf.Abs(forwardInput));
 
         //set the tank engine RPM to the normalised speed
-        engine.setParameterValue("RPM", normalisedSpeed * 2000.0f);
+        engine.setParameterValue("RPM", normalisedSpeed);
 
-        //set engine load to forward input
+        //set engine load to forward input (1 if moving forward, 0 otherwise)
         engine.setParameterValue("Load", forwardInput);
 
         //set idle engine RPM to the inverse of the normalised speed of the tank
-        idleEngine.setParameterValue("RPM", (1 - normalisedSpeed) * 800.0f);
+        idleEngine.setParameterValue("RPM", (1 - normalisedSpeed) * .5f);
     }
 
     public void playTankExplosion()

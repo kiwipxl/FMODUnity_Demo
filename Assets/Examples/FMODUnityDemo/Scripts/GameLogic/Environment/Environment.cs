@@ -19,7 +19,7 @@ namespace GameLogic
         private float nightHourStart = 18.0f;       //the hour (24 hour time) the night time transition starts
 
         private Text timeText;      //the UI text component
-        public static int hours;          //current hour (24 hour time)
+        public static int hours;    //current hour (24 hour time)
         private float minutes;      //current minutes
 
         private const float MINS_PER_SECOND = 10;           //minutes per second that the time moves

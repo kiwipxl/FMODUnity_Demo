@@ -19,7 +19,7 @@ namespace GameLogic
 
         //ui
         public Text modeText;
-        
+
         //listeners set in editor
         private FMOD_Listener humanListener;
         private FMOD_Listener tankListener;
@@ -52,12 +52,6 @@ namespace GameLogic
             {
                 isPlayerRig = !isPlayerRig;
                 updatePerspective();
-            }
-
-            //move the player tank rig to the tank's position if the tank is being controlled
-            if (!isPlayerRig)
-            {
-                tankCameraRig.transform.position = playerTank.transform.position;
             }
 
             //lock cursor's state and visibility depending on if the game is paused or not

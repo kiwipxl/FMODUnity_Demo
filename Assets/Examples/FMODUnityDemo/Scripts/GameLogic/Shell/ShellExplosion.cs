@@ -27,7 +27,8 @@ namespace GameLogic
             for (int i = 0; i < colliders.Length; i++)
             {
                 // ... and find their rigidbody.
-                Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody> ();
+                Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody>();
+                if (tankParent == targetRigidbody.gameObject) continue;
 
                 // If they don't have a rigidbody, go on to the next collider.
                 if (!targetRigidbody)

@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 472634}
   m_Layer: 0
-  m_Name: cameraRig
+  m_Name: playerTankCameraRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,6 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UseRelativeRotation: 1
+  m_RelativeRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11403958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3398,6 +3399,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: bf2c2962248158049b70fb50b069d029,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: playerTankCameraRig
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 192704}

@@ -157,10 +157,8 @@ GameObject:
   - 54: {fileID: 5490254}
   - 65: {fileID: 6505704}
   - 114: {fileID: 11449304}
-  - 114: {fileID: 11415094}
-  - 114: {fileID: 11427882}
   - 114: {fileID: 11437752}
-  - 114: {fileID: 11417558}
+  - 195: {fileID: 19513344}
   m_Layer: 10
   m_Name: enemyTank
   m_TagString: Tank
@@ -540,8 +538,8 @@ Rigidbody:
   m_GameObject: {fileID: 160938}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_Drag: 2
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -559,35 +557,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.70000005, z: 1.60000002}
   m_Center: {x: 0, y: .850000024, z: 0}
---- !u!114 &11415094
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 184d72ea2424d1443bca885930fe844a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlayerNumber: 1
-  m_Shell: {fileID: 5409530, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 2}
-  m_FireTransform: {fileID: 499462}
-  m_AimSlider: {fileID: 11449422}
-  m_MinLaunchForce: 10
-  m_MaxLaunchForce: 20
-  m_MaxChargeTime: .75
---- !u!114 &11417558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11423168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -636,22 +605,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11427882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e4cc0827b572b5408b2cd8eb8b456b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlayerNumber: 1
-  m_Speed: 12
-  m_TurnSpeed: 180
-  m_PitchRange: .200000003
-  enableInput: 0
 --- !u!114 &11429496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,6 +815,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UseRelativeRotation: 1
+  m_RelativeRotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!195 &19513344
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160938}
+  m_Enabled: 1
+  m_Radius: .5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &19843538
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3215,6 +3189,22 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: bf2c2962248158049b70fb50b069d029,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: enableInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160938}
