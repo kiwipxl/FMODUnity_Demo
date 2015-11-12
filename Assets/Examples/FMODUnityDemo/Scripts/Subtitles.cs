@@ -55,9 +55,8 @@ public class Subtitles : MonoBehaviour
         //stop the current subtitle playing if it exists
         if (currentSubtitle != null) currentSubtitle.stop(STOP_MODE.IMMEDIATE);
 
-        //start the event instance and release
+        //start the event instance
         eventInstance.start();
-        eventInstance.release();
 
         /*
         ** Set a callback using the EventCallbackHelper used here for checking

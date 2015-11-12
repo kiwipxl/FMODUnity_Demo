@@ -59,13 +59,11 @@ namespace GameLogic
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                modeText.enabled = false;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                modeText.enabled = true;
             }
         }
 
