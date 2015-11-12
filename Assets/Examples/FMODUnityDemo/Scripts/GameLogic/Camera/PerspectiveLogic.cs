@@ -65,6 +65,11 @@ namespace GameLogic
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
+
+            if (!isPlayerRig)
+            {
+                tankCameraRig.transform.position = playerTank.transform.position;
+            }
         }
 
         private void updatePerspective()

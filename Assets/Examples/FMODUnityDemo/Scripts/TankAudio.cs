@@ -41,6 +41,7 @@ public class TankAudio : MonoBehaviour
         if (collidingLayers.contains("Water")) treadRolling.setParameterValue("T_Surface", 1);
         collidingLayers.reset();
 
+
         //set idle engine position to the position of the tank
         idleEngine.set3DAttributes(UnityUtil.to3DAttributes(transform.position));
     }
@@ -48,8 +49,11 @@ public class TankAudio : MonoBehaviour
     private void OnDisable()
     {
         //if the tank has been destroyed, stop all engine sounds
+
         idleEngine.stop(STOP_MODE.IMMEDIATE);
+
         engine.stop(STOP_MODE.IMMEDIATE);
+
         treadRolling.stop(STOP_MODE.IMMEDIATE);
     }
 
@@ -59,11 +63,14 @@ public class TankAudio : MonoBehaviour
         //set tread rolling speed to forward input (1 if moving forward, 0 otherwise)
         treadRolling.setParameterValue("Speed", Mathf.Abs(forwardInput));
 
+
         //set the tank engine RPM to the normalised speed
         engine.setParameterValue("RPM", normalisedSpeed);
 
+
         //set engine load to forward input (1 if moving forward, 0 otherwise)
         engine.setParameterValue("Load", forwardInput);
+
 
         //set idle engine RPM to the inverse of the normalised speed of the tank
         idleEngine.setParameterValue("RPM", (1 - normalisedSpeed) * .5f);

@@ -13,19 +13,18 @@ namespace GameLogic
         private void Start()
         {
             unPauseGame();
+
+            languageDropdown.onValueChanged.AddListener(languageSelect);
+        }
+
+        private void languageSelect(int value)
+        {
+            if (value == 1) GetComponent<LocalisationVO>().switchBankTo(VOLanguage.SWEDISH);
+            else if (value == 2) GetComponent<LocalisationVO>().switchBankTo(VOLanguage.ENGLISH);
         }
 
         private void Update()
         {
-            if (languageDropdown.captionText.text == "Swedish")
-            {
-                GetComponent<LocalisationVO>().switchBankTo(VOLanguage.SWEDISH);
-            }
-            else if (languageDropdown.captionText.text == "English")
-            {
-                GetComponent<LocalisationVO>().switchBankTo(VOLanguage.ENGLISH);
-            }
-
             if (Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape)) togglePause();
         }
 

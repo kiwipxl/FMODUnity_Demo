@@ -66,7 +66,7 @@ GameObject:
   - 54: {fileID: 5409530}
   - 108: {fileID: 10833074}
   - 114: {fileID: 11426614}
-  - 114: {fileID: 11491220}
+  - 114: {fileID: 11424078}
   m_Layer: 0
   m_Name: shell
   m_TagString: Untagged
@@ -274,6 +274,20 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11424078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3211441db0877eb4e866547e8ba2ff2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shellFireAsset: {fileID: 11400000, guid: 661a130b7b5b07f4db2dd593205599ed, type: 2}
+  shellExplosionAsset: {fileID: 11400000, guid: f09a62c3602542b42afd8fbc1d78c601,
+    type: 2}
 --- !u!114 &11426614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,20 +308,6 @@ MonoBehaviour:
   m_MaxLifeTime: 2
   m_ExplosionRadius: 5
   tankParent: {fileID: 0}
---- !u!114 &11491220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92567ba91b4ec6b42ae460f7eb62e6e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shellFireAsset: {fileID: 11400000, guid: 661a130b7b5b07f4db2dd593205599ed, type: 2}
-  shellExplosionAsset: {fileID: 11400000, guid: f09a62c3602542b42afd8fbc1d78c601,
-    type: 2}
 --- !u!136 &13693818
 CapsuleCollider:
   m_ObjectHideFlags: 1

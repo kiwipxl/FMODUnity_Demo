@@ -19,10 +19,19 @@ public class ShellAudio : MonoBehaviour
         FMOD_StudioSystem.instance.PlayOneShot(shellFireAsset, transform.position);
     }
 
-    public void playShellExplosion(Vector3 pos)
+    public void playShellExplosion(Vector3 pos, string layer)
     {
         //creates a one time shell explosion sound and sets the position 
         //to where the shell exploded.
-        FMOD_StudioSystem.instance.PlayOneShot(shellExplosionAsset, pos);
+        //also sets surface parameter based on what surface the shell hit
+
+        int surfaceValue = 0;
+        if (layer == "Water") surfaceValue = 1;
+        else if (layer == "Building") surfaceValue = 2;
+
+        EventInstance shellExplosion = FMOD_StudioSystem.instance.GetEvent(shellExplosionAsset);
+        shellExplosion.setParameterValue("Surface", surfaceValue);
+        shellExplosion.start();
+        shellExplosion.release();
     }
 }
