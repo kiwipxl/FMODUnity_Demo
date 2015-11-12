@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e06c992c0c162f94a880e74e722cb286, type: 3}
-  m_Name: ENG_Tanks
+  m_Name: P1wins
   m_EditorClassIdentifier: 
-  path: event:/VO/ENG/ENG_Tanks
-  id: '{5d5710ac-5397-483f-a162-49083510bc40}'
+  path: event:/VO/ENG/P1wins
+  id: '{2cada469-1283-4c60-b040-e794f3e0de2a}'

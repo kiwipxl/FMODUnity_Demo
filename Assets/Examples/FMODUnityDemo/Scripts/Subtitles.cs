@@ -22,8 +22,6 @@ using System.Runtime.InteropServices;
 
 public class Subtitles : MonoBehaviour
 {
-    public FMODAsset[] subtitleEventList;
-
     private static Text subtitleText;
     private static EventInstance currentSubtitle = null;
     private static string targetSubtitleText = "";
@@ -33,28 +31,10 @@ public class Subtitles : MonoBehaviour
         if (subtitleText == null) UnityEngine.Debug.LogError("No UI Text component added!");
 
         subtitleText.text = "";
-
-        FMOD.Studio.System sys = FMOD_StudioSystem.instance.System;
-        FMOD.Studio.Bank engBank;
-        sys.loadBankFile("VO_ENG.bank", LOAD_BANK_FLAGS.NORMAL, out engBank);
-
-        UnityEngine.Debug.Log(engBank);
-        int count;
-        engBank.getEventCount(out count);
-        UnityEngine.Debug.Log(count);
-
-        UnityEngine.Debug.Log(FMOD_StudioSystem.instance.GetEvent(subtitleEventList[0]));
     }
 
     private void Update()
     {
-        //temporary code
-        //press B to spawn random subtitles from a list set in the editor
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            start(subtitleEventList[UnityEngine.Random.Range(0, subtitleEventList.Length)]);
-        }
-
         if (currentSubtitle != null)
         {
             //if the current subtitle has stopped playing, then set the subtitle
@@ -68,11 +48,6 @@ public class Subtitles : MonoBehaviour
     public static void start(FMODAsset eventPath)
     {
         start(FMOD_StudioSystem.instance.GetEvent(eventPath));
-    }
-
-    public static void stop()
-    {
-        if (currentSubtitle != null) currentSubtitle.stop(STOP_MODE.IMMEDIATE);
     }
 
     public static void start(EventInstance eventInstance)
@@ -93,6 +68,11 @@ public class Subtitles : MonoBehaviour
         */
         EventCallbackHelper.setCallback(eventInstance, eventCallback);
         currentSubtitle = eventInstance;
+    }
+
+    public static void stop()
+    {
+        if (currentSubtitle != null) currentSubtitle.stop(STOP_MODE.IMMEDIATE);
     }
 
     private static void eventCallback(EventCallbackData data)

@@ -179,7 +179,7 @@ namespace GameLogic
                 }
             }else {
                 playedSubtitle = false;
-                Subtitles.stop();
+                //Subtitles.stop();
             }
 
             if (GamePause.isPaused && Input.GetMouseButtonUp(0)) unPauseGame();

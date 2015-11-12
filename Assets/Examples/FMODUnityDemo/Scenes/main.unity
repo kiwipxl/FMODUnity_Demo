@@ -3251,8 +3251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4825cd06c7a5eca40b22ce5277907dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subtitleEventList:
-  - {fileID: 11400000, guid: a827cce3c548ee04183864654bf2384b, type: 2}
 --- !u!114 &504457954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7738,6 +7736,7 @@ GameObject:
   - 114: {fileID: 1116070426}
   - 114: {fileID: 1116070425}
   - 114: {fileID: 1116070428}
+  - 114: {fileID: 1116070427}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -7811,6 +7810,21 @@ MonoBehaviour:
   playerHuman: {fileID: 1253868330}
   playerTank: {fileID: 2051347421}
   modeText: {fileID: 1054506805}
+--- !u!114 &1116070427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116070422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 019b3ce7ee7c9ac4cb7e8a24f2d1141c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VOEventAssets:
+  - {fileID: 11400000, guid: 5ef719eadedc59543b9fb8fdfa79335e, type: 2}
+  - {fileID: 11400000, guid: 7a677c45764f38d48b5a0c4cf0d62239, type: 2}
+  - {fileID: 11400000, guid: a827cce3c548ee04183864654bf2384b, type: 2}
 --- !u!114 &1116070428
 MonoBehaviour:
   m_ObjectHideFlags: 0
