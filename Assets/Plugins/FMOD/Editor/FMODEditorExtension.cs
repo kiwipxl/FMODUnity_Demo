@@ -799,7 +799,7 @@ public class FMODEditorExtension : MonoBehaviour
 				if (ex.Equals(".bank", System.StringComparison.CurrentCultureIgnoreCase) ||
 					ex.Equals(".strings", System.StringComparison.CurrentCultureIgnoreCase))
 				{
-					FMOD.Studio.Bank bank = null;
+                    FMOD.Studio.Bank bank = null;
 					FMOD.RESULT result = sFMODSystem.loadBankFile(s, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out bank);
 					if (result == FMOD.RESULT.ERR_VERSION)
 					{

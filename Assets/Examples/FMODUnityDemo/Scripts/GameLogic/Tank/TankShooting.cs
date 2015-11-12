@@ -23,7 +23,7 @@ namespace GameLogic
         {
             // When the tank is turned on, reset the launch force and the UI
             m_CurrentLaunchForce = m_MinLaunchForce;
-            m_AimSlider.value = m_MinLaunchForce;
+            m_AimSlider.value = 0;
         }
 
 
@@ -38,7 +38,7 @@ namespace GameLogic
 
         private void Update ()
         {
-            if (!enabled) return;
+            if (!enabled || !m_tankMovement) return;
 
             if (!m_tankMovement.enableInput)
             {
@@ -79,8 +79,7 @@ namespace GameLogic
             }
         }
 
-
-        private void Fire ()
+        public void Fire ()
         {
             // Set the fired flag so only Fire is only called once.
             m_Fired = true;

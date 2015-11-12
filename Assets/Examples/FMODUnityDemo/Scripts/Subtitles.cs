@@ -33,6 +33,17 @@ public class Subtitles : MonoBehaviour
         if (subtitleText == null) UnityEngine.Debug.LogError("No UI Text component added!");
 
         subtitleText.text = "";
+
+        FMOD.Studio.System sys = FMOD_StudioSystem.instance.System;
+        FMOD.Studio.Bank engBank;
+        sys.loadBankFile("VO_ENG.bank", LOAD_BANK_FLAGS.NORMAL, out engBank);
+
+        UnityEngine.Debug.Log(engBank);
+        int count;
+        engBank.getEventCount(out count);
+        UnityEngine.Debug.Log(count);
+
+        UnityEngine.Debug.Log(FMOD_StudioSystem.instance.GetEvent(subtitleEventList[0]));
     }
 
     private void Update()
