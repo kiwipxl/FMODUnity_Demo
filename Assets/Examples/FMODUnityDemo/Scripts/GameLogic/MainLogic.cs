@@ -8,19 +8,30 @@ namespace GameLogic
     {
         public GameObject gameUIGroup;
         public GameObject pauseUIGroup;
-        public Dropdown languageDropdown;
+        public Button engButton;
+        public Button sweButton;
 
         private void Start()
         {
+            GetComponent<GamePause>().init();
+
             unPauseGame();
 
-            languageDropdown.onValueChanged.AddListener(languageSelect);
-        }
+            engButton.onClick.AddListener(() =>
+            {
+                engButton.interactable = false;
+                sweButton.interactable = true;
 
-        private void languageSelect(int value)
-        {
-            if (value == 1) GetComponent<LocalisationVO>().switchBankTo(VOLanguage.SWEDISH);
-            else if (value == 2) GetComponent<LocalisationVO>().switchBankTo(VOLanguage.ENGLISH);
+                GetComponent<LocalisationVO>().switchBankTo(VOLanguage.ENGLISH);
+            });
+            sweButton.onClick.AddListener(() =>
+            {
+
+                engButton.interactable = true;
+                sweButton.interactable = false;
+
+                GetComponent<LocalisationVO>().switchBankTo(VOLanguage.SWEDISH);
+            });
         }
 
         private void Update()

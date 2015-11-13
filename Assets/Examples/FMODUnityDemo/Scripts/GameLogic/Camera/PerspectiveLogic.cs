@@ -59,9 +59,7 @@ namespace GameLogic
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-            }
-            else
-            {
+            }else {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
@@ -89,7 +87,7 @@ namespace GameLogic
             if (isPlayerRig) {
                 tankListener.enabled = !isPlayerRig;
                 humanListener.enabled = isPlayerRig;
-            }else {
+            }else { 
                 humanListener.enabled = isPlayerRig;
                 tankListener.enabled = !isPlayerRig;
             }

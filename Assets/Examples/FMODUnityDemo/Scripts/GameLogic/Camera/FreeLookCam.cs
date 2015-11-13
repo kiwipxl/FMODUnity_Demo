@@ -1,7 +1,4 @@
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 /*
 * A free look camera used for the player third person camera.
@@ -14,7 +11,7 @@ namespace GameLogic
     public class FreeLookCam : MonoBehaviour
     {
         // This script is designed to be placed on the root object of a camera rig,
-        // comprising 3 gameobjects, each parented to the next:
+        // comprising of 3 gameobjects, each parented to the next:
 
         // 	Camera Rig
         // 		Pivot
@@ -40,10 +37,8 @@ namespace GameLogic
         protected Transform pivot; // the point at which the camera pivots around
         protected Vector3 lastTargetPosition;
 
-        [SerializeField]
-        protected Transform target; // The target object to follow
-        [SerializeField]
-        private bool autoTargetPlayer = true; // Whether the rig should automatically target the player.
+        [SerializeField] protected Transform target; // The target object to follow
+        [SerializeField] private bool autoTargetPlayer = true; // Whether the rig should automatically target the player.
 
         private void Awake()
         {

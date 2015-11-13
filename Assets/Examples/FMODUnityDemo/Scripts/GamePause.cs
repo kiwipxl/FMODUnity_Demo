@@ -20,8 +20,7 @@ public class GamePause : MonoBehaviour
 
     public static bool isPaused = false;
 
-    private void Start()
-    {
+    public void init() {
         //creates pause snapshot and sound event instances
         pauseSnapshot = FMOD_StudioSystem.instance.GetEvent(pauseSnapshotAsset);
         pauseSound = FMOD_StudioSystem.instance.GetEvent(pauseSoundAsset);
