@@ -4,7 +4,7 @@ using UnityEngine;
 * Handles the logic for interfacing with the third person character script
 * and controlling it with user input.
 *
-* Note: This script was taken from the Unity Standard Assets package.
+* Note: This script was taken from the Unity Standard Paths package.
 */
 
 namespace GameLogic

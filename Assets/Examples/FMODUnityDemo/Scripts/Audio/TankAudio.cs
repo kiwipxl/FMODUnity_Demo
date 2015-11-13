@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using FMOD.Studio;
+using FMODUnity;
 
 /*
 * Handles tank related audio (engine sounds / explosions).
@@ -8,10 +9,10 @@ using FMOD.Studio;
 public class TankAudio : MonoBehaviour
 {
     //engine and explosion event assets (set in editor)
-    public FMODAsset idleEngineAsset;
-    public FMODAsset engineAsset;
-    public FMODAsset treadRollingAsset;
-    public FMODAsset tankExplosionAsset;
+    [EventRef] public string idleEnginePath;
+    [EventRef] public string enginePath;
+    [EventRef] public string treadRollingPath;
+    [EventRef] public string tankExplosionPath;
 
     //engine event instances
     private EventInstance idleEngine;
@@ -24,13 +25,13 @@ public class TankAudio : MonoBehaviour
     private void Start()
     {
         //create engine event instances from event assets, which is set in the editor
-        idleEngine = FMOD_StudioSystem.instance.GetEvent(idleEngineAsset);
+        idleEngine = RuntimeManager.CreateInstance(idleEnginePath);
         idleEngine.start();
 
-        engine = FMOD_StudioSystem.instance.GetEvent(engineAsset);
+        engine = RuntimeManager.CreateInstance(enginePath);
         engine.start();
 
-        treadRolling = FMOD_StudioSystem.instance.GetEvent(treadRollingAsset);
+        treadRolling = RuntimeManager.CreateInstance(treadRollingPath);
         treadRolling.start();
     }
 
@@ -43,7 +44,7 @@ public class TankAudio : MonoBehaviour
 
 
         //set idle engine position to the position of the tank
-        idleEngine.set3DAttributes(UnityUtil.to3DAttributes(transform.position));
+        idleEngine.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
     }
 
     private void OnDisable()
@@ -78,8 +79,8 @@ public class TankAudio : MonoBehaviour
 
     public void playTankExplosion()
     {
-        //play an explosion sound once on the tank and then forget about it
-        FMOD_StudioSystem.instance.PlayOneShot(tankExplosionAsset, transform.position);
+        //play an explosion sound once on the tank and then forget about it.
+        RuntimeManager.PlayOneShot(tankExplosionPath, transform.position);
     }
 
     private void OnTriggerStay(Collider col)

@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9894b7bced3a04c870ade3c621f94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carMask:
+  tankMask:
     serializedVersion: 2
     m_Bits: 1024
   ExplosionParticles: {fileID: 19878412}
@@ -292,7 +292,7 @@ MonoBehaviour:
   ExplosionForce: 1000
   MaxLifeTime: 2
   ExplosionRadius: 5
-  carParent: {fileID: 0}
+  tankParent: {fileID: 0}
 --- !u!114 &11459108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,9 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3211441db0877eb4e866547e8ba2ff2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellFireAsset: {fileID: 11400000, guid: 661a130b7b5b07f4db2dd593205599ed, type: 2}
-  shellExplosionAsset: {fileID: 11400000, guid: f09a62c3602542b42afd8fbc1d78c601,
-    type: 2}
+  shellFirePath: event:/Weapons/Shell Fire
+  shellExplosionPath: event:/Weapons/Shell Explode
 --- !u!136 &13692032
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3578,7 +3577,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: tankMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shellFirePath
+      value: event:/Weapons/Shell Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shellExplosionPath
+      value: event:/Weapons/Shell Explode
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 165904}

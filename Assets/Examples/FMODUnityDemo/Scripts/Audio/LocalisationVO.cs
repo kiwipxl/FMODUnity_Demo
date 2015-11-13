@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using FMOD.Studio;
+using FMODUnity;
 
 //Voice Over languages
 public enum VOLanguage
@@ -29,7 +29,7 @@ public class LocalisationVO : MonoBehaviour
 {
     // All VO assets set in editor.
     // These can be of any language.
-    public FMODAsset[] VOEventAssets;
+    [EventRef] public string [] VOEventPaths;
 
     // List of VO's in current language bank
     public List<EventInstance> VOEvents = new List<EventInstance>();
@@ -50,7 +50,7 @@ public class LocalisationVO : MonoBehaviour
 
         clearAllVOEvents();
 
-        FMOD.Studio.System sys = FMOD_StudioSystem.instance.System;
+        FMOD.Studio.System sys = RuntimeManager.StudioSystem;
 
         // Unload current bank if it exists
         if (currentBank != null) currentBank.unload();
@@ -59,11 +59,11 @@ public class LocalisationVO : MonoBehaviour
         switch (newVOLanguage)
         {
             case VOLanguage.ENGLISH:
-                sys.loadBankFile(Application.dataPath + "/StreamingAssets/VO_ENG.bank",
+                sys.loadBankFile(Application.dataPath + "/StreamingPaths/VO_ENG.bank",
                                  LOAD_BANK_FLAGS.NORMAL, out currentBank);
                 break;
             case VOLanguage.SWEDISH:
-                sys.loadBankFile(Application.dataPath + "/StreamingAssets/VO_SWE.bank",
+                sys.loadBankFile(Application.dataPath + "/StreamingPaths/VO_SWE.bank",
                                  LOAD_BANK_FLAGS.NORMAL, out currentBank);
                 break;
         }
@@ -92,15 +92,15 @@ public class LocalisationVO : MonoBehaviour
         if (currentLang == VOLanguage.ENGLISH) langPath = "VO/ENG/";
         else if (currentLang == VOLanguage.SWEDISH) langPath = "VO/SWE/";
 
-        // Get all events with the same name as the assets in VOEventAssets but
+        // Get all events with the same name as the assets in VOEventPaths but
         // change their path depending on language
-        for (int n = 0; n < VOEventAssets.Length; ++n)
+        for (int n = 0; n < VOEventPaths.Length; ++n)
         {
-            string path = VOEventAssets[n].path;
+            string path = VOEventPaths[n];
             // Event:/ + language event path + asset name
             string eventPath = "event:/" + langPath + path.Substring(path.LastIndexOf("/") + 1);
 
-            VOEvents.Add(FMOD_StudioSystem.instance.GetEvent(eventPath));
+            VOEvents.Add(RuntimeManager.CreateInstance(eventPath));
         }
     }
 

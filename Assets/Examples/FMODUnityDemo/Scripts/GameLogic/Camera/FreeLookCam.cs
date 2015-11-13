@@ -3,7 +3,7 @@ using UnityEngine;
 /*
 * A free look camera used for the player third person camera.
 *
-* Note: This script was taken from the Unity Standard Assets package and is slightly modified.
+* Note: This script was taken from the Unity Standard Paths package and is slightly modified.
 */
 
 namespace GameLogic

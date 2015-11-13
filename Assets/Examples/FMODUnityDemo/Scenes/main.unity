@@ -2442,8 +2442,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asset: {fileID: 11400000, guid: 886edc45f09b4024d89dabad41d55e9b, type: 2}
-  path: '{30a5e9b1-81de-4916-b17d-bcc6eec12c4d}'
+  path: 7b33306135653962312d383164652d343931362d623137642d6263633665656331326334647d
   startEventOnAwake: 1
+  hasStarted: 0
+  cachedRigidBody: {fileID: 0}
 --- !u!1 &235490649
 GameObject:
   m_ObjectHideFlags: 0
@@ -7503,6 +7505,7 @@ Prefab:
       objectReference: {fileID: 1253868331}
     m_RemovedComponents:
     - {fileID: 11476890, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
+    - {fileID: 11438138, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &876836949
@@ -7837,8 +7840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7128f3d9c37c07f4f9c7e576fa522970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseSnapshotAsset: {fileID: 11400000, guid: be5c2be4584246d49a755352b060cc4f, type: 2}
-  pauseSoundAsset: {fileID: 11400000, guid: 3cb3ae64ebb1b6749a721350cc83c838, type: 2}
+  pauseSnapshotPath: snapshot:/HUDOR
+  pauseSoundPath: event:/UI/HUDOR
 --- !u!114 &938294467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7850,10 +7853,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d071a3c9a6457284c91890557c6ca70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VOEventAssets:
-  - {fileID: 11400000, guid: 5ef719eadedc59543b9fb8fdfa79335e, type: 2}
-  - {fileID: 11400000, guid: 64021c1e3f76895449285aba316cd917, type: 2}
-  - {fileID: 11400000, guid: 610e16ea06db0274999083206b016e2b, type: 2}
+  VOEventPaths:
+  - event:/VO/ENG/Tanks
+  - event:/VO/ENG/byFMOD
+  - event:/VO/ENG/P1wins
 --- !u!114 &938294468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7865,7 +7868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bb708da9ebad64a94cf81fdb3bef70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environmentAsset: {fileID: 11400000, guid: b75c8810c1cca2d4fa1d215a51303fff, type: 2}
+  environmentPath: event:/Environment/Env Ambience
 --- !u!4 &938294469
 Transform:
   m_ObjectHideFlags: 0
@@ -8194,8 +8197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asset: {fileID: 11400000, guid: 886edc45f09b4024d89dabad41d55e9b, type: 2}
-  path: '{30a5e9b1-81de-4916-b17d-bcc6eec12c4d}'
+  path: 7b33306135653962312d383164652d343931362d623137642d6263633665656331326334647d
   startEventOnAwake: 1
+  hasStarted: 0
+  cachedRigidBody: {fileID: 0}
 --- !u!1 &961517539 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 170878, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
@@ -9202,6 +9207,7 @@ GameObject:
   - 114: {fileID: 1116070425}
   - 114: {fileID: 1116070423}
   - 114: {fileID: 1116070427}
+  - 114: {fileID: 1116070428}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -9279,6 +9285,23 @@ MonoBehaviour:
   audioMain: {fileID: 938294465}
   engButton: {fileID: 1402034138}
   sweButton: {fileID: 983244773}
+--- !u!114 &1116070428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116070422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9468c5f457ace64f8d4df6d642b107f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadEvent: 0
+  UnloadEvent: 0
+  Banks:
+  - Master Bank
+  CollisionTag: 
+  PreloadSamples: 0
 --- !u!1 &1120134770
 GameObject:
   m_ObjectHideFlags: 0
@@ -10131,8 +10154,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1382e6512a3ae92429208b2ea1a444f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepEventAsset: {fileID: 11400000, guid: 0d499161c14570142bda12cd1e307056, type: 2}
-  jumpOrLandAsset: {fileID: 11400000, guid: f7ca599c7d309f744a6aec79db021736, type: 2}
+  stepEventPath: event:/Character/Footsteps
+  jumpOrLandPath: event:/Character/JumpOrLand
+--- !u!114 &1253868333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1253868330}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1268670263
 GameObject:
   m_ObjectHideFlags: 0
@@ -15380,8 +15414,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asset: {fileID: 11400000, guid: 886edc45f09b4024d89dabad41d55e9b, type: 2}
-  path: '{30a5e9b1-81de-4916-b17d-bcc6eec12c4d}'
+  path: 7b33306135653962312d383164652d343931362d623137642d6263633665656331326334647d
   startEventOnAwake: 1
+  hasStarted: 0
+  cachedRigidBody: {fileID: 0}
 --- !u!1 &1929457388
 GameObject:
   m_ObjectHideFlags: 0
@@ -16314,8 +16350,8 @@ GameObject:
   - 65: {fileID: 2051347428}
   - 114: {fileID: 2051347426}
   - 114: {fileID: 2051347425}
-  - 114: {fileID: 2051347423}
   - 114: {fileID: 2051347424}
+  - 114: {fileID: 2051347423}
   m_Layer: 10
   m_Name: car
   m_TagString: Tank
@@ -16343,16 +16379,14 @@ Transform:
 --- !u!114 &2051347423
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11493398, guid: 49fed674abd59e24da5a3039c56a3e84,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2051347421}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f8336b22d6d3af4da2712827e9ad333, type: 3}
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pluginPaths: []
 --- !u!114 &2051347424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16364,10 +16398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e181a16124a86246b30c762dd76d464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleEngineAsset: {fileID: 11400000, guid: 4d9f5eb46fb6c6648a353aa490c32798, type: 2}
-  engineAsset: {fileID: 11400000, guid: cd48cdcd6ed1c0549a3a30b9d0fdd92e, type: 2}
-  treadRollingAsset: {fileID: 11400000, guid: e5c63478ea2694c4087d64be10d32358, type: 2}
-  tankExplosionAsset: {fileID: 0}
+  idleEnginePath: event:/Tanks/Idle Engine
+  enginePath: event:/Tanks/Engine
+  treadRollingPath: event:/Tanks/Tread Rolling
+  tankExplosionPath: event:/Tanks/Tank Explode
 --- !u!114 &2051347425
 MonoBehaviour:
   m_ObjectHideFlags: 0

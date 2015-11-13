@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using FMOD.Studio;
+using FMODUnity;
 
 /*
 * Handles the audio for pausing and unpausing the game (press escape or P to toggle).
@@ -11,8 +12,8 @@ using FMOD.Studio;
 public class GamePauseAudio : MonoBehaviour
 {
     //snapshot and sound asset (set in editor)
-    public FMODAsset pauseSnapshotAsset;
-    public FMODAsset pauseSoundAsset;
+    [EventRef] public string pauseSnapshotPath;
+    [EventRef] public string pauseSoundPath;
 
     //snapshot and sound instances
     private EventInstance pauseSnapshot;
@@ -20,8 +21,8 @@ public class GamePauseAudio : MonoBehaviour
 
     public void init() {
         //creates pause snapshot and sound event instances
-        pauseSnapshot = FMOD_StudioSystem.instance.GetEvent(pauseSnapshotAsset);
-        pauseSound = FMOD_StudioSystem.instance.GetEvent(pauseSoundAsset);
+        pauseSnapshot = RuntimeManager.CreateInstance(pauseSnapshotPath);
+        pauseSound = RuntimeManager.CreateInstance(pauseSoundPath);
     }
 
     public void unPauseGame()

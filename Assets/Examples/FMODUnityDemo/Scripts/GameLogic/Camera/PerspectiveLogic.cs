@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 /*
 * Handles switching from the player human mode and the tank game mode.
@@ -21,8 +22,8 @@ namespace GameLogic
         public Text modeText;
 
         //listeners set in editor
-        private FMOD_Listener humanListener;
-        private FMOD_Listener tankListener;
+        private StudioListener humanListener;
+        private StudioListener tankListener;
 
         //misc
         public static bool isPlayerRig = true;
@@ -38,8 +39,8 @@ namespace GameLogic
             tankMovement = playerTank.GetComponent<TankMovement>();
 
             //get fmod listeners
-            humanListener = playerHuman.GetComponent<FMOD_Listener>();
-            tankListener = playerTank.GetComponent<FMOD_Listener>();
+            humanListener = playerHuman.GetComponent<StudioListener>();
+            tankListener = playerTank.GetComponent<StudioListener>();
 
             updatePerspective();
         }

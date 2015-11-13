@@ -4,7 +4,7 @@ using System.Collections;
 /*
 * Handles the logic for a third person character.
 *
-* Note: This script was taken from the Unity Standard Assets package.
+* Note: This script was taken from the Unity Standard Paths package.
 */
 
 namespace GameLogic

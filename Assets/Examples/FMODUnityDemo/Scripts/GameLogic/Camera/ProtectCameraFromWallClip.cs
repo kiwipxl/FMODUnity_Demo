@@ -5,7 +5,7 @@ using System.Collections;
 /*
 * Attempts to move the camera away from anything obstructing it's view.
 *
-* Note: This script was taken from the Unity Standard Assets package.
+* Note: This script was taken from the Unity Standard Paths package.
 */
 
 namespace GameLogic

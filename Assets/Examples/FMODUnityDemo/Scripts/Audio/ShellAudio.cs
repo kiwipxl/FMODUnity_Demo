@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using FMOD.Studio;
+using FMODUnity;
 
 /*
 * Handles all shell-related audio (shooting/explosions).
@@ -10,14 +11,14 @@ using FMOD.Studio;
 public class ShellAudio : MonoBehaviour
 {
     //shell event assets (set in Unity editor)
-    public FMODAsset shellFireAsset;
-    public FMODAsset shellExplosionAsset;
+    [EventRef] public string shellFirePath;
+    [EventRef] public string shellExplosionPath;
 
     /* Called when a shell has been fired from the tank */
     public void playShellFire()
     {
         //play shell fire sound once on the tank and then forget about it.
-        FMOD_StudioSystem.instance.PlayOneShot(shellFireAsset, transform.position);
+        RuntimeManager.PlayOneShot(shellFirePath, transform.position);
     }
 
     /* Called when a shell has exploded */
@@ -30,7 +31,7 @@ public class ShellAudio : MonoBehaviour
 
         // Creates a one time shell explosion sound and sets the position 
         // to where the shell exploded.
-        EventInstance shellExplosion = FMOD_StudioSystem.instance.GetEvent(shellExplosionAsset);
+        EventInstance shellExplosion = RuntimeManager.CreateInstance(shellExplosionPath);
         shellExplosion.setParameterValue("Surface", surfaceValue);
         shellExplosion.start();
         shellExplosion.release();

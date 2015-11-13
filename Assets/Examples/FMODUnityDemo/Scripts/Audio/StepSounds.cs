@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using FMOD.Studio;
+using FMODUnity;
 
 /*
 * Handles step sounds for the player character on different surfaces
@@ -8,8 +9,8 @@ using FMOD.Studio;
 public class StepSounds : MonoBehaviour
 {
     //step event asset (set in editor)
-    public FMODAsset stepEventAsset;
-    public FMODAsset jumpOrLandAsset;
+    [EventRef] public string stepEventPath;
+    [EventRef] public string jumpOrLandPath;
 
     //step event instance
     private EventInstance stepEvent;
@@ -21,11 +22,11 @@ public class StepSounds : MonoBehaviour
     private void Start()
     {
         //create instance of step sound event
-        stepEvent = FMOD_StudioSystem.instance.GetEvent(stepEventAsset);
+        stepEvent = RuntimeManager.CreateInstance(stepEventPath);
         stepEvent.start();
 
         //create instance of jump/land event
-        jumpOrLand = FMOD_StudioSystem.instance.GetEvent(jumpOrLandAsset);
+        jumpOrLand = RuntimeManager.CreateInstance(jumpOrLandPath);
         jumpOrLand.start();
     }
 
@@ -47,7 +48,7 @@ public class StepSounds : MonoBehaviour
     /* Called when the jump key has been pressed */
     public void jumpPressed()
     {
-        FMOD_StudioSystem.instance.PlayOneShot(jumpOrLandAsset, transform.position);
+        RuntimeManager.PlayOneShot(jumpOrLandPath, transform.position);
     }
 
     private void Update()
