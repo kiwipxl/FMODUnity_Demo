@@ -13,8 +13,8 @@ namespace GameLogic
         public Rigidbody Shell;                   // Prefab of the shell.
         public Transform FireTransform;           // A child of the tank where the shells are spawned.
         public Slider AimSlider;                  // A child of the tank that displays the current launch force.
-        public float MinLaunchForce = 15f;        // The force given to the shell if the fire button is not held.
-        public float MaxLaunchForce = 30f;        // The force given to the shell if the fire button is held for the max charge time.
+        public float MinLaunchForce = 0f;        // The force given to the shell if the fire button is not held.
+        public float MaxLaunchForce = 15f;        // The force given to the shell if the fire button is held for the max charge time.
         public float MaxChargeTime = 0.75f;       // How long the shell can charge for before it is fired at max force.
 
         private float CurrentLaunchForce;         // The force that will be given to the shell when the fire button is released.

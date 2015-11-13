@@ -2438,14 +2438,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 232933359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528ed627ab7a10b4f9c927aa803de36e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: 886edc45f09b4024d89dabad41d55e9b, type: 2}
-  path: 7b33306135653962312d383164652d343931362d623137642d6263633665656331326334647d
-  startEventOnAwake: 1
-  hasStarted: 0
-  cachedRigidBody: {fileID: 0}
+  Event: event:/UI/Reverb
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Params:
+  - Name: Distance
+    Value: 0
 --- !u!1 &235490649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2707,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 282142102}
   m_Layer: 0
-  m_Name: playerCar
+  m_Name: playerTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5733,130 +5737,6 @@ Transform:
   - {fileID: 1765114793}
   m_Father: {fileID: 1929457389}
   m_RootOrder: 7
---- !u!1 &645148211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100002, guid: af5d2d14895eaed4dae91d06b8ca164f, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 645148212}
-  - 15: {fileID: 645148215}
-  - 12: {fileID: 645148214}
-  - 26: {fileID: 645148213}
-  m_Layer: 0
-  m_Name: FX_Rain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &645148212
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400002, guid: af5d2d14895eaed4dae91d06b8ca164f, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 645148211}
-  m_LocalRotation: {x: 0, y: -6.33250039e-08, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.1999998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 748133452}
-  m_RootOrder: 0
---- !u!26 &645148213
-ParticleRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2600000, guid: af5d2d14895eaed4dae91d06b8ca164f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 645148211}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_CameraVelocityScale: 0
-  m_StretchParticles: 3
-  m_LengthScale: 2
-  m_VelocityScale: .0500000007
-  m_MaxParticleSize: 1
-  UV Animation:
-    x Tile: 1
-    y Tile: 1
-    cycles: 1
---- !u!12 &645148214
-ParticleAnimator:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1200000, guid: af5d2d14895eaed4dae91d06b8ca164f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 645148211}
-  Does Animate Color?: 1
-  colorAnimation[0]:
-    serializedVersion: 2
-    rgba: 184549375
-  colorAnimation[1]:
-    serializedVersion: 2
-    rgba: 4294967295
-  colorAnimation[2]:
-    serializedVersion: 2
-    rgba: 4294967295
-  colorAnimation[3]:
-    serializedVersion: 2
-    rgba: 4294967295
-  colorAnimation[4]:
-    serializedVersion: 2
-    rgba: 4294967295
-  worldRotationAxis: {x: 0, y: 0, z: 0}
-  localRotationAxis: {x: 0, y: 0, z: 0}
-  sizeGrow: 0
-  rndForce: {x: 2, y: 2, z: 2}
-  force: {x: 2, y: -5, z: 0}
-  damping: 1
-  stopSimulation: 0
-  autodestruct: 0
---- !u!15 &645148215
-EllipsoidParticleEmitter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1500000, guid: af5d2d14895eaed4dae91d06b8ca164f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 645148211}
-  serializedVersion: 2
-  m_Enabled: 1
-  m_Emit: 1
-  minSize: .0199999996
-  maxSize: .0199999996
-  minEnergy: 1
-  maxEnergy: 1
-  minEmission: 4000
-  maxEmission: 4000
-  worldVelocity: {x: 0, y: -10, z: 0}
-  localVelocity: {x: 0, y: 0, z: 0}
-  rndVelocity: {x: 0, y: -5, z: 0}
-  emitterVelocityScale: .0500000007
-  tangentVelocity: {x: 0, y: 0, z: 0}
-  angularVelocity: 0
-  rndAngularVelocity: 0
-  rndRotation: 0
-  Simulate in Worldspace?: 1
-  m_OneShot: 0
-  m_Ellipsoid: {x: 10, y: .100000001, z: 10}
-  m_MinEmitterRange: 0
 --- !u!1 &672016257
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,10 +6186,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 743836944}
---- !u!4 &748133452 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 437266, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
-  m_PrefabInternal: {fileID: 864498587}
 --- !u!1 &754107500
 GameObject:
   m_ObjectHideFlags: 0
@@ -8108,6 +7984,8 @@ GameObject:
   - 102: {fileID: 960882039}
   - 114: {fileID: 960882042}
   - 114: {fileID: 960882043}
+  - 114: {fileID: 960882045}
+  - 135: {fileID: 960882044}
   m_Layer: 0
   m_Name: reverbZoneText (0)
   m_TagString: Untagged
@@ -8193,14 +8071,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 960882038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528ed627ab7a10b4f9c927aa803de36e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: 886edc45f09b4024d89dabad41d55e9b, type: 2}
-  path: 7b33306135653962312d383164652d343931362d623137642d6263633665656331326334647d
-  startEventOnAwake: 1
-  hasStarted: 0
-  cachedRigidBody: {fileID: 0}
+  Event: event:/UI/Reverb
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Params:
+  - Name: Distance
+    Value: 0
+--- !u!135 &960882044
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 960882038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &960882045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 960882038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f66b4eb3f384bc40a992c36aaa199e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VOPath: event:/VO/ENG/Tanks
+  playerHuman: {fileID: 0}
 --- !u!1 &961517539 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 170878, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
@@ -9208,6 +9115,7 @@ GameObject:
   - 114: {fileID: 1116070423}
   - 114: {fileID: 1116070427}
   - 114: {fileID: 1116070428}
+  - 114: {fileID: 1116070429}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -9300,8 +9208,21 @@ MonoBehaviour:
   UnloadEvent: 0
   Banks:
   - Master Bank
+  - 
   CollisionTag: 
   PreloadSamples: 0
+--- !u!114 &1116070429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116070422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be405455b4b84004e8a327a10924a774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPlayVOInSeconds: 10
 --- !u!1 &1120134770
 GameObject:
   m_ObjectHideFlags: 0
@@ -10126,10 +10047,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 673738444}
   m_HandleRect: {fileID: 0}
   m_Direction: 2
-  m_MinValue: 10
-  m_MaxValue: 20
+  m_MinValue: 0
+  m_MaxValue: 15
   m_WholeNumbers: 0
-  m_Value: 10
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15410,14 +15331,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1925391042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528ed627ab7a10b4f9c927aa803de36e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: 886edc45f09b4024d89dabad41d55e9b, type: 2}
-  path: 7b33306135653962312d383164652d343931362d623137642d6263633665656331326334647d
-  startEventOnAwake: 1
-  hasStarted: 0
-  cachedRigidBody: {fileID: 0}
+  Event: event:/UI/Reverb
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Params:
+  - Name: Distance
+    Value: 0
 --- !u!1 &1929457388
 GameObject:
   m_ObjectHideFlags: 0
@@ -16353,7 +16278,7 @@ GameObject:
   - 114: {fileID: 2051347424}
   - 114: {fileID: 2051347423}
   m_Layer: 10
-  m_Name: car
+  m_Name: tank
   m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16365,8 +16290,8 @@ Transform:
   m_PrefabParentObject: {fileID: 436838, guid: 49fed674abd59e24da5a3039c56a3e84, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2051347421}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.7399998, y: -14.3650856, z: -2.32999992}
+  m_LocalRotation: {x: 0, y: -.0736467093, z: 0, w: .997284412}
+  m_LocalPosition: {x: -6.5, y: -14.3650856, z: -31.5599995}
   m_LocalScale: {x: .400000006, y: .400000006, z: .400000006}
   m_Children:
   - {fileID: 444132067}
@@ -16434,8 +16359,8 @@ MonoBehaviour:
   Shell: {fileID: 5438458, guid: 6bce93ccab75f6a45b15a9df31593450, type: 2}
   FireTransform: {fileID: 1969691092}
   AimSlider: {fileID: 1224681278}
-  MinLaunchForce: 15
-  MaxLaunchForce: 30
+  MinLaunchForce: 0
+  MaxLaunchForce: 15
   MaxChargeTime: .75
 --- !u!65 &2051347428
 BoxCollider:
