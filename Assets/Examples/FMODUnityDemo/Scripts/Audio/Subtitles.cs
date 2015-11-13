@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using FMOD;
 using FMOD.Studio;
-using System.Runtime.InteropServices;
 
 /*
 * Handles subtitles.
@@ -27,8 +24,10 @@ public class Subtitles : MonoBehaviour
     private static string targetSubtitleText = "";
 
     private void Start() {
+        // Get Text component on start-up
+
         subtitleText = GetComponent<Text>();
-        if (subtitleText == null) UnityEngine.Debug.LogError("No UI Text component added!");
+        if (subtitleText == null) Debug.LogError("No UI Text component added!");
 
         subtitleText.text = "";
     }
@@ -43,11 +42,6 @@ public class Subtitles : MonoBehaviour
         }
 
         subtitleText.text = targetSubtitleText;
-    }
-
-    public static void start(FMODAsset eventPath)
-    {
-        start(FMOD_StudioSystem.instance.GetEvent(eventPath));
     }
 
     public static void start(EventInstance eventInstance)
@@ -67,11 +61,6 @@ public class Subtitles : MonoBehaviour
         */
         EventCallbackHelper.setCallback(eventInstance, eventCallback);
         currentSubtitle = eventInstance;
-    }
-
-    public static void stop()
-    {
-        if (currentSubtitle != null) currentSubtitle.stop(STOP_MODE.IMMEDIATE);
     }
 
     private static void eventCallback(EventCallbackData data)

@@ -48,14 +48,14 @@ namespace GameLogic
         {
             //switch modes if V key is pressed
             //and the game isn't paused.
-            if (!GamePause.isPaused && Input.GetKeyUp(KeyCode.V))
+            if (!GamePauseLogic.isPaused && Input.GetKeyUp(KeyCode.V))
             {
                 isPlayerRig = !isPlayerRig;
                 updatePerspective();
             }
 
             //lock cursor's state and visibility depending on if the game is paused or not
-            if (GamePause.isPaused)
+            if (GamePauseLogic.isPaused)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;

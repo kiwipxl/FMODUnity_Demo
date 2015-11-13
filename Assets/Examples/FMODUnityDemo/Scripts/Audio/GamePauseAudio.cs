@@ -8,7 +8,7 @@ using FMOD.Studio;
 * game is paused.
 */
 
-public class GamePause : MonoBehaviour
+public class GamePauseAudio : MonoBehaviour
 {
     //snapshot and sound asset (set in editor)
     public FMODAsset pauseSnapshotAsset;
@@ -17,8 +17,6 @@ public class GamePause : MonoBehaviour
     //snapshot and sound instances
     private EventInstance pauseSnapshot;
     private EventInstance pauseSound;
-
-    public static bool isPaused = false;
 
     public void init() {
         //creates pause snapshot and sound event instances

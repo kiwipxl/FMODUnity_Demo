@@ -4,12 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using FMOD.Studio;
 
+//Voice Over languages
 public enum VOLanguage
 {
     UNKNOWN,
     ENGLISH,
     SWEDISH
 };
+
+/*
+* Handles VO for multiple languages.
+* Unloads and loads language bank on request to save memory.
+*
+* All VO events must be the same name when switching languages.
+* For example:
+* VO_ENG_BANK
+*       - myVOname
+* VO_SWE_BANK
+*       - myVOname
+* This way, when switching banks, the event asset names will stay the same.
+*/
 
 public class LocalisationVO : MonoBehaviour
 {
@@ -20,10 +34,13 @@ public class LocalisationVO : MonoBehaviour
     // List of VO's in current language bank
     public List<EventInstance> VOEvents = new List<EventInstance>();
 
+    //current loaded language bank
     private Bank currentBank;
+    //current language in use
     private VOLanguage currentLang = VOLanguage.UNKNOWN;
 
     private void Start() {
+        // Loads the english bank by default
         switchBankTo(VOLanguage.ENGLISH);
     }
 
@@ -89,11 +106,8 @@ public class LocalisationVO : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            switchBankTo(currentLang == VOLanguage.ENGLISH ? VOLanguage.SWEDISH : VOLanguage.ENGLISH);
-        }
-
+        //temporary code
+        //press B for random subtitles
         if (Input.GetKeyDown(KeyCode.B))
         {
             Subtitles.start(VOEvents[UnityEngine.Random.Range(0, VOEvents.Count)]);

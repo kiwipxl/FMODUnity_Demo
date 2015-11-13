@@ -1,21 +1,25 @@
 using UnityEngine;
 
+/*
+* Handles the logic for when a shell explodes.
+*/
+
 namespace GameLogic
 {
     public class ShellExplosion : MonoBehaviour
     {
-        public LayerMask m_TankMask;                        // Used to filter what the explosion affects, this should be set to "Players".
-        public ParticleSystem m_ExplosionParticles;         // Reference to the particles that will play on explosion.
-        public float m_MaxDamage = 100f;                    // The amount of damage done if the explosion is centred on a tank.
-        public float m_ExplosionForce = 1000f;              // The amount of force added to a tank at the centre of the explosion.
-        public float m_MaxLifeTime = 2f;                    // The time in seconds before the shell is removed.
-        public float m_ExplosionRadius = 5f;                // The maximum distance away from the explosion tanks can be and are still affected.
+        public LayerMask tankMask;                         // Used to filter what the explosion affects, this should be set to "Players".
+        public ParticleSystem ExplosionParticles;         // Reference to the particles that will play on explosion.
+        public float MaxDamage = 100f;                    // The amount of damage done if the explosion is centred on a tank.
+        public float ExplosionForce = 1000f;              // The amount of force added to a tank at the centre of the explosion.
+        public float MaxLifeTime = 2f;                    // The time in seconds before the shell is removed.
+        public float ExplosionRadius = 5f;                // The maximum distance away from the explosion tanks can be and are still affected.
         [HideInInspector] public GameObject tankParent;
 
         private void Start ()
         {
             // If it isn't destroyed by then, destroy the shell after it's lifetime.
-            Destroy (gameObject, m_MaxLifeTime);
+            Destroy (gameObject, MaxLifeTime);
         }
 
         private void OnTriggerEnter (Collider other)
@@ -23,7 +27,7 @@ namespace GameLogic
             if (other.gameObject == tankParent) return;
 
 			// Collect all the colliders in a sphere from the shell's current position to a radius of the explosion radius.
-            Collider[] colliders = Physics.OverlapSphere (transform.position, m_ExplosionRadius, m_TankMask);
+            Collider[] colliders = Physics.OverlapSphere (transform.position, ExplosionRadius, tankMask);
 
             // Go through all the colliders...
             for (int i = 0; i < colliders.Length; i++)
@@ -37,19 +41,19 @@ namespace GameLogic
                     continue;
 
                 // Add an explosion force.
-                targetRigidbody.AddExplosionForce(m_ExplosionForce, transform.position, m_ExplosionRadius);
+                targetRigidbody.AddExplosionForce(ExplosionForce, transform.position, ExplosionRadius);
             }
 
             // Unparent the particles from the shell.
-            m_ExplosionParticles.transform.parent = null;
+            ExplosionParticles.transform.parent = null;
 
             // Play the particle system.
-            m_ExplosionParticles.Play();
+            ExplosionParticles.Play();
 
             GetComponent<ShellAudio>().playShellExplosion(transform.position, LayerMask.LayerToName(other.gameObject.layer));
 
             // Once the particles have finished, destroy the gameobject they are on.
-            Destroy (m_ExplosionParticles.gameObject, m_ExplosionParticles.duration);
+            Destroy (ExplosionParticles.gameObject, ExplosionParticles.duration);
 
             // Destroy the shell.
             Destroy (gameObject);
@@ -64,10 +68,10 @@ namespace GameLogic
             float explosionDistance = explosionToTarget.magnitude;
 
             // Calculate the proportion of the maximum distance (the explosionRadius) the target is away.
-            float relativeDistance = (m_ExplosionRadius - explosionDistance) / m_ExplosionRadius;
+            float relativeDistance = (ExplosionRadius - explosionDistance) / ExplosionRadius;
 
             // Calculate damage as this proportion of the maximum possible damage.
-            float damage = relativeDistance * m_MaxDamage;
+            float damage = relativeDistance * MaxDamage;
 
             // Make sure that the minimum damage is always 0.
             damage = Mathf.Max (0f, damage);

@@ -4,8 +4,9 @@ namespace GameLogic
 {
     public class TankMovement : MonoBehaviour
     {
-        public float moveSpeed = 12.0f;         // How fast the tank moves forward and back.
-        public float turnSpeed = 180.0f;        // How fast the tank turns per second (in degrees).
+        public float velocityAcceleration = 320.0f;          // How fast the tank moves forward and back.
+        public float turnSpeed = 2.0f;                      // How fast the tank turns per second (in degrees).
+        public float maxVelocity = 10.0f;
 
         public bool enableInput = true;
 
@@ -29,17 +30,21 @@ namespace GameLogic
                 turnInput = Input.GetAxis("Horizontal");
             }
 
-            Vector3 movement = transform.forward * turnInput * moveSpeed * Time.deltaTime;
+            Vector3 movement = transform.forward * verticalInput * velocityAcceleration * Time.deltaTime;
             Vector3 vel = rigidBody.velocity;
-            //vel += movement * 100.0f;
-            vel.x += 100;
+            vel += movement;
+            vel.x = Mathf.Clamp(vel.x, -maxVelocity, maxVelocity);
+            vel.z = Mathf.Clamp(vel.z, -maxVelocity, maxVelocity);
             rigidBody.velocity = vel;
 
-            Vector3 rota = transform.localEulerAngles;
-            rota.y += turnInput * verticalInput;
-            transform.localEulerAngles = rota;
-
             float maxMovement = Mathf.Max(Mathf.Abs(movement.x), Mathf.Abs(movement.z)) / .3f;
+
+            Vector3 rota = rigidBody.rotation.eulerAngles;
+            rota.y += Mathf.Min(maxMovement, .2f) * turnInput * turnSpeed;
+            Quaternion qrota = rigidBody.rotation;
+            qrota.eulerAngles = rota;
+            rigidBody.rotation = qrota;
+
             tankAudio.updateDriving(maxMovement, verticalInput, turnInput);
         }
     }

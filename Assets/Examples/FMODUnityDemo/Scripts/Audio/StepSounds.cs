@@ -15,6 +15,7 @@ public class StepSounds : MonoBehaviour
     private EventInstance stepEvent;
     private EventInstance jumpOrLand;
 
+    //used to tell which layer the player is colliding with
     public GameLogic.CollidingLayers collidingLayers = new GameLogic.CollidingLayers();
 
     private void Start()
@@ -23,6 +24,7 @@ public class StepSounds : MonoBehaviour
         stepEvent = FMOD_StudioSystem.instance.GetEvent(stepEventAsset);
         stepEvent.start();
 
+        //create instance of jump/land event
         jumpOrLand = FMOD_StudioSystem.instance.GetEvent(jumpOrLandAsset);
         jumpOrLand.start();
     }
@@ -36,11 +38,13 @@ public class StepSounds : MonoBehaviour
         if (anim.GetBool("OnGround") && anim.GetFloat("Forward") >= .1f) stepEvent.start();
     }
 
+    /* Called when the player has landed on the ground */
     public void landedOnGround()
     {
         stepEvent.start();
     }
 
+    /* Called when the jump key has been pressed */
     public void jumpPressed()
     {
         FMOD_StudioSystem.instance.PlayOneShot(jumpOrLandAsset, transform.position);

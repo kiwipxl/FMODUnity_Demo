@@ -38,7 +38,7 @@ namespace GameLogic
 
         private void Update()
         {
-            if (GamePause.isPaused) return;
+            if (GamePauseLogic.isPaused) return;
 
             //calculate game time
             if (Input.GetKey(KeyCode.O)) minutes += MINS_PER_SECOND_SPEEDUP * Time.deltaTime;

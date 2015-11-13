@@ -61,7 +61,7 @@ namespace GameLogic
             bool initialIntersect = false;
             bool hitSomething = false;
 
-            // loop through all the collisions to check if something we care about
+            // loop through all the collisions to check if something we tanke about
             for (int i = 0; i < cols.Length; i++)
             {
                 if ((!cols[i].isTrigger) &&

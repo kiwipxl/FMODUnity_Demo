@@ -49,7 +49,7 @@ namespace GameLogic
 
         private void Update()
         {
-            if (!GamePause.isPaused) HandleRotationMovement();
+            if (!GamePauseLogic.isPaused) HandleRotationMovement();
 
             // we update from here if updatetype is set to Late, or in auto mode,
             // if the target does not have a rigidbody, or - does have a rigidbody but is set to kinematic.
