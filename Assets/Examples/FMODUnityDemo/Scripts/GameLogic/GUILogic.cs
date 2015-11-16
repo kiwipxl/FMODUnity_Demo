@@ -10,9 +10,6 @@ namespace GameLogic
 {
     public class GUILogic : MonoBehaviour
     {
-        // Audio object that contains all components
-        public GameObject audioMain;
-
         public Button engButton;
         public Button sweButton;
 
@@ -26,7 +23,7 @@ namespace GameLogic
                 sweButton.interactable = true;
 
                 //switch VO bank to english
-                audioMain.GetComponent<LocalisationVO>().switchBankTo(VOLanguage.ENGLISH);
+                LocalisationVO.switchBankTo(VOLanguage.ENGLISH);
             });
             //add listener for swedish UI button
             sweButton.onClick.AddListener(() =>
@@ -36,7 +33,7 @@ namespace GameLogic
                 sweButton.interactable = false;
 
                 //switch VO bank to swedish
-                audioMain.GetComponent<LocalisationVO>().switchBankTo(VOLanguage.SWEDISH);
+                LocalisationVO.switchBankTo(VOLanguage.SWEDISH);
             });
         }
     }

@@ -23,12 +23,23 @@ namespace GameLogic
             VOEvent = RuntimeManager.CreateInstance(VOPath);
         }
 
+        private void Update()
+        {
+            VOEvent = LocalisationVO.updateVO(VOEvent);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             // If sphere collider is triggering with player human and
             // VO can play, then start VO subtitles
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
+                EventDescription desc;
+                VOEvent.getDescription(out desc);
+                string path;
+                desc.getPath(out path);
+                Debug.Log(path);
+
                 if (VOTriggerControl.canPlayVO)
                 {
                     Subtitles.start(VOEvent);

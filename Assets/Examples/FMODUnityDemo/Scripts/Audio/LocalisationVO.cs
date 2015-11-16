@@ -27,28 +27,19 @@ public enum VOLanguage
 
 public class LocalisationVO : MonoBehaviour
 {
-    // All VO assets set in editor.
-    // These can be of any language.
-    [EventRef] public string [] VOEventPaths;
-
-    // List of VO's in current language bank
-    public List<EventInstance> VOEvents = new List<EventInstance>();
-
     //current loaded language bank
-    private Bank currentBank;
+    private static Bank currentBank;
     //current language in use
-    private VOLanguage currentLang = VOLanguage.UNKNOWN;
+    private static VOLanguage currentLang = VOLanguage.UNKNOWN;
 
     private void Start() {
         // Loads the english bank by default
         switchBankTo(VOLanguage.ENGLISH);
     }
 
-    public void switchBankTo(VOLanguage newVOLanguage)
+    public static void switchBankTo(VOLanguage newVOLanguage)
     {
         if (currentLang == newVOLanguage) return;
-
-        clearAllVOEvents();
 
         FMOD.Studio.System sys = RuntimeManager.StudioSystem;
 
@@ -68,49 +59,31 @@ public class LocalisationVO : MonoBehaviour
                 break;
         }
         currentLang = newVOLanguage;
-
-        updateVOEvents();
     }
-
-    public void clearAllVOEvents()
+    
+    public static EventInstance updateVO(EventInstance ev)
     {
-        // Stops and releases all current VO Events
-        foreach (EventInstance VOEvent in VOEvents)
-        {
-            VOEvent.stop(STOP_MODE.IMMEDIATE);
-            VOEvent.release();
-        }
-        VOEvents.Clear();
-    }
-
-    public void updateVOEvents()
-    {
-        clearAllVOEvents();
-
         // Get the event path depending on language
         string langPath = "";
         if (currentLang == VOLanguage.ENGLISH) langPath = "VO/ENG/";
         else if (currentLang == VOLanguage.SWEDISH) langPath = "VO/SWE/";
 
-        // Get all events with the same name as the assets in VOEventPaths but
-        // change their path depending on language
-        for (int n = 0; n < VOEventPaths.Length; ++n)
-        {
-            string path = VOEventPaths[n];
-            // Event:/ + language event path + asset name
-            string eventPath = "event:/" + langPath + path.Substring(path.LastIndexOf("/") + 1);
+        // Get VO event path
+        EventDescription desc;
+        ev.getDescription(out desc);
+        string path;
+        desc.getPath(out path);
 
-            VOEvents.Add(RuntimeManager.CreateInstance(eventPath));
-        }
-    }
+        // Event:/ + language event path + asset name
+        string eventPath = "event:/" + langPath + path.Substring(path.LastIndexOf("/") + 1);
 
-    private void Update()
-    {
-        //temporary code
-        //press B for random subtitles
-        if (Input.GetKeyDown(KeyCode.B))
+        // Return the same event if the paths are equal (they are the same language), or
+        // return a new instance of the new language VO is they are not the same language
+        if (eventPath != path)
         {
-            Subtitles.start(VOEvents[UnityEngine.Random.Range(0, VOEvents.Count)]);
+            ev.release();
+            return RuntimeManager.CreateInstance(eventPath);
         }
+        return ev;
     }
 }
