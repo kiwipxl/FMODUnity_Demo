@@ -88,6 +88,8 @@ namespace GameLogic
             //lerp day colour and night colour based on normalised time
             Color envColour = Color.Lerp(dayColour, nightColour, timeNormalised);
             envLight.color = envColour;
+
+            Camera.main.backgroundColor = envColour;
         }
     }
 };

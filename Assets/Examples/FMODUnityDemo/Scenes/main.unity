@@ -7403,6 +7403,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1253868331}
+    - target: {fileID: 2099488, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11476890, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
     - {fileID: 11438138, guid: b482ae347ae33ac4cb60756740c1b949, type: 2}
@@ -9136,8 +9140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   envLight: {fileID: 1793255981}
-  dayColour: {r: .895999849, g: .91911763, b: .500108123, a: 0}
-  nightColour: {r: .374425709, g: .335748285, b: .845588207, a: 0}
+  dayColour: {r: .75, g: .844827592, b: 1, a: 0}
+  nightColour: {r: .135759071, g: .291149646, b: .595588207, a: 0}
 --- !u!4 &1116070424
 Transform:
   m_ObjectHideFlags: 0
@@ -10047,10 +10051,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 673738444}
   m_HandleRect: {fileID: 0}
   m_Direction: 2
-  m_MinValue: 0
-  m_MaxValue: 15
+  m_MinValue: 10
+  m_MaxValue: 20
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -16523,8 +16527,8 @@ MonoBehaviour:
   Shell: {fileID: 5438458, guid: 6bce93ccab75f6a45b15a9df31593450, type: 2}
   FireTransform: {fileID: 1969691092}
   AimSlider: {fileID: 1224681278}
-  MinLaunchForce: 0
-  MaxLaunchForce: 15
+  MinLaunchForce: 10
+  MaxLaunchForce: 20
   MaxChargeTime: .75
 --- !u!65 &2051347428
 BoxCollider:

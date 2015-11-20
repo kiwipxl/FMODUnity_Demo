@@ -37,7 +37,7 @@ namespace GameLogic
             vel.z = Mathf.Clamp(vel.z, -maxVelocity, maxVelocity);
             rigidBody.velocity = vel;
 
-            float maxMovement = Mathf.Max(Mathf.Abs(movement.x), Mathf.Abs(movement.z)) / 15.0f;
+            float maxMovement = Mathf.Max(Mathf.Abs(vel.x), Mathf.Abs(vel.z)) / 15.0f;
 
             Vector3 rota = rigidBody.rotation.eulerAngles;
             rota.y += Mathf.Min(maxMovement, .2f) * turnInput * turnSpeed;

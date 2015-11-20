@@ -33,6 +33,8 @@ public class ShellAudio : MonoBehaviour
         // to where the shell exploded.
         EventInstance shellExplosion = RuntimeManager.CreateInstance(shellExplosionPath);
         shellExplosion.setParameterValue("Surface", surfaceValue);
+        // Set the position of the audio to where the shell exploded (pos)
+        shellExplosion.set3DAttributes(RuntimeUtils.To3DAttributes(pos));
         shellExplosion.start();
         shellExplosion.release();
     }

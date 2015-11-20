@@ -74,7 +74,7 @@ public class TankAudio : MonoBehaviour
 
 
         //set idle engine RPM to the inverse of the normalised speed of the tank
-        idleEngine.setParameterValue("RPM", (1 - normalisedSpeed) * .5f);
+        idleEngine.setParameterValue("RPM", (1 - normalisedSpeed) * .25f);
     }
 
     public void playTankExplosion()
