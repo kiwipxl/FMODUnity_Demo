@@ -14,19 +14,7 @@ namespace GameLogic
         // VO Path (set in editor)
         [EventRef] public string VOPath;
 
-        public EventInstance VOEvent;
-
         public GameObject playerHuman;
-
-        private void Start()
-        {
-            VOEvent = RuntimeManager.CreateInstance(VOPath);
-        }
-
-        private void Update()
-        {
-            VOEvent = LocalisationVO.updateVO(VOEvent);
-        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -34,15 +22,9 @@ namespace GameLogic
             // VO can play, then start VO subtitles
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                EventDescription desc;
-                VOEvent.getDescription(out desc);
-                string path;
-                desc.getPath(out path);
-                Debug.Log(path);
-
                 if (VOTriggerControl.canPlayVO)
                 {
-                    Subtitles.start(VOEvent);
+                    Subtitles.start(VOLocalisation.createInstance(VOPath));
                     VOTriggerControl.canPlayVO = false;
                 }
             }

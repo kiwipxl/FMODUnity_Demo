@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6558578}
   - 65: {fileID: 6508768}
   m_Layer: 0
-  m_Name: pumpJack
+  m_Name: PumpJack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

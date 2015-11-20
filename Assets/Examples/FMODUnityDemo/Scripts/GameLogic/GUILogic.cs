@@ -23,7 +23,7 @@ namespace GameLogic
                 sweButton.interactable = true;
 
                 //switch VO bank to english
-                LocalisationVO.switchBankTo(VOLanguage.ENGLISH);
+                VOBankSwitcher.switchBankTo(VOLanguage.ENGLISH);
             });
             //add listener for swedish UI button
             sweButton.onClick.AddListener(() =>
@@ -33,7 +33,7 @@ namespace GameLogic
                 sweButton.interactable = false;
 
                 //switch VO bank to swedish
-                LocalisationVO.switchBankTo(VOLanguage.SWEDISH);
+                VOBankSwitcher.switchBankTo(VOLanguage.SWEDISH);
             });
         }
     }

@@ -164,7 +164,8 @@ namespace FMODUnity
             int current = Settings.GetSetting(settings, platform, 0);
             int index = Array.IndexOf(SpeakerModeValues, current);
             int next = EditorGUILayout.Popup(label, index, SpeakerModeDisplay);
-            Settings.SetSetting(settings, platform, SpeakerModeValues[next]);
+            //commented out by richman (was creating errors)
+            //Settings.SetSetting(settings, platform, SpeakerModeValues[next]);
         }
 
         void DisplayChildSpeakerMode(string label, List<PlatformIntSetting> settings, FMODPlatform platform)
