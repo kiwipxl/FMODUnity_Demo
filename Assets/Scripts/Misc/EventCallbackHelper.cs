@@ -58,6 +58,7 @@ public class EventCallbackData
             return null;
         }
 
+        // Loads the marker timeline properties from FMOD
         TIMELINE_MARKER_PROPERTIES marker = (TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameters, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
         IntPtr namePtr = marker.name;
         int nameLen = 0;
@@ -65,6 +66,7 @@ public class EventCallbackData
         byte[] buffer = new byte[nameLen];
         Marshal.Copy(namePtr, buffer, 0, buffer.Length);
 
+        // Create a custom MarkerProperties object and store the marker name and position in them
         MarkerProperties markerProps = new MarkerProperties();
         markerProps.name = Encoding.UTF8.GetString(buffer, 0, nameLen);
         markerProps.position = marker.position;

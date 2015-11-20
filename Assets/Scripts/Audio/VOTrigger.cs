@@ -4,7 +4,7 @@ using FMOD.Studio;
 
 /*
 * Triggers a VO if the player human goes through the sphere collider.
-* VOTriggerControl handles when the VO can play or not.
+* The VOTriggerControl logic script handles when the VO can play or not.
 */
 
 namespace GameLogic
